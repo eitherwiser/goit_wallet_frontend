@@ -7,13 +7,18 @@ import LoginForm from "components/LoginForm/LoginForm";
 import LoginContainer from "components/LoginContainer/LoginContainer";
 import Container from "components/Container/Container";
 import Header from "components/Header/Header";
+import DashboardPage from "pages/DashboardPage";
 import "./App.css";
 
 export default function App() {
   return (
-    <Container>
-      <Header />
-    </Container>
+    <>
+      {/* <Container>
+        <Header />
+      </Container> */}
+
+      <DashboardPage />
+    </>
     // <Routes>
     //   <Route
     //     path="login"
