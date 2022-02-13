@@ -6,24 +6,28 @@
   align-items: center;
   margin: 0 auto;
   width: 280px;
-  height: 100%;
+
   padding-top: 110px;
   padding-bottom: 110px;
   background: var(--light-bcg-color);
 }
 @media screen and (min-width: 768px) {
   .formRegister {
+    position: absolute;
+    margin: unset;
     width: 540px;
     min-height: 468px;
     padding-top: 40px;
     padding-bottom: 60px;
     border-radius: 20px;
+    top: 360px;
+    right: 114px;
   }
 }
 @media screen and (min-width: 1280px) {
   .formRegister {
-    margin: unset;
-    margin-left: auto;
+    top: 136px;
+    right: 85px;
   }
 }
 .input {
@@ -48,12 +52,6 @@
     height: 34px;
     display: flex;
     justify-content: center;
-  }
-}
-@media screen and (min-width: 768px) {
-  .input:last-child {
-    margin: unset;
-    background-color: var(--amount-incomes-text-color);
   }
 }
 
