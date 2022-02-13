@@ -1,0 +1,30 @@
+.doughnut {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 479px) {
+  .doughnut {
+    width: calc(280px + (320 - 280) * ((100vw - 320px) / (480 - 320)));
+    height: calc(280px + (320 - 280) * ((100vw - 320px) / (480 - 320)));
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .doughnut {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+.balance {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: bold;
+}
