@@ -6,25 +6,10 @@
   padding-top: 15px;
   padding-bottom: 15px;
 }
-.header__logo {
-  display: flex;
-  align-items: center;
-}
-.header__logo_text {
-  font-family: var(--logo__font-family);
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 40px;
-  margin-left: 15.56px;
-}
+
 @media screen and (min-width: 768px) {
-  .header__logo_text {
-    font-family: var(--logo__font-family);
-    font-style: normal;
-    font-weight: bold;
-    font-size: var(--font-size__logo);
-    line-height: 45px;
-    margin-left: 20px;
+  .header {
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 }

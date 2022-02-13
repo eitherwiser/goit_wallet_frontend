@@ -8,12 +8,12 @@
 @media screen and (min-width: 768px) {
   .container {
     padding: 0px 40px;
-    width: unset;
+    width: 768px;
   }
 }
 @media screen and (min-width: 1280px) {
   .container {
     padding: 0px 85px;
-    width: unset;
+    width: 1280px;
   }
 }

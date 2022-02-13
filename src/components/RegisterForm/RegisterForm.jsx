@@ -8,6 +8,9 @@ import s from "./RegisterForm.module.css";
 import { ReactComponent as NameIcon } from "../../images/icon-form/name.svg";
 import { ReactComponent as Emailcon } from "../../images/icon-form/email.svg";
 import { ReactComponent as Passwordcon } from "../../images/icon-form/password.svg";
+import classNames from "classnames";
+import { useDispatch } from "react-redux";
+import { authUser } from "redux/auth/auth-operations";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -22,25 +25,29 @@ const SignupSchema = Yup.object().shape({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password")], "Пароли не совпадают")
     .required("Обязательное поле"),
-  name: Yup.string()
+  userName: Yup.string()
     .typeError()
     .min(2, "минимум 2 символа!")
-    .max(12, "Не больше 12 символов!")
+    .max(32, "Не больше 32 символов!")
     .required("Обязательное поле"),
 });
 export default function RegisterForm() {
+  const dispatch = useDispatch();
+  const handleSubmit = ({ userName, email, password }) => {
+    dispatch(authUser({ userName, email, password }));
+  };
   return (
     <>
       <Formik
         initialValues={{
-          name: "",
+          userName: "",
           password: "",
           confirmPassword: "",
           email: "",
         }}
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
+          handleSubmit(values);
           resetForm();
         }}
         validationSchema={SignupSchema}
@@ -52,12 +59,11 @@ export default function RegisterForm() {
           handleChange,
           handleBlur,
           isValid,
-          handleSubmit,
           dirty,
         }) => (
           <Form className={s.formRegister}>
             <LogoComponent />
-            <div className={s.input_wrap}>
+            <div className={classNames(s.input_wrap, s.inputTop)}>
               {touched.email && errors.email && (
                 <span className={s.error}>{errors.email}</span>
               )}
@@ -114,7 +120,7 @@ export default function RegisterForm() {
                 placeholder="Ваше Имя"
                 className={s.input}
                 type="text"
-                name="name"
+                name="userName"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.name}
@@ -124,7 +130,6 @@ export default function RegisterForm() {
             <button
               className={s.btn}
               disabled={!isValid || !dirty}
-              onClick={handleSubmit}
               type="submit"
             >
               Регистрация
