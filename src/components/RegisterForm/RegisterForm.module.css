@@ -1,0 +1,152 @@
+@import "../../stylesheet/var.css";
+
+.formRegister {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 280px;
+  height: 100%;
+  padding-top: 36px;
+  padding-bottom: 36px;
+  background: var(--light-bcg-color);
+}
+@media screen and (min-width: 768px) {
+  .formRegister {
+    width: 540px;
+    min-height: 616px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    border-radius: 20px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .formRegister {
+    margin: unset;
+    margin-left: auto;
+  }
+}
+.input {
+  position: relative;
+  min-width: 280px;
+  height: 34px;
+  font-family: var(--main__font-family);
+  font-style: normal;
+  font-weight: normal;
+  font-size: var(--font-size__form);
+  line-height: 27px;
+  margin-bottom: 40px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--main-svg-color);
+  text-indent: 40px;
+  padding: 0;
+}
+@media screen and (min-width: 768px) {
+  .input {
+    width: 409.5px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .input:last-child {
+    margin: unset;
+    background-color: var(--amount-incomes-text-color);
+  }
+}
+
+input::placeholder {
+  text-indent: 40px;
+  font-family: var(--main__font-family);
+  font-style: normal;
+  font-weight: normal;
+  font-size: var(--font-size__form);
+  line-height: 27px;
+  padding-bottom: 10px;
+  color: var(--secondary-text-color);
+}
+label {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.icon {
+  z-index: 1;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.btn {
+  width: 280px;
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--accent-btn-color);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  border: none;
+  outline: none;
+  font-family: var(--main__font-family);
+  font-style: normal;
+  font-weight: normal;
+  font-size: var(--font-size__btn);
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--btn-color);
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .btn {
+    width: 300px;
+    height: 50px;
+  }
+}
+
+.btn1 {
+  margin: 0;
+  width: 280px;
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--btn-color);
+  border: 1px solid var(--accent-svg-color);
+  box-sizing: border-box;
+  border-radius: 20px;
+  font-family: var(--main__font-family);
+  font-style: normal;
+  font-weight: normal;
+  font-size: var(--font-size__btn);
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--accent-svg-color);
+}
+@media screen and (min-width: 768px) {
+  .btn1 {
+    margin: 0;
+    width: 300px;
+    height: 50px;
+  }
+}
+.logo {
+  margin-bottom: 50px;
+}
+
+.error {
+  font-size: 14px;
+  color: var(--amount-expenses-text-color);
+  font-weight: 500;
+}

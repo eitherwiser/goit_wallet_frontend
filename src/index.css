@@ -1,5 +1,5 @@
-@import '../node_modules/modern-normalize/modern-normalize.css';
-@import './stylesheet/vars.css';
+@import "../node_modules/modern-normalize/modern-normalize.css";
+@import "./stylesheet/var.css";
 
 body {
   margin: 0;
@@ -8,14 +8,14 @@ body {
   display: flex;
   flex-direction: column;
   color: var(--main-text-color);
-  background-color: var(--main-bcg-color);
+  background-color: var(--light-bcg-color);
   font-family: -apple-system, BlinkMacSystemFont, var(--main__font-family),
     sans-serif;
   font-style: normal;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
