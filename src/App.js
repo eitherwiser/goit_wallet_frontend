@@ -9,6 +9,8 @@ import Container from "components/Container/Container";
 import Header from "components/Header/Header";
 import DashboardPage from "pages/DashboardPage";
 import "./App.css";
+import LoginPage from "pages/LoginPage";
+import RegisterPage from "pages/RegisterPage";
 
 export default function App() {
   return (
@@ -16,7 +18,8 @@ export default function App() {
       {/* <Container>
         <Header />
       </Container> */}
-
+      <LoginPage />
+      <RegisterPage />
       <DashboardPage />
     </>
     // <Routes>
