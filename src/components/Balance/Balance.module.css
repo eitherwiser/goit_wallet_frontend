@@ -1,0 +1,44 @@
+.balance {
+  padding-top: 8px;
+  padding-bottom: 12px;
+  padding-left: 30px;
+  width: 280px;
+  height: 80px;
+
+  background-color: var(--light-bcg-color);
+  border-radius: 30px;
+}
+@media screen and (min-width: 768px) {
+  .balance {
+    padding-left: 40px;
+    width: 334px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .balance {
+    width: 350px;
+  }
+}
+
+.label {
+  /* margin-bottom: 10px; */
+
+  font-family: var(--main__font-family);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+
+  color: var(--balance-title-text-color);
+}
+
+.amount {
+  height: 40px;
+
+  font-family: var(--logo__font-family);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+
+  color: var(--main-text-color);
+}
