@@ -1,7 +1,8 @@
 import { Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import InputField from "../InputField/InputField";
+import InputField from "../InputField/";
+import LogoComponent from "components/LogoComponent";
 import s from "./LoginForm.module.css";
 import logoMobile from "../../images/logo-form/logoMobile.jpg";
 import logo from "../../images/logo-form/logo.jpg";
@@ -47,10 +48,7 @@ export default function LoginForm() {
         }) => (
           <div className={s.form}>
             <Form className={s.formRegister}>
-              <picture>
-                <source media="(min-width: 768px)" srcSet={logo} />
-                <img className={s.logo} src={logoMobile} alt="logo" />
-              </picture>
+              <LogoComponent style={{ marginBottom: "50px" }} />
               {touched.email && errors.email && (
                 <span className={s.error}>{errors.email}</span>
               )}

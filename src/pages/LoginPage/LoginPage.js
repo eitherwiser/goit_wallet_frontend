@@ -1,4 +1,5 @@
 import s from "./LoginPage.module.css";
+import LoginForm from "components/LoginForm/LoginForm";
 
 function LoginPage() {
   return (
@@ -8,6 +9,7 @@ function LoginPage() {
       </div>
       <div className={s.content_container}>
         <div className={s.content_filter}></div>
+        <LoginForm />
       </div>
     </div>
   );

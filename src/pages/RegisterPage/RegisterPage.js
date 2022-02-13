@@ -1,4 +1,5 @@
 import s from "./RegisterPage.module.css";
+import RegisterForm from "components/RegisterForm/RegisterForm";
 
 function RegisterPage() {
   return (
@@ -9,6 +10,7 @@ function RegisterPage() {
       <div className={s.content_container}>
         <div className={s.content_filter}></div>
       </div>
+      <RegisterForm />
     </div>
   );
 }
