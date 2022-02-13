@@ -1,11 +1,10 @@
 import { Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import LogoComponent from "components/LogoComponent";
 import InputField from "../InputField/InputField";
 import ProgressSwitch from "./ProggressSwitch";
 import s from "./RegisterForm.module.css";
-import logoMobile from "../../images//logo-form/logoMobile.jpg";
-import logo from "../../images/logo-form/logo.jpg";
 import { ReactComponent as NameIcon } from "../../images/icon-form/name.svg";
 import { ReactComponent as Emailcon } from "../../images/icon-form/email.svg";
 import { ReactComponent as Passwordcon } from "../../images/icon-form/password.svg";
@@ -57,67 +56,71 @@ export default function RegisterForm() {
           dirty,
         }) => (
           <Form className={s.formRegister}>
-            <picture>
-              <source media="(min-width: 768px)" srcSet={logo} />
-              <img className={s.logo} src={logoMobile} alt="logo" />
-            </picture>
-            {touched.email && errors.email && (
-              <span className={s.error}>{errors.email}</span>
-            )}
-            <InputField
-              label={<Emailcon className={s.icon} />}
-              placeholder="E-mail"
-              className={s.input}
-              type="email"
-              name="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            />
-            {touched.password && errors.password && (
-              <span className={s.error}>{errors.password}</span>
-            )}
-            <InputField
-              label={<Passwordcon className={s.icon} />}
-              className={s.input}
-              placeholder="Пароль"
-              type="password"
-              name="password"
-              error={errors.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-            {touched.confirmPassword && errors.confirmPassword && (
-              <span className={s.error}>{errors.confirmPassword}</span>
-            )}
-            <InputField
-              label={<Passwordcon className={s.icon} />}
-              placeholder="Подтвердите пароль"
-              className={s.input}
-              type="password"
-              name="confirmPassword"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.confirmPassword}
-              style={{ marginBottom: "5px" }}
-            />
+            <LogoComponent />
+            <div className={s.input_wrap}>
+              {touched.email && errors.email && (
+                <span className={s.error}>{errors.email}</span>
+              )}
+              <InputField
+                label={<Emailcon className={s.icon} />}
+                placeholder="E-mail"
+                className={s.input}
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+              />
+            </div>
+            <div className={s.input_wrap}>
+              {touched.password && errors.password && (
+                <span className={s.error}>{errors.password}</span>
+              )}
+              <InputField
+                label={<Passwordcon className={s.icon} />}
+                className={s.input}
+                placeholder="Пароль"
+                type="password"
+                name="password"
+                error={errors.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+              />
+            </div>
+            <div className={s.input_wrap}>
+              {touched.confirmPassword && errors.confirmPassword && (
+                <span className={s.error}>{errors.confirmPassword}</span>
+              )}
+              <InputField
+                label={<Passwordcon className={s.icon} />}
+                placeholder="Подтвердите пароль"
+                className={s.input}
+                type="password"
+                name="confirmPassword"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.confirmPassword}
+                style={{ marginBottom: "5px" }}
+              />
+            </div>
             <ProgressSwitch value={values.password.length} />
-            {touched.name && errors.name && (
-              <span className={s.error}>{errors.name}</span>
-            )}
-            <InputField
-              label={<NameIcon className={s.icon} />}
-              placeholder="Ваше Имя"
-              className={s.input}
-              type="text"
-              name="name"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.name}
-              style={{ marginBottom: "50px" }}
-            />
-
+            <div className={s.input_wrap}>
+              {touched.name && errors.name && (
+                <span className={s.error}>{errors.name}</span>
+              )}
+              <InputField
+                label={<NameIcon className={s.icon} />}
+                placeholder="Ваше Имя"
+                className={s.input}
+                type="text"
+                name="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+                style={{ marginBottom: "50px" }}
+              />
+            </div>
             <button
               className={s.btn}
               disabled={!isValid || !dirty}

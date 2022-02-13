@@ -1,7 +1,9 @@
+@import "../../stylesheet/var.css";
+
 .title {
   position: absolute;
 
-  font-family: Poppins;
+  font-family: var(--logo__font-family);
   font-weight: 400;
   font-size: 30px;
   line-height: 45px;
@@ -27,13 +29,21 @@
   }
 
   .title {
-    right: 197px;
-    top: 167px;
+    right: 153px;
+    top: 163px;
+    width: 187px;
+    height: 45px;
   }
 
   .container {
+    position: relative;
     width: 768px;
     margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .content_filter {
+    position: unset;
   }
 }
 
