@@ -7,7 +7,7 @@ import LoginForm from "components/LoginForm/LoginForm";
 import LoginContainer from "components/LoginContainer/LoginContainer";
 import Container from "components/Container/Container";
 import Header from "components/Header/Header";
-import DashboardPage from "pages/DashboardPage";
+import DashboardPage from "pages/DashboardPage/DashboardPage";
 import "./App.css";
 import LoginPage from "pages/LoginPage";
 import RegisterPage from "pages/RegisterPage";
