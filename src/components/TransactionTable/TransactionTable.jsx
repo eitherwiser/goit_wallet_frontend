@@ -1,13 +1,13 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
-import s from "./TransactionTable.module.css";
+import s from './TransactionTable.module.css';
 
 const theme = createTheme({
   components: {
@@ -17,18 +17,18 @@ const theme = createTheme({
         root: {
           // Some CSS
           table: {
-            backgroundColor: "inherit",
+            backgroundColor: 'inherit',
             // border: "1px solid green",
           },
           thead: {
-            backgroundColor: "#fff",
+            backgroundColor: '#fff',
             // borderRadius: "30px",
-            border: "1px solid green",
+            border: '1px solid green',
           },
           tbody: {
-            backgroundColor: "inherit",
+            backgroundColor: 'inherit',
             // borderRadius: "30px",
-            border: "1px solid green",
+            border: '1px solid green',
           },
           // th: {
           //   borderRadius: "30px",
@@ -44,8 +44,8 @@ function createData(name, type, category, comment, amount, balance) {
 }
 
 const rows = [
-  createData("04.01.19", "-", "Разное", "Подарок жене", 300.0, 6900.0),
-  createData("04.01.19", "-", "Разное", "Подарок жене", 300.0, 6900.0),
+  createData('04.01.19', '-', 'Разное', 'Подарок жене', 300.0, 6900.0),
+  createData('04.01.20', '-', 'Разное', 'Подарок жене', 300.0, 6900.0),
 ];
 
 export default function TransactionTable() {
@@ -65,10 +65,10 @@ export default function TransactionTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows.map(row => (
             <TableRow
               key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
                 {row.name}
