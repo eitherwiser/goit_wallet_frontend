@@ -3,7 +3,7 @@ import Header from 'components/Header/Header';
 import Navigation from 'components/Navigation/Navigation';
 import Balance from 'components/Balance/Balance';
 import TransactionTable from 'components/TransactionTable/TransactionTable';
-import CurrencyTable from '../components/Currency/Currency';
+import CurrencyTable from 'components/Currency/Currency';
 
 import s from './DashboardPage.module.css';
 
