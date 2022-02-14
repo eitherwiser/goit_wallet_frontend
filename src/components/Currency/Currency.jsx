@@ -1,3 +1,6 @@
+//export default function Currency(params) {
+//  return <div>Currency</div>;
+
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import currencyApi from '../../services/currencyApi';
@@ -12,12 +15,12 @@ export default function CurrencyTable() {
   useEffect(() => {
     const fetchCurrency = async () => {
       const data = await currencyApi.fetchCurrency();
-      const filtredCurrencies = [];
+      const filteredCurrencies = [];
       currencies.forEach(currency => {
         data.forEach(element => {
           parseInt(element.buy).toFixed(2);
           if (element.ccy === currency) {
-            filtredCurrencies.push({
+            filteredCurrencies.push({
               ccy: element.ccy,
               buy: Number(element.buy).toFixed(2),
               sale: Number(element.sale).toFixed(2),
@@ -25,8 +28,8 @@ export default function CurrencyTable() {
           }
         });
       });
-      setCurrency(filtredCurrencies);
-      localStorage.setItem('currency', JSON.stringify(filtredCurrencies));
+      setCurrency(filteredCurrencies);
+      localStorage.setItem('currency', JSON.stringify(filteredCurrencies));
       localStorage.setItem('currencyTime', Date.now());
     };
     let currencyLS = JSON.parse(localStorage.getItem('currency'));

@@ -133,3 +133,4 @@ dist
 #README.md
 
 nodemon.json
+package-lock.json
