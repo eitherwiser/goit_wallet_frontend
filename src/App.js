@@ -4,7 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Container from "components/Container/";
 import Header from "components/Header";
-import DashboardPage from "pages/DashboardPage";
+import DashboardPage from "pages/DashboardPage/DashboardPage";
 import "./App.css";
 import LoginPage from "pages/LoginPage";
 import RegisterPage from "pages/RegisterPage";

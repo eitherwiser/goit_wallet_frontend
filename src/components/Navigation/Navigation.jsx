@@ -1,7 +1,7 @@
 import classnames from "classnames";
 
 import Currency from "components/Currency/Currency";
-import DashboardPage from "pages/DashboardPage";
+import DashboardPage from "pages/DashboardPage/DashboardPage";
 
 // mobile
 import { ReactComponent as HomeImgMob } from "../../images/navigation/mobile/home.svg";
