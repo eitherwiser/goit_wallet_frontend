@@ -11,7 +11,6 @@ export default function DashboardPage() {
     <Container>
       <Header />
       <div className={s.dashboardPage}>
-        {/* <div>Навигация</div> */}
         <Navigation />
         <Balance />
 
