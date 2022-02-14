@@ -4,24 +4,28 @@
   backdrop-filter: blur(50px);
 } */
 
-.dashboardPage {
-  display: block;
-  background-color: var(--main-bcg-color);
+@media screen and (max-width: 767px) {
+  .dashboardPage {
+    display: block;
+    background-color: var(--main-bcg-color);
+  }
 }
 
 @media screen and (min-width: 768px) {
   .dashboardPage {
+    display: block;
+
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--under-wallpaper-bcg-color);
-    background-image: url("../images/transaction/transaction-tab.jpg");
+    background-image: url("../../images/transaction/transaction-tab.jpg");
     background-size: 768px 1024px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .dashboardPage {
-    background-image: url("../images/transaction/transaction-desktop.jpg");
+    background-image: url("../../images/transaction/transaction-desktop.jpg");
     background-size: 1280px 720px;
   }
 }
