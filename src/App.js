@@ -1,3 +1,4 @@
+import StatisticsPages from "pages/StatisticsPages/StatisticsPages";
 import React, { Suspense, useEffect, lazy } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
@@ -15,11 +16,13 @@ export default function App() {
   const isAuth = useSelector(getAuth);
   return (
     <>
+
       <ToastContainer position="top-right" autoClose={3000} />
-      {isAuth && (
-        <Container>
-          <Header />
-        </Container>
+      {
+        !isAuth && (
+         <Container>
+           <Header />
+         </Container>
       )}
       <Routes>
         <Route
@@ -52,6 +55,9 @@ export default function App() {
           }
         />
       </Routes>
+         <Container>
+           <StatisticsPages />
+         </Container>
     </>
   );
 }
