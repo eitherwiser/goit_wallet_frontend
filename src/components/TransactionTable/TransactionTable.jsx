@@ -1,13 +1,11 @@
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import s from './TransactionTable.module.css';
+import s from "./TransactionTable.module.css";
 
 const theme = createTheme({
   components: {
@@ -17,22 +15,11 @@ const theme = createTheme({
         root: {
           // Some CSS
           table: {
-            backgroundColor: 'inherit',
-            // border: "1px solid green",
+            backgroundColor: "inherit",
           },
           thead: {
-            backgroundColor: '#fff',
-            // borderRadius: "30px",
-            border: '1px solid green',
+            backgroundColor: "#fff",
           },
-          tbody: {
-            backgroundColor: 'inherit',
-            // borderRadius: "30px",
-            border: '1px solid green',
-          },
-          // th: {
-          //   borderRadius: "30px",
-          // },
         },
       },
     },
@@ -44,17 +31,26 @@ function createData(name, type, category, comment, amount, balance) {
 }
 
 const rows = [
-  createData('04.01.19', '-', 'Разное', 'Подарок жене', 300.0, 6900.0),
-  createData('04.01.20', '-', 'Разное', 'Подарок жене', 300.0, 6900.0),
+  createData("04.01.19", "-", "Разное", "Подарок жене", 300.0, 6900.0),
+  createData("04.01.20", "-", "Разное", "Подарок жене", 300.0, 6900.0),
 ];
 
 export default function TransactionTable() {
   return (
-    // <div className="s.container">
     <ThemeProvider theme={theme}>
-      {/* <TableContainer component={Paper}> */}
       <Table aria-label="transacti table">
-        <TableHead>
+        <TableHead
+          sx={{
+            "& .MuiTableCell-root:first-of-type": {
+              borderTopLeftRadius: "30px",
+              borderBottomLeftRadius: "30px",
+            },
+            "& .MuiTableCell-root:last-of-type": {
+              borderTopRightRadius: "30px",
+              borderBottomRightRadius: "30px",
+            },
+          }}
+        >
           <TableRow>
             <TableCell>Дата</TableCell>
             <TableCell align="center">Тип</TableCell>
@@ -65,10 +61,10 @@ export default function TransactionTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {rows.map((row) => (
             <TableRow
               key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
                 {row.name}
@@ -82,8 +78,6 @@ export default function TransactionTable() {
           ))}
         </TableBody>
       </Table>
-      {/* </TableContainer> */}
     </ThemeProvider>
-    // </div>
   );
 }
