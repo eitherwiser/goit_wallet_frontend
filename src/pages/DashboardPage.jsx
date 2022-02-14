@@ -1,9 +1,11 @@
-import Container from "../components/Container/Container";
-import Header from "../components/Header/Header";
-import Navigation from "components/Navigation/Navigation";
-import Balance from "../components/Balance/Balance";
+import Container from '../components/Container/Container';
+import Header from '../components/Header/Header';
+import Navigation from 'components/Navigation/Navigation';
+import Balance from '../components/Balance/Balance';
+import TransactionTable from '../components/TransactionTable/TransactionTable';
+import CurrencyTable from '../components/Currency/Currency';
 
-import s from "./DashboardPage.module.css";
+import s from './DashboardPage.module.css';
 
 export default function DashboardPage() {
   return (
@@ -13,9 +15,9 @@ export default function DashboardPage() {
         {/* <div>Навигация</div> */}
         <Navigation />
         <Balance />
-
+        <CurrencyTable />
         <div>Приват Банк</div>
-        <div>Транзакции</div>
+        <TransactionTable />
       </div>
     </Container>
   );
