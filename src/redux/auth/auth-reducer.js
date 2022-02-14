@@ -1,11 +1,11 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
+import { createReducer } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
 import {
   authUser,
   loginUser,
   logOut,
   fetchCurrentUser,
-} from "./auth-operations";
+} from './auth-operations';
 
 const initialUserState = {
   user: { userName: null, email: null },

@@ -1,13 +1,18 @@
 import classnames from "classnames";
 
 import Currency from "components/Currency/Currency";
-import DashboardPage from "pages/DashboardPage";
+import DashboardPage from "pages/DashboardPage/DashboardPage";
+
+// mobile
+import { ReactComponent as HomeImgMob } from "../../images/navigation/mobile/home.svg";
+import { ReactComponent as PbImgMob } from "../../images/navigation/mobile/pb.svg";
+import { ReactComponent as StatisticsImgMob } from "../../images/navigation/mobile/statistics.svg";
+
+// tablet
+import { ReactComponent as HomeImgTab } from "../../images/navigation/tablet/home.svg";
+import { ReactComponent as StatisticsImgTab } from "../../images/navigation/tablet/statistics.svg";
 
 import s from "./Navigation.module.css";
-
-import homeImg from "../../images/navigation/home.svg";
-import pbImg from "../../images/navigation/pb.svg";
-import statisticsImg from "../../images/navigation/statistics.svg";
 
 export default function Navigation() {
   return (
@@ -15,36 +20,23 @@ export default function Navigation() {
       <ul className={s.list}>
         <li className={s.item}>
           <a href="DashboardPage" className={s.link}>
-            {/* в реакт jsx другие правила использ свг-почитать как */}
-            {/* <svg className={s.navImg}>
-              <use href="../../images/navigation/navigation.svg#icon-home" />
-            </svg> */}
-
-            <img className={s.navImg} src={homeImg} alt="" />
+            <HomeImgMob className={s.navImgMob} />
+            <HomeImgTab className={s.navImgTab} />
             <span className={s.text}>Главная</span>
           </a>
         </li>
-        <li className={s.item}>
-          <a href="#" className={s.link}>
-            {/* <svg className={s.navImg}>
-              <use href="../../images/navigation/navigation.svg#icon-statistics" />
-            </svg> */}
 
-            <img className={s.navImg} src={statisticsImg} alt="" />
+        <li className={s.item}>
+          <a href="Currency" className={s.link}>
+            <StatisticsImgMob className={s.navImgMob} />
+            <StatisticsImgTab className={s.navImgTab} />
             <span className={s.text}>Статистика</span>
           </a>
         </li>
-        <li className={s.item}>
-          <a href="Currency" className={s.link}>
-            {/* <svg className={s.navImg}>
-              <use href="../../images/navigation/navigation.svg#icon-pb" />
-            </svg> */}
 
-            <img
-              className={classnames(s.navImg, s.navImgPb)}
-              src={pbImg}
-              alt=""
-            />
+        <li className={s.item}>
+          <a href="#" className={s.link}>
+            <PbImgMob className={s.navImgMob} />
           </a>
         </li>
       </ul>
