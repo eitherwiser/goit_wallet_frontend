@@ -1,12 +1,11 @@
 /* @media screen and (min-width: 768px) {
   .container {
-    padding-left: 40px;
     width: 334px;
   }
-}
+} */
 
 @media screen and (min-width: 1280px) {
-  .container {
-    width: 350px;
+  .table {
+    width: 700px;
   }
-} */
+}
