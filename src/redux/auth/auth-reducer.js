@@ -1,26 +1,26 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
+import { createReducer } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
 import {
   authUser,
   loginUser,
   logOut,
   fetchCurrentUser,
-} from './auth-operations';
+} from "./auth-operations";
 
 const initialUserState = {
-  user: { userName: null, email: null },
+  data: { userName: null, email: null, balance: null },
   token: null,
 };
 const user = createReducer(initialUserState, {
-  [authUser.fulfilled]: (_, { payload }) => payload.user,
-  [loginUser.fulfilled]: (state, { payload }) => payload.user,
+  [authUser.fulfilled]: (_, { payload }) => payload.data,
+  [loginUser.fulfilled]: (_, { payload }) => payload.data,
   [logOut.fulfilled]: () => initialUserState,
   [fetchCurrentUser.fulfilled]: (_, { payload }) => payload,
 });
 
 const token = createReducer(null, {
-  [authUser.fulfilled]: (_, { payload }) => payload.token,
-  [loginUser.fulfilled]: (_, { payload }) => payload.token,
+  [authUser.fulfilled]: (_, { payload }) => payload.data.token,
+  [loginUser.fulfilled]: (_, { payload }) => payload.data.token,
   [logOut.fulfilled]: () => null,
 });
 
