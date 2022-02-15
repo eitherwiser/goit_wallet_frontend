@@ -11,7 +11,21 @@ export default function Statistics(){
         <div className={s.rightContainer}><div className={s.chart}><Chart/></div>
       <div><DiagramTab/></div></div></div>
 
-
+export default function Statistics() {
+  return (
+    <div className={s.container}>
+      <div className={s.leftContainer}>Оксана, твоя половинка</div>
+      <div>
+        <p className={s.mainTitte}>Статистика</p>
+        <div className={s.rightContainer}>
+          <div className={s.chart}>
+            <Chart />
+          </div>
+          <div>
+            <DiagramTab />
+          </div>
         </div>
-    )
-} 
+      </div>
+    </div>
+  );
+}
