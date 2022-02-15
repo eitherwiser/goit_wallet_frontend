@@ -1,11 +1,9 @@
-/* .rectangle {
-  background: rgba(255, 255, 255, 0.4);
-  -webkit-backdrop-filter: blur(50px);
-  backdrop-filter: blur(50px);
-} */
-
 @media screen and (max-width: 767px) {
   .dashboardPage {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
     display: block;
     background-color: var(--main-bcg-color);
   }
@@ -15,17 +13,48 @@
   .dashboardPage {
     display: block;
 
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 320px;
+
+    padding-left: 40px;
+    padding-top: 30px;
+    padding-right: 40px;
+    /* padding-bottom: 50px; */
+
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--under-wallpaper-bcg-color);
     background-image: url("../../images/transaction/tablet/transaction-tab.jpg");
     background-size: 768px 1024px;
   }
+  .container {
+    display: flex;
+    margin-bottom: 40px;
+  }
+
+  .nav {
+    margin-right: 20px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .dashboardPage {
+    display: flex;
+    width: 1280px;
+
+    padding-left: 86px;
+    padding-top: 40px;
+    padding-right: 86px;
+    padding-bottom: 50px;
+
     background-image: url("../../images/transaction/desktop/transaction-desktop.jpg");
     background-size: 1280px 720px;
+  }
+
+  .container {
+    display: block;
+    width: 378px;
+    margin-right: 30px;
   }
 }
