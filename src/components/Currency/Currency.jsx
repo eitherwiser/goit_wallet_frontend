@@ -1,12 +1,9 @@
-//export default function Currency(params) {
-//  return <div>Currency</div>;
-
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import currencyApi from '../../services/currencyApi';
 
 import { currencies } from '../../assets/constants';
-// import styles from './Currency.module.css';
+import styles from './Currency.module.css';
 
 export default function CurrencyTable() {
   const [currency, setCurrency] = useState([]);
@@ -49,8 +46,15 @@ export default function CurrencyTable() {
   }, []);
 
   return (
-    <CSSTransition in={Loaded} timeout={500} mountOnEnter>
-      <div>
+    <CSSTransition
+      in={Loaded}
+      timeout={500}
+      classNames={{
+        enterActive: `${styles.currencyShow}`,
+      }}
+      mountOnEnter
+    >
+      <div className={styles.currency}>
         {
           <table>
             <thead>
