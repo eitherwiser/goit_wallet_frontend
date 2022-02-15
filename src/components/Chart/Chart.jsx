@@ -41,34 +41,34 @@ const options = {
 
         legend: {
             display: false,
-            labels: {
-                color: '#000000',
-                boxWidth:24,
-                boxHeight:24,
-                padding:32,
+    //         labels: {
+    //             color: '#000000',
+    //             boxWidth:24,
+    //             boxHeight:24,
+    //             padding:32,
 
-                font:{
-                    size: 16,
-                    weight:400,
-                    lineHeight:1.16
-                }
-            },
-            htmlLegend: {
-              // ID of the container to put the legend in
-              containerID: 'custom-legend',
-            },
-            position: 'right',
+    //             font:{
+    //                 size: 16,
+    //                 weight:400,
+    //                 lineHeight:1.16
+    //             }
+    //         },
+    //         htmlLegend: {
+    //           // ID of the container to put the legend in
+    //           containerID: 'custom-legend',
+    //         },
+    //         position: 'right',
 
-            title:{
-                color:"#000000",
-                text:"Категория  Сумма",
-                display:true,
-                font:{
-                    size: 18,
-                    weight:800,
-                    lineHeight:1.16
-                }
-            }
+    //         title:{
+    //             color:"#000000",
+    //             text:"Категория  Сумма",
+    //             display:true,
+    //             font:{
+    //                 size: 18,
+    //                 weight:800,
+    //                 lineHeight:1.16
+    //             }
+    //         }
         }
     },
 
