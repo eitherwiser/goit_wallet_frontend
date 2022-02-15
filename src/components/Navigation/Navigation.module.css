@@ -57,12 +57,11 @@
     margin-bottom: 10px;
   }
 
-  /* сделать что бы при клике на ссыль только иконка подсвечивалась */
   .link {
     display: flex;
     align-items: center;
 
-    font-style: var(--logo__font-family);
+    font-family: var(--logo__font-family);
     font-size: 18px;
     line-height: 27px;
     font-weight: 400;

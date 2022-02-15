@@ -1,5 +1,3 @@
-import classnames from "classnames";
-
 import Currency from "components/Currency/Currency";
 import DashboardPage from "pages/DashboardPage/DashboardPage";
 
