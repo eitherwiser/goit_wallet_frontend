@@ -2,7 +2,7 @@ import s from "./ModalLogout.module.css";
 import { useEffect } from "react";
 import closeIcon from "./cross.svg";
 
-function ModalLogout({ onModalClose, onOwerlayClose }) {
+function ModalLogout({ onModalClose, onOwerlayClose, onUserLogOut }) {
   const handleKeyDown = (event) => {
     if (event.code === "Escape") {
       onModalClose();
@@ -24,7 +24,7 @@ function ModalLogout({ onModalClose, onOwerlayClose }) {
         <button className={s.cansellBtn} type='button' onClick={onModalClose}>
           НЕТ
         </button>
-        <button className={s.agreeBtn} type='button' onClick={onModalClose}>
+        <button className={s.agreeBtn} type='button' onClick={onUserLogOut}>
           ДА
         </button>
         <button className={s.closeBtn} onClick={onModalClose}>
