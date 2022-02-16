@@ -1,33 +1,33 @@
-import React, { Suspense, useEffect, lazy } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import Media from 'react-media';
-import { ToastContainer } from 'react-toastify';
-import LoaderComponent from './components/LoaderComponent/LoaderComponent.js';
+import React, { Suspense, useEffect, lazy } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import Media from "react-media";
+import { ToastContainer } from "react-toastify";
+import LoaderComponent from "./components/LoaderComponent/LoaderComponent.js";
 
-import { fetchCurrentUser } from 'redux/auth/auth-operations';
-import { getAuth, getAuthRefresh } from 'redux/auth/auth-selectors';
-import useWindowSize from './hooks/useWindowSize';
+import { fetchCurrentUser } from "redux/auth/auth-operations";
+import { getAuth, getAuthRefresh } from "redux/auth/auth-selectors";
+import useWindowSize from "./hooks/useWindowSize";
 //import TransactionTable from './components/TransactionTable/TransactionTable';
-import Container from 'components/Container/';
-import Header from 'components/Header';
-import DashboardPage from 'pages/DashboardPage/DashboardPage';
-import Table from 'components/TransactionTable/Table';
-import Statistics from './pages/StatisticsPages/StatisticsPages';
-import CurrencyTable from './components/Currency/Currency';
+import Container from "components/Container/";
+import Header from "components/Header";
+import DashboardPage from "pages/DashboardPage/DashboardPage";
+import Table from "components/TransactionTable/Table";
+import Statistics from "./pages/StatisticsPages/StatisticsPages";
+import CurrencyTable from "./components/Currency/Currency";
 // import LoginPage from "pages/LoginPage";
 // import RegisterPage from "pages/RegisterPage";
 
-import './App.css';
-import 'react-toastify/dist/ReactToastify.min.css';
+import "./App.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const RegisterPage = lazy(() =>
   import(
-    './pages/RegisterPage/RegisterPage' /* webpackChunkName: "RegisterPage" */
+    "./pages/RegisterPage/RegisterPage" /* webpackChunkName: "RegisterPage" */
   ),
 );
 const LoginPage = lazy(() =>
-  import('./pages/LoginPage/LoginPage' /* webpackChunkName: "LoginPage" */),
+  import("./pages/LoginPage/LoginPage" /* webpackChunkName: "LoginPage" */),
 );
 
 export default function App() {
@@ -36,9 +36,11 @@ export default function App() {
 
   const isAuthRefresh = useSelector(getAuthRefresh);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
+
   return (
     <>
       {!isAuthRefresh && (
@@ -51,19 +53,19 @@ export default function App() {
           <Suspense fallback={<LoaderComponent />}>
             <Routes>
               <Route
-                path="login"
-                element={isAuth ? <Navigate replace to="/" /> : <LoginPage />}
+                path='login'
+                element={isAuth ? <Navigate replace to='/' /> : <LoginPage />}
               />
 
               <Route
-                path="register"
+                path='register'
                 element={
-                  !isAuth ? <RegisterPage /> : <Navigate replace to="/login" />
+                  !isAuth ? <RegisterPage /> : <Navigate replace to='/login' />
                 }
               />
               <Route
                 exact
-                path="/"
+                path='/'
                 element={
                   <DashboardPage />
                   // !isAuth ? (
@@ -72,10 +74,9 @@ export default function App() {
                   //   <Navigate replace to="/login" />
                   // )
                   // !isAuth && <Navigate replace to="/login" />
-                }
-              >
-                <Route path="home" element={<Table />} />
-                <Route path="diagram" element={<Statistics />} />{' '}
+                }>
+                <Route path='home' element={<Table />} />
+                <Route path='diagram' element={<Statistics />} />{" "}
                 {/*<Route
                   path="home"
                   element={
@@ -86,12 +87,12 @@ export default function App() {
                   }
                 />*/}
                 <Route
-                  path="exchangeRates"
+                  path='exchangeRates'
                   element={
                     size.width < 768 ? (
                       <CurrencyTable />
                     ) : (
-                      <Navigate replace to="/home" />
+                      <Navigate replace to='/home' />
                     )
                   }
                 />

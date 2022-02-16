@@ -5,6 +5,7 @@ import s from "./UserMenu.module.css";
 import { getUsername, getUserAvatar } from "redux/auth/auth-selectors";
 import { logOut } from "redux/auth/auth-operations";
 import { getAuth } from "redux/auth/auth-selectors";
+
 export default function UserMenu() {
   const name = useSelector(getUsername);
   const avatar = useSelector(getUserAvatar);
@@ -19,17 +20,16 @@ export default function UserMenu() {
           <img
             style={{ borderRadius: "50%" }}
             src={avatar}
-            width="25px"
-            height="25px"
-            alt="avatar"
+            width='25px'
+            height='25px'
+            alt='avatar'
           />
           <span className={s.header__text}>{name}</span>
           <span className={s.line}>{isMobileOrTablet ? "|" : ""}</span>
           <button
             onClick={() => dispatch(logOut())}
-            type="button"
-            className={s.logout}
-          >
+            type='button'
+            className={s.logout}>
             {<Logout />}
             <span className={s.exit}>{isMobileOrTablet ? "Выйти" : ""}</span>
           </button>
