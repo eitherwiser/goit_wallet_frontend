@@ -1,12 +1,12 @@
 import React, { Suspense, useEffect, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAuth } from 'redux/auth/auth-selectors';
 import Media from 'react-media';
 import { ToastContainer } from 'react-toastify';
-import LoaderComponent from "./components/LoaderComponent/LoaderComponent.js";
+import LoaderComponent from './components/LoaderComponent/LoaderComponent.js';
 
-import { fetchCurrentUser } from "redux/auth/auth-operations";
+import { fetchCurrentUser } from 'redux/auth/auth-operations';
+import { getAuth, getAuthRefresh } from 'redux/auth/auth-selectors';
 import useWindowSize from './hooks/useWindowSize';
 //import TransactionTable from './components/TransactionTable/TransactionTable';
 import Container from 'components/Container/';
@@ -15,19 +15,19 @@ import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import Table from 'components/TransactionTable/Table';
 import Statistics from './pages/StatisticsPages/StatisticsPages';
 import CurrencyTable from './components/Currency/Currency';
-import LoginPage from 'pages/LoginPage';
-import RegisterPage from 'pages/RegisterPage';
+//import LoginPage from 'pages/LoginPage';
+//import RegisterPage from 'pages/RegisterPage';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 const RegisterPage = lazy(() =>
   import(
-    "./pages/RegisterPage/RegisterPage" /* webpackChunkName: "RegisterPage" */
-  )
+    './pages/RegisterPage/RegisterPage' /* webpackChunkName: "RegisterPage" */
+  ),
 );
 const LoginPage = lazy(() =>
-  import("./pages/LoginPage/LoginPage" /* webpackChunkName: "LoginPage" */)
+  import('./pages/LoginPage/LoginPage' /* webpackChunkName: "LoginPage" */),
 );
 
 export default function App() {
@@ -43,7 +43,7 @@ export default function App() {
     <>
       {!isAuthRefresh && (
         <>
-          <ToastContainer autoClose={3000} />
+          <ToastContainer autoClose={4000} />
           <Container>
             <Header />
           </Container>
@@ -74,48 +74,32 @@ export default function App() {
                   // !isAuth && <Navigate replace to="/login" />
                 }
               >
-              <Route path="diagram" element={<Statistics />} />
-              <Route path="home" element={<Table />} />
-              <Route path="diagram" element={<Statistics />} />{' '}
-              <Route
-              //             path="home"
-              //             element={
-              //               <Media
-              //                 query="(min-width: 768px)"
-              //                 render={() => <TransactionTable />}
-              //               />
-              //             }
-              />
-              {/*Вместо текста компонент кружочка */}
-              <Route path="diagram" element={<span>Кружок со статистикой</span>} />
-              <Route
-                path="exchangeRates"
-                element={
-                  size.width < 768 ? (
-                    <CurrencyTable />
-                  ) : (
-                    <Navigate replace to="/home" />
-                  )
-                }
-              />
-            </Route>
-
-            <Route
-              path="login"
-              element={isAuth ? <Navigate replace to="/home" /> : <LoginPage />}
-            />
-            <Route
-              path="register"
-              element={isAuth ? <Navigate replace to="/home" /> : <RegisterPage />}
-            />
-            {/* <Route
-              path="home"
-              element={
-                !isAuth ? <DashboardPage /> : <Navigate replace to="/login" />
-              }
-            /> */}
+                <Route path="home" element={<Table />} />
+                <Route path="diagram" element={<Statistics />} />{' '}
+                {/*<Route
+                  path="home"
+                  element={
+                    <Media
+                      query="(min-width: 768px)"
+                      render={() => <TransactionTable />}
+                    />
+                  }
+                />*/}
+                <Route
+                  path="exchangeRates"
+                  element={
+                    size.width < 768 ? (
+                      <CurrencyTable />
+                    ) : (
+                      <Navigate replace to="/home" />
+                    )
+                  }
+                />
+              </Route>
             </Routes>
           </Suspense>
+        </>
+      )}
     </>
   );
 }
