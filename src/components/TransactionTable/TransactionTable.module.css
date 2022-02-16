@@ -9,3 +9,9 @@
     width: 700px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .tMobile {
+    width: 280px;
+  }
+}
