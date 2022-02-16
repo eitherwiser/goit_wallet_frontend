@@ -34,21 +34,6 @@ export default function UserMenu() {
 
   return (
     <div className={s.header__user}>
-      <>
-        <img
-          style={{ borderRadius: "50%" }}
-          src={avatar}
-          width='25px'
-          height='25px'
-          alt='avatar'
-        />
-        <span className={s.header__text}>{name}</span>
-        <span className={s.line}>{isMobileOrTablet ? "|" : ""}</span>
-        <button onClick={onModalToggle} type='button' className={s.logout}>
-          {<Logout />}
-          <span className={s.exit}>{isMobileOrTablet ? "Выйти" : ""}</span>
-        </button>
-      </>
       {isAuth && (
         <>
           <img
@@ -60,10 +45,7 @@ export default function UserMenu() {
           />
           <span className={s.header__text}>{name}</span>
           <span className={s.line}>{isMobileOrTablet ? "|" : ""}</span>
-          <button
-            onClick={() => dispatch(logOut())}
-            type='button'
-            className={s.logout}>
+          <button onClick={onModalToggle} type='button' className={s.logout}>
             {<Logout />}
             <span className={s.exit}>{isMobileOrTablet ? "Выйти" : ""}</span>
           </button>
