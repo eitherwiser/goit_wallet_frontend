@@ -5,7 +5,13 @@
 }
 @media screen and (max-width: 767px) {
   .formBox {
-    position: relative;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 400ms ease-out;
+
     width: 320px;
     padding-top: 40px;
     padding-bottom: 60px;
@@ -185,7 +191,13 @@
 
 @media screen and (min-width: 768px) {
   .formBox {
-    position: relative;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 400ms ease-out;
+
     width: 540px;
     padding-top: 40px;
     padding-bottom: 60px;

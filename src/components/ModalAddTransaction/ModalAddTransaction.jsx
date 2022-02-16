@@ -3,8 +3,8 @@ import * as Yup from "yup";
 import Datetime from "react-datetime";
 import classNames from "classnames";
 
-import { ReactComponent as incomeIcon } from "../../images/modal-transaction/income.svg";
-import { ReactComponent as consumptionIcon } from "../../images/modal-transaction/consumption.svg";
+import { ReactComponent as IncomeIcon } from "../../images/modal-transaction/income.svg";
+import { ReactComponent as ConsumptionIcon } from "../../images/modal-transaction/consumption.svg";
 
 import s from "./ModalAddTransaction.module.css";
 import vh from "../../stylesheet/visuallyHidden.module.css";
@@ -24,9 +24,7 @@ export default function ModalAddTransaction() {
         comment: "",
       }}
       validateOnBlur
-      onSubmit={(values, { resetForm }) => {
-        //   handleSubmit(values);
-        //   resetForm();
+      onSubmit={(values) => {
         console.log(values);
       }}
       validationSchema={validationSchema}
@@ -47,16 +45,14 @@ export default function ModalAddTransaction() {
               <b className={s.modalDescription}>Добавить транзакцию</b>
               <div className={s.boxCheckbox}>
                 <p className={s.income}>Доход</p>
-
-                <label className={s.checkLabel}>
-                  <input
-                    type={`checkbox`}
-                    className={classNames(s.checkbox, vh.visuallyHidden)}
-                    // name={`check`}
-                  />
-                </label>
-                {/* <label htmlFor={`check`} className={s.checkLabel}></label> */}
-
+                {/* <IncomeIcon /> */}
+                <input
+                  type={`checkbox`}
+                  id={`check`}
+                  className={classNames(s.checkbox, vh.visuallyHidden)}
+                />
+                <label htmlFor={`check`} className={s.checkLabel}></label>
+                {/* <ConsumptionIcon /> */}
                 <p className={s.consumption}>Расход</p>
               </div>
 
@@ -90,9 +86,8 @@ export default function ModalAddTransaction() {
                   value={values.sum}
                 />
                 <input className={s.date} type={`date`} />
-                {/* дата нал-для бэка, библиотека для фронта */}
-                {/* Date.now()
-                 */}
+                {/* Date.now()*/}
+                {/* Datetime */}
               </div>
 
               {touched.comment && errors.comment && (
