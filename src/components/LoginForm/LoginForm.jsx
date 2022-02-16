@@ -69,7 +69,7 @@ export default function LoginForm() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  style={{ marginBottom: '50px' }}
+                 
                 />
               </div>
               <div className={s.input_wrap}>
