@@ -15,8 +15,8 @@ import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import Table from 'components/TransactionTable/Table';
 import Statistics from './pages/StatisticsPages/StatisticsPages';
 import CurrencyTable from './components/Currency/Currency';
-//import LoginPage from 'pages/LoginPage';
-//import RegisterPage from 'pages/RegisterPage';
+// import LoginPage from "pages/LoginPage";
+// import RegisterPage from "pages/RegisterPage";
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.min.css';

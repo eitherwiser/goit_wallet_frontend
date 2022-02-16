@@ -25,8 +25,14 @@
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--under-wallpaper-bcg-color);
-    background-image: url("../../images/transaction/tablet/transaction-tab.jpg");
+    background-image: url("../../images/bgi-transaction/tablet/transaction-tab.jpg");
     background-size: 768px 1024px;
+
+    /* @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url("../../images/bgi-transaction/tablet/transaction-tab@2.jpg");
+    } */
   }
   .container {
     display: flex;
@@ -40,16 +46,24 @@
 
 @media screen and (min-width: 1280px) {
   .dashboardPage {
+    
     display: flex;
     width: 1280px;
-
+    
     padding-left: 86px;
     padding-top: 40px;
     padding-right: 86px;
     padding-bottom: 50px;
 
-    background-image: url("../../images/transaction/desktop/transaction-desktop.jpg");
+    background-image: url("../../images/bgi-transaction/desktop/transaction-desktop.jpg");
+
     background-size: 1280px 720px;
+
+    /* @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url("../../images/bgi-transaction/tablet/transaction-desktop@2.jpg");
+    } */
   }
 
   .container {
