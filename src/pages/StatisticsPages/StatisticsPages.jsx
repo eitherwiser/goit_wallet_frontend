@@ -1,8 +1,6 @@
-
-
-import Chart from "../../components/Chart/Chart";
-import DiagramTab from "../../components/DiagramTab/DiagramTab";
-import s from "./StatisticsPages.module.css";
+import Chart from '../../components/Chart/Chart';
+import DiagramTab from '../../components/DiagramTab/DiagramTab';
+import s from './StatisticsPages.module.css';
 
 // export default function Statistics(){
 //     return(
@@ -15,8 +13,6 @@ import s from "./StatisticsPages.module.css";
 //       </div>
 //       </div>
 
-
-
 //export default function Statistics(){
 //return(
 //    <div className={s.container}>
@@ -25,8 +21,6 @@ import s from "./StatisticsPages.module.css";
 //    <div className={s.wrapper}>    <p className={s.mainTitte}>Статистика</p>
 //    <div className={s.rightContainer}><div className={s.chart}><Chart/></div>
 //  <div><DiagramTab/></div></div></div>
-
-  
 
 export default function Statistics() {
   return (
