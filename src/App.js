@@ -11,6 +11,7 @@ import Table from "components/TransactionTable/Table";
 import Statistics from "./pages/StatisticsPages/StatisticsPages";
 import CurrencyTable from "./components/Currency/Currency";
 import VerifyPage from "components/VerifyPage/VerifyPage.jsx";
+
 import "./App.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -30,9 +31,11 @@ export default function App() {
 
   const isAuthRefresh = useSelector(getAuthRefresh);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
+
   return (
     <>
       {!isAuthRefresh && (
@@ -65,7 +68,9 @@ export default function App() {
                 }
               >
                 <Route path="home" element={<Table />} />
-                <Route path="diagram" element={<Statistics />} />
+
+                <Route path="diagram" element={<Statistics />} />{" "}
+
                 <Route
                   path="exchangeRates"
                   element={

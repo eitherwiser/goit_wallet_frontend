@@ -1,7 +1,6 @@
+import Currency from "components/Currency/Currency";
+import DashboardPage from "pages/DashboardPage/DashboardPage";
 import classnames from "classnames";
-
-// import Currency from "components/Currency/Currency";
-// import DashboardPage from "pages/DashboardPage/DashboardPage";
 
 import { NavLink, Outlet } from "react-router-dom";
 
