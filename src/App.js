@@ -1,4 +1,4 @@
-import StatisticsPages from "pages/StatisticsPages/StatisticsPages";
+import Chart from "components/Chart/Chart";
 import React, { Suspense, useEffect, lazy } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -55,7 +55,7 @@ export default function App() {
         />
       </Routes>
       <Container>
-        <StatisticsPages />
+        <Chart />
       </Container>
     </>
   );

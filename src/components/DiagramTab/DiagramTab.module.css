@@ -15,13 +15,12 @@
     padding-bottom:21px;
     padding-left:30px;
     padding-right:30px;
-
     color: #000000;
 
 }
 .name{
     font-size: 16px;
-line-height: 1.16;
+    line-height: 1.16;
 }
 .containerTab{
     width: 350px;
@@ -43,6 +42,7 @@ line-height: 1.16;
 
 }
 .containerSum{
+    width: 350px;
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
@@ -51,8 +51,8 @@ line-height: 1.16;
 
 .titleSum{
     font-weight: 800;
-font-size: 16px;
-line-height: 19px;
+    font-size: 16px;
+    line-height: 19px;
 }
 .costs{
     font-weight: 800;
@@ -65,4 +65,17 @@ line-height: 19px;
     font-size: 16px;
     line-height: 19px;
     color: #24CCA7;
+}
+.arrow{
+fill:#000000;
+}
+
+.inputLabel{
+    position: relative;
+}
+.Select{
+    position: absolute;
+    top: 0;
+    background-color: #24CCA7;
+    
 }

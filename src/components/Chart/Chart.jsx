@@ -1,6 +1,9 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import s from "./Chart.module.css"
+import DiagramTab from "../../components/DiagramTab/DiagramTab"
+
 
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -27,7 +30,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
       borderWidth: 0,
-
+      cutout: 110,
+   
+      
     },
 
 
@@ -36,39 +41,17 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 };
 
 const options = {
-
     plugins: {
 
+      title: {
+        display: true,
+        text: '24000',
+       
+       
+      },
         legend: {
             display: false,
-    //         labels: {
-    //             color: '#000000',
-    //             boxWidth:24,
-    //             boxHeight:24,
-    //             padding:32,
 
-    //             font:{
-    //                 size: 16,
-    //                 weight:400,
-    //                 lineHeight:1.16
-    //             }
-    //         },
-    //         htmlLegend: {
-    //           // ID of the container to put the legend in
-    //           containerID: 'custom-legend',
-    //         },
-    //         position: 'right',
-
-    //         title:{
-    //             color:"#000000",
-    //             text:"Категория  Сумма",
-    //             display:true,
-    //             font:{
-    //                 size: 18,
-    //                 weight:800,
-    //                 lineHeight:1.16
-    //             }
-    //         }
         }
     },
 
@@ -78,7 +61,12 @@ export default function Chart() {
   return (
   <>
 
-  <Doughnut data={data} options={options}/>
+
+<div className={s.wrapper}>    <p className={s.mainTitte}>Статистика</p>
+<div className={s.rightContainer}><div className={s.chart}>  <Doughnut data={data} options={options}/></div>
+<div><DiagramTab/></div></div></div>
+
+
   </>
   )
 }
