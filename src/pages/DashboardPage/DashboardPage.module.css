@@ -1,11 +1,9 @@
-/* .rectangle {
-  background: rgba(255, 255, 255, 0.4);
-  -webkit-backdrop-filter: blur(50px);
-  backdrop-filter: blur(50px);
-} */
-
 @media screen and (max-width: 767px) {
   .dashboardPage {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+
     display: block;
     background-color: var(--main-bcg-color);
   }
@@ -14,6 +12,15 @@
 @media screen and (min-width: 768px) {
   .dashboardPage {
     display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 320px;
+
+    padding-left: 40px;
+    padding-top: 30px;
+    padding-right: 40px;
+    /* padding-bottom: 50px; */
 
     background-position: center;
     background-repeat: no-repeat;
@@ -27,11 +34,29 @@
       background-image: url("../../images/bgi-transaction/tablet/transaction-tab@2.jpg");
     } */
   }
+  .container {
+    display: flex;
+    margin-bottom: 40px;
+  }
+
+  .nav {
+    margin-right: 20px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .dashboardPage {
+    
+    display: flex;
+    width: 1280px;
+    
+    padding-left: 86px;
+    padding-top: 40px;
+    padding-right: 86px;
+    padding-bottom: 50px;
+
     background-image: url("../../images/bgi-transaction/desktop/transaction-desktop.jpg");
+
     background-size: 1280px 720px;
 
     /* @media (min-device-pixel-ratio: 2),
@@ -39,5 +64,15 @@
       (min-resolution: 2dppx) {
       background-image: url("../../images/bgi-transaction/tablet/transaction-desktop@2.jpg");
     } */
+  }
+
+  .container {
+    display: block;
+    width: 378px;
+    margin-right: 30px;
+  }
+
+  .nav {
+    margin-bottom: 30px;
   }
 }

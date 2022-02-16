@@ -19,6 +19,7 @@ const theme = createTheme({
           },
           thead: {
             backgroundColor: "#fff",
+            th: { borderBottom: "none" },
           },
         },
       },
@@ -37,47 +38,52 @@ const rows = [
 
 export default function TransactionTable() {
   return (
-    <ThemeProvider theme={theme}>
-      <Table aria-label="transacti table">
-        <TableHead
-          sx={{
-            "& .MuiTableCell-root:first-of-type": {
-              borderTopLeftRadius: "30px",
-              borderBottomLeftRadius: "30px",
-            },
-            "& .MuiTableCell-root:last-of-type": {
-              borderTopRightRadius: "30px",
-              borderBottomRightRadius: "30px",
-            },
-          }}
-        >
-          <TableRow>
-            <TableCell>Дата</TableCell>
-            <TableCell align="center">Тип</TableCell>
-            <TableCell align="center">Категория</TableCell>
-            <TableCell align="center">Коментарий</TableCell>
-            <TableCell align="center">Сумма</TableCell>
-            <TableCell align="center">Баланс</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="center">{row.type}</TableCell>
-              <TableCell align="center">{row.category}</TableCell>
-              <TableCell align="center">{row.comment}</TableCell>
-              <TableCell align="center">{row.amount}</TableCell>
-              <TableCell align="center">{row.balance}</TableCell>
+    <div className={s.table}>
+      <ThemeProvider theme={theme}>
+        <Table aria-label="transacti table">
+          <TableHead
+            sx={{
+              // "& .MuiTableCell-root.MuiTable-root": {
+              //   width: "700px",
+              // },
+              "& .MuiTableCell-root:first-of-type": {
+                borderTopLeftRadius: "30px",
+                borderBottomLeftRadius: "30px",
+              },
+              "& .MuiTableCell-root:last-of-type": {
+                borderTopRightRadius: "30px",
+                borderBottomRightRadius: "30px",
+              },
+            }}
+          >
+            <TableRow>
+              <TableCell>Дата</TableCell>
+              <TableCell align="center">Тип</TableCell>
+              <TableCell align="center">Категория</TableCell>
+              <TableCell align="center">Коментарий</TableCell>
+              <TableCell align="center">Сумма</TableCell>
+              <TableCell align="center">Баланс</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </ThemeProvider>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.name}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell align="center">{row.type}</TableCell>
+                <TableCell align="center">{row.category}</TableCell>
+                <TableCell align="center">{row.comment}</TableCell>
+                <TableCell align="center">{row.amount}</TableCell>
+                <TableCell align="center">{row.balance}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </ThemeProvider>
+    </div>
   );
 }
