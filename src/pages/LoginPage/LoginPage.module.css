@@ -38,8 +38,9 @@
 
   .container {
     position: relative;
-    /* width: 768px; */
-    /* margin: 0 auto; */
+
+    width: 768px;
+    margin: 0 auto;
   }
 }
 
