@@ -1,14 +1,14 @@
 import React, { Suspense, useEffect, lazy } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Media from "react-media";
 import { ToastContainer } from "react-toastify";
-import LoaderComponent from "./components/LoaderComponent/LoaderComponent.js";
+
+import useWindowSize from "./hooks/useWindowSize";
 
 import { fetchCurrentUser } from "redux/auth/auth-operations";
 import { getAuth, getAuthRefresh } from "redux/auth/auth-selectors";
-import useWindowSize from "./hooks/useWindowSize";
-//import TransactionTable from './components/TransactionTable/TransactionTable';
+
+import LoaderComponent from "./components/LoaderComponent/LoaderComponent.js";
 import Container from "components/Container/";
 import Header from "components/Header";
 import DashboardPage from "pages/DashboardPage/DashboardPage";
@@ -24,10 +24,10 @@ import "react-toastify/dist/ReactToastify.min.css";
 const RegisterPage = lazy(() =>
   import(
     "./pages/RegisterPage/RegisterPage" /* webpackChunkName: "RegisterPage" */
-  ),
+  )
 );
 const LoginPage = lazy(() =>
-  import("./pages/LoginPage/LoginPage" /* webpackChunkName: "LoginPage" */),
+  import("./pages/LoginPage/LoginPage" /* webpackChunkName: "LoginPage" */)
 );
 
 export default function App() {
@@ -53,46 +53,33 @@ export default function App() {
           <Suspense fallback={<LoaderComponent />}>
             <Routes>
               <Route
-                path='login'
-                element={isAuth ? <Navigate replace to='/' /> : <LoginPage />}
+                path="login"
+                element={isAuth ? <Navigate replace to="/" /> : <LoginPage />}
               />
 
               <Route
-                path='register'
+                path="register"
                 element={
-                  !isAuth ? <RegisterPage /> : <Navigate replace to='/login' />
+                  !isAuth ? <RegisterPage /> : <Navigate replace to="/login" />
                 }
               />
+
               <Route
                 exact
-                path='/'
+                path="/"
                 element={
-                  <DashboardPage />
-                  // !isAuth ? (
-                  //   <Navigate replace to="/home" />
-                  // ) : (
-                  //   <Navigate replace to="/login" />
-                  // )
-                  // !isAuth && <Navigate replace to="/login" />
-                }>
-                <Route path='home' element={<Table />} />
-                <Route path='diagram' element={<Statistics />} />{" "}
-                {/*<Route
-                  path="home"
-                  element={
-                    <Media
-                      query="(min-width: 768px)"
-                      render={() => <TransactionTable />}
-                    />
-                  }
-                />*/}
+                  !isAuth ? <Navigate replace to="/login" /> : <DashboardPage />
+                }
+              >
+                <Route path="home" element={<Table />} />
+                <Route path="diagram" element={<Statistics />} />{" "}
                 <Route
-                  path='exchangeRates'
+                  path="exchangeRates"
                   element={
                     size.width < 768 ? (
                       <CurrencyTable />
                     ) : (
-                      <Navigate replace to='/home' />
+                      <Navigate replace to="/home" />
                     )
                   }
                 />
