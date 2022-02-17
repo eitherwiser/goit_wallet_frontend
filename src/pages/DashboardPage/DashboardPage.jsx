@@ -12,6 +12,7 @@ import Header from "components/Header/Header";
 
 export default function DashboardPage() {
   return (
+    
     <div className={s.dashboardPage}>
       <div className={s.container}>
         <div className={s.box}>
