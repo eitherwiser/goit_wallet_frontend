@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
-axios.defaults.baseURL = "http://localhost:3030/api";
+axios.defaults.baseURL = "https://goit-34-wallet.herokuapp.com/api";
 
 const token = {
   set(token) {
@@ -55,7 +55,7 @@ export const loginUser = createAsyncThunk(
           toast.error("E-mail или пароль указаны неверно")
         );
       }
-      return rejectWithValue(err.message);
+      return rejectWithValue(err.response.message);
     }
   }
 );
@@ -84,7 +84,7 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get("/users/current");
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.message);
     }
   }
 );

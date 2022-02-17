@@ -36,7 +36,19 @@ const rows = [
   createData("04.01.20", "-", "Разное", "Подарок жене", 300.0, 6900.0),
 ];
 
-export default function TransactionTable() {
+export default function TransactionTable({ transactions }) {
+  // console.log(transactions);
+
+  // const a = transactions.foreach((trans) => {
+  //   createData(trans.date);
+  //   createData(trans.isIncome);
+  //   createData(trans.category);
+  //   createData(trans.comment);
+  //   createData(trans.amount);
+  //   createData(trans.balance);
+  // });
+
+  // console.log(a);
   return (
     <div className={s.table}>
       <ThemeProvider theme={theme}>

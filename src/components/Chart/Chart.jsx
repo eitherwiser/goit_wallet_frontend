@@ -1,85 +1,115 @@
-import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-
+import React from "react";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+import s from "./Chart.module.css";
+import DiagramTab from "../../components/DiagramTab/DiagramTab";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+const obj={
+  "category": [
+      {
+          "id": "321321321",
+          "name": "Еда поменял вручную",
+          "isInc": false,
+          "color": "#ffffff",
+          "isActive": true,
+          "total": 10
+      },
+      {
+          "id": "387721321",
+          "name": "Дети",
+          "isInc": false,
+          "color": "#ff22ff",
+          "isActive": true,
+          "total": 20
+      },
+      {
+          "id": "321320909",
+          "name": "Развитие",
+          "isInc": false,
+          "color": "#33ffff",
+          "isActive": true,
+          "total": 30
+      },
+      {
+          "id": "771321321",
+          "name": "Остальное",
+          "isInc": false,
+          "color": "#f45454",
+          "isActive": true,
+          "total": 30
+      },
+      {
+          "id": "321328821",
+          "name": "Налоги",
+          "isInc": false,
+          "color": "#ff2345",
+          "isActive": true,
+          "total": 40
+      }
+  ],
+  "total": {
+      "Expence": 130,
+      "Income": 50000
+  }
+}
+const arrName=[];
+const arrTotal=[];
+const arrColor=[];
 
+obj.category.map((item)=>{
+  arrName.push(item.name)
+  arrTotal.push(item.total)
+  arrColor.push(item.color)
+})
 
- const data = {
-  labels: ['Основные рассходы ', 'Продукты', 'Машина', 'Забота о себе', 'Забота о детях', 'Товары для дома', 'Образование', 'Досуг', 'Другие рассходы'],
+const data = {
+  labels: [
+...arrName
+  ],
 
   datasets: [
     {
-      label: '# of Votes',
-      data: [8700, 3800, 1500, 800, 2208, 300, 3400, 1230, 610],
+      label: "# of Votes",
+      data: [...arrTotal],
       backgroundColor: [
-        '#FED057',
-        '#FFD8D0',
-        '#FD9498',
-        '#C5BAFF',
-        '#6E78E8',
-        '#4A56E2',
-        '#81E1FF',
-        '#24CCA7', 
-        '#00AD84',
+...arrColor
       ],
 
-
       borderWidth: 0,
-
+      cutout: 110,
     },
-
-
   ],
-
 };
 
 const options = {
-
-    plugins: {
-
-        legend: {
-            display: false,
-    //         labels: {
-    //             color: '#000000',
-    //             boxWidth:24,
-    //             boxHeight:24,
-    //             padding:32,
-
-    //             font:{
-    //                 size: 16,
-    //                 weight:400,
-    //                 lineHeight:1.16
-    //             }
-    //         },
-    //         htmlLegend: {
-    //           // ID of the container to put the legend in
-    //           containerID: 'custom-legend',
-    //         },
-    //         position: 'right',
-
-    //         title:{
-    //             color:"#000000",
-    //             text:"Категория  Сумма",
-    //             display:true,
-    //             font:{
-    //                 size: 18,
-    //                 weight:800,
-    //                 lineHeight:1.16
-    //             }
-    //         }
-        }
+  plugins: {
+    title: {
+      display: true,
+      text: "24000",
     },
-
-}
+    legend: {
+      display: false,
+    },
+  },
+};
 
 export default function Chart() {
   return (
-  <>
-
-  <Doughnut data={data} options={options}/>
-  </>
-  )
+    <>
+      <div className={s.wrapper}>
+        {" "}
+        <p className={s.mainTitle}>Статистика</p>
+        <div className={s.rightContainer}>
+          <div className={s.chart}>
+            {" "}
+            <Doughnut data={data} options={options} />
+          </div>
+          <div>
+            <DiagramTab />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
-
