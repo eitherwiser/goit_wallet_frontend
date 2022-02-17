@@ -7,6 +7,7 @@
 @media screen and (min-width: 1280px) {
   .table {
     width: 700px;
+    margin-top: 46px;
   }
 }
 
