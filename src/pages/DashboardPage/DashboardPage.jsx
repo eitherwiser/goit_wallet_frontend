@@ -6,9 +6,15 @@ import Balance from "components/Balance/Balance";
 import CurrencyTable from "components/Currency/Currency";
 
 import s from "./DashboardPage.module.css";
+import Container from "components/Container/Container";
+import Header from "components/Header/Header";
 
 export default function DashboardPage() {
   return (
+    <>
+      <Container>
+        <Header />
+      </Container>
     <div className={s.dashboardPage}>
       <div className={s.container}>
         <div className={s.nav}>
@@ -19,5 +25,6 @@ export default function DashboardPage() {
       </div>
       <Outlet />
     </div>
+    </>
   );
 }

@@ -13,7 +13,7 @@ export default function UserMenu() {
 
   const name = useSelector(getUsername);
   const avatar = useSelector(getUserAvatar);
-  const isAuth = useSelector(getAuth);
+  // const isAuth = useSelector(getAuth);
   const dispatch = useDispatch();
   const isMobileOrTablet = useMediaQuery({ query: "(min-width: 768px)" });
 
@@ -34,6 +34,7 @@ export default function UserMenu() {
 
   return (
     <div className={s.header__user}>
+
       {isAuth && (
         <>
           <img

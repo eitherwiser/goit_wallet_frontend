@@ -2,21 +2,16 @@ import React, { Suspense, useEffect, lazy } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
-
 import useWindowSize from "./hooks/useWindowSize";
-
 import { fetchCurrentUser } from "redux/auth/auth-operations";
-import { getAuth, getAuthRefresh } from "redux/auth/auth-selectors";
-import Chart from "components/Chart/Chart";
+import { getAuth, getAuthRefresh, getToken } from "redux/auth/auth-selectors";
+// import Chart from "components/Chart/Chart";
 import LoaderComponent from "./components/LoaderComponent/LoaderComponent.js";
-import Container from "components/Container/";
-import Header from "components/Header";
 import DashboardPage from "pages/DashboardPage/DashboardPage";
 import Table from "components/TransactionTable/Table";
 
 import CurrencyTable from "./components/Currency/Currency";
-// import LoginPage from "pages/LoginPage";
-// import RegisterPage from "pages/RegisterPage";
+import VerifyPage from "components/VerifyPage/VerifyPage.jsx";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -33,6 +28,7 @@ const LoginPage = lazy(() =>
 export default function App() {
   const size = useWindowSize();
   const isAuth = useSelector(getAuth);
+  const token = useSelector(getToken);
 
   const isAuthRefresh = useSelector(getAuthRefresh);
   const dispatch = useDispatch();
@@ -46,21 +42,22 @@ export default function App() {
       {!isAuthRefresh && (
         <>
           <ToastContainer autoClose={4000} />
-          <Container>
-            <Header />
-          </Container>
-
           <Suspense fallback={<LoaderComponent />}>
             <Routes>
               <Route
                 path="login"
-                element={isAuth ? <Navigate replace to="/" /> : <LoginPage />}
+                element={isAuth ? <Navigate to="/" /> : <LoginPage />}
+                exact
               />
-
               <Route
-                path="register"
+                path="/verify/:verificationToken"
+                element={<VerifyPage />}
+              />
+              <Route path="register" element={<RegisterPage />} />
+              <Route
+                path="/"
                 element={
-                  !isAuth ? <RegisterPage /> : <Navigate replace to="/login" />
+                  token !== null ? <DashboardPage /> : <Navigate to="/login" />
                 }
               />
 
@@ -72,7 +69,11 @@ export default function App() {
                 }
               >
                 <Route path="home" element={<Table />} />
-                <Route path="diagram" element={<Chart />} />{" "}
+
+
+                <Route path="diagram" element={<Statistics />} />{" "}
+             {/*<Route path="diagram" element={<Chart />} />{" "}*/}
+
                 <Route
                   path="exchangeRates"
                   element={
