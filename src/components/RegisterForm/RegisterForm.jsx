@@ -112,8 +112,8 @@ export default function RegisterForm() {
             </div>
             <ProgressSwitch value={values.password.length} />
             <div className={s.input_wrap}>
-              {touched.name && errors.name && (
-                <span className={s.error}>{errors.name}</span>
+              {touched.userName && errors.userName && (
+                <span className={s.error}>{errors.userName}</span>
               )}
               <InputField
                 label={<NameIcon className={s.icon} />}
@@ -123,8 +123,8 @@ export default function RegisterForm() {
                 name="userName"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.name}
-                style={{ marginBottom: '50px' }}
+                value={values.userName}
+               
               />
             </div>
             <button

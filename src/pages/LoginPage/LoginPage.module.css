@@ -74,6 +74,8 @@
 
   .container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 1280px;
     margin: 0 auto;
   }
