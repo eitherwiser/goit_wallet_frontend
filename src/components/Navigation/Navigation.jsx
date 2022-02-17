@@ -1,7 +1,8 @@
-import Currency from 'components/Currency/Currency';
+import classnames from "classnames";
 import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import classnames from 'classnames';
 import sprite from '../../images/svg_sprite.svg';
+
 
 import { NavLink, Outlet } from 'react-router-dom';
 
@@ -20,6 +21,32 @@ import Media from 'react-media';
 export default function Navigation() {
   return (
     <nav className={s.nav}>
+
+      <NavLink
+        to="/home"
+        className={s.link}
+        // activeClassName={s.activeLink}
+        // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+      >
+        <HomeImgMob className={s.navImgMob} />
+        <HomeImgTab className={s.navImgTab} />
+        <span className={s.text}>Главная</span>
+      </NavLink>
+
+      <NavLink
+        to="/diagram"
+        className={s.link}
+        // activeClassName={s.activeLink}
+        // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+        Exchange
+        Rates
+      >
+        <StatisticsImgMob className={s.navImgMob} />
+        <StatisticsImgTab className={s.navImgTab} />
+        <span className={s.text}>Статистика</span>
+      </NavLink>
+
+
       {/* <ul className={s.list}>
         <li className={s.item}>
           <a href="DashboardPage" className={s.link}>
@@ -43,6 +70,7 @@ export default function Navigation() {
           </a>
         </li>
       </ul> */}
+
       <Media
         query="(min-width: 767px)"
         render={() => (
@@ -77,9 +105,11 @@ export default function Navigation() {
         render={() => (
           <NavLink
             to="/exchangeRates"
-            // className={({ isActive }) => (isActive ? activeLink : link)}
+            className={s.link}
+            // activeClassName={s.activeLink}
+            // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
           >
-            Курс валют
+            <PbImgMob className={s.navImgMob} />
           </NavLink>
         )}
       /> */}

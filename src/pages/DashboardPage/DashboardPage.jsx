@@ -12,31 +12,48 @@ import Header from 'components/Header/Header';
 
 export default function DashboardPage() {
   return (
-    <>
-      <Container>
-        <Header />
-      </Container>
-      <div className={s.dashboardPage}>
-        <div className={s.container}>
-          <div className={s.nav}>
-            <Navigation />
-            {
-              <Media
-                query="(max-width: 768px)"
-                render={() => <MobileNavigation />}
-              />
-            }
-            <Balance />
-          </div>
-          {
-            <Media
-              query="(min-width: 768px)"
-              render={() => <CurrencyTable />}
-            />
-          }
+
+    //     <Container>
+    //       <div className={s.dashboardPage}>
+    //         <Navigation />
+    //         <Balance />
+    //         <CurrencyTable />
+    //         <Media query="(min-width: 768px)" render={() => <TransactionTable />} />
+
+    <div className={s.dashboardPage}>
+      <div className={s.container}>
+        <div className={s.nav}>
+          <Navigation />
+          <Balance />
+        </div>
+        {<Media query="(min-width: 768px)" render={() => <CurrencyTable />} />}
+
+//     <>
+//       <Container>
+//         <Header />
+//       </Container>
+//       <div className={s.dashboardPage}>
+//         <div className={s.container}>
+//           <div className={s.nav}>
+//             <Navigation />
+//             {
+//               <Media
+//                 query="(max-width: 768px)"
+//                 render={() => <MobileNavigation />}
+//               />
+//             }
+//             <Balance />
+//           </div>
+//           {
+//             <Media
+//               query="(min-width: 768px)"
+//               render={() => <CurrencyTable />}
+//             />
+//           }
         </div>
         <Outlet />
+
       </div>
-    </>
+// </>
   );
 }
