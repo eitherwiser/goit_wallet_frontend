@@ -53,6 +53,7 @@ export default function DashboardPage() {
       </div>
 
       {/* <ModalAddTransaction /> */}
+      {/* new info */}
     </>
   );
 }
