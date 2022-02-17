@@ -44,6 +44,7 @@ export default function TransactionTableMobile({ transactions }) {
             borderCollapse: "initial",
             borderLeft: "5px solid #FF6596",
             borderRadius: "10px",
+            marginBottom: "10px",
           }}
         >
           <TableBody>

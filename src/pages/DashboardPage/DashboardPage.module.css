@@ -1,12 +1,21 @@
 .dashboardPage {
-  display: block;
   background-color: var(--main-bcg-color);
 }
 
-.box {
+.navBox {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex {
+  margin-bottom: 40px;
 }
 
 @media screen and (min-width: 768px) {
@@ -24,11 +33,15 @@
     } */
   }
 
+  .wrapper {
+    display: inline-block;
+  }
+
   .flex {
     display: flex;
   }
 
-  .box {
+  .navBox {
     display: inline-block;
     margin-right: 20px;
   }
@@ -52,11 +65,20 @@
     } */
   }
 
-  .flex {
-    flex-direction: column;
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding-bottom: 35px;
   }
 
-  .box {
+  .flex {
+    flex-direction: column;
+    margin-bottom: 0;
+    margin-right: 60px;
+  }
+
+  .navBox {
     display: flex;
     align-items: flex-start;
     margin-bottom: 30px;
