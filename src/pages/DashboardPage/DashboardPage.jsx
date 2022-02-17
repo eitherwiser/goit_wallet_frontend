@@ -7,6 +7,7 @@ import Balance from "components/Balance/Balance";
 import CurrencyTable from "components/Currency/Currency";
 
 import s from "./DashboardPage.module.css";
+
 import Header from "components/Header/Header";
 
 export default function DashboardPage() {
@@ -34,5 +35,6 @@ export default function DashboardPage() {
       </div>
       <Outlet />
     </div>
+
   );
 }
