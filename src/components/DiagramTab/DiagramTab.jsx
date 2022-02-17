@@ -1,40 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./DiagramTab.module.css";
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import TableFilters from "components/Select/Select";
 
 export default function DiagramTab() {
-  const [val, setVal] = useState("");
-  const func = (a) => setVal(a.target.value);
+
   return (
     <>
-      <div className={s.containerButton}>
-        <FormControl fullWidth>
-          <InputLabel className={s.inputLabel} id="demo-simple-select-label">
-            Месяц
-          </InputLabel>
-          <Select
-            className={s.select}
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={val}
-            label="месяц"
-            onChange={func}
-          >
-            <MenuItem value={1}>Январь</MenuItem>
-            <MenuItem value={2}>Февраль</MenuItem>
-            <MenuItem value={3}>Март</MenuItem>
-            <MenuItem value={4}>Апрель</MenuItem>
-            <MenuItem value={5}>Май</MenuItem>
-            <MenuItem value={6}>Июнь</MenuItem>
-            <MenuItem value={7}>Июль</MenuItem>
-            <MenuItem value={8}>Агуст</MenuItem>
-            <MenuItem value={9}>Сентябрь</MenuItem>
-            <MenuItem value={10}>Октябрь</MenuItem>
-            <MenuItem value={11}>Ноябрь</MenuItem>
-            <MenuItem value={12}>Декабрь</MenuItem>
-          </Select>
-        </FormControl>
-      </div>
+     <TableFilters/>
       <div className={s.container}>
         <p className={s.title}>Категория</p> <p className={s.title}>Сумма</p>
       </div>
