@@ -105,7 +105,7 @@ export default function Chart() {
             {" "}
             <Doughnut data={data} options={options} />
           </div>
-          <div>
+          <div className={s.containerDiagram}>
             <DiagramTab />
           </div>
         </div>
