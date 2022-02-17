@@ -1,5 +1,6 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
 import Datetime from "react-datetime";
 import classNames from "classnames";
 
@@ -17,6 +18,12 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function ModalAddTransaction() {
+  const dispatch = useDispatch();
+  const handleSubmit = ({ checkbox, category, date, sum, comment }) => {
+    console.log(checkbox, category, date, sum, comment);
+    // dispatch({ checkbox, category, date, sum, comment });
+  };
+
   return (
     <Formik
       initialValues={{
@@ -27,8 +34,10 @@ export default function ModalAddTransaction() {
         comment: "",
       }}
       validateOnBlur
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={(values, { resetForm }) => {
+        handleSubmit(values);
+        resetForm();
+        // console.log(values);
       }}
       validationSchema={validationSchema}
     >
@@ -142,14 +151,14 @@ export default function ModalAddTransaction() {
               <button
                 className={classNames(s.btn, s.btnAdd)}
                 type={`submit`}
-                onClick={handleSubmit}
+                disabled={!isValid || !dirty}
               >
                 Добавить
               </button>
               <button
                 className={classNames(s.btn, s.btnCancel)}
                 type={`submit`}
-                onClick={handleSubmit}
+                disabled={!isValid || !dirty}
               >
                 Отмена
               </button>
