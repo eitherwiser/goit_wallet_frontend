@@ -8,10 +8,10 @@ import sprite from '../../images/svg_sprite.svg';
 export default function MobileNavigation() {
   return (
     <>
-      <nav className={styles.imgsmallnav}>
+      <nav className={styles.imgSmallNav}>
         <NavLink
-          className={styles.imgsmall}
-          activeClassName={styles.imgsmallactive}
+          className={styles.imgSmall}
+          activeClassName={styles.imgSmallActive}
           exact
           to={path.dashboardPage}
         >
@@ -20,8 +20,8 @@ export default function MobileNavigation() {
           </svg>
         </NavLink>
         <NavLink
-          className={styles.imgsmall}
-          activeClassName={styles.imgsmallactive}
+          className={styles.imgSmall}
+          activeClassName={styles.imgSmallActive}
           exact
           to={path.statistic}
         >
@@ -30,8 +30,8 @@ export default function MobileNavigation() {
           </svg>
         </NavLink>
         <NavLink
-          className={styles.imgsmall}
-          activeClassName={styles.imgsmallactive}
+          className={styles.imgSmall}
+          activeClassName={styles.imgSmallActive}
           exact
           to="/exchangeRates"
         >

@@ -8,19 +8,19 @@
      Стили ссылок
 =================== */
 
-.imgsmall {
+.imgSmall {
   height: 38px;
   width: 38px;
   /* fill: #6e78e8; */
   fill: #6e78e8;
 }
 
-.imgsmall:hover {
+.imgSmall:hover {
   cursor: pointer;
   fill: #4a56e2;
 }
 
-.imgsmallnav {
+.imgSmallNav {
   display: flex;
   width: 186px;
   margin-right: auto;
@@ -29,11 +29,11 @@
   padding: 0;
 }
 
-.imgsmallactive {
+.imgSmallActive {
   filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   fill: #4a56e2;
 }
 
-.imgsmall:not(:last-child) {
+.imgSmall:not(:last-child) {
   margin-right: 34px;
 }
