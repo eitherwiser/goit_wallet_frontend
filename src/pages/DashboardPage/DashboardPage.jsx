@@ -29,6 +29,7 @@ export default function DashboardPage() {
 
                 {/* ОКСАНА */}
                 {/* {
+
             <Media
               query="(max-width: 768px)"
               render={() => <MobileNavigation />}

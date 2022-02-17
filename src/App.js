@@ -50,7 +50,7 @@ export default function App() {
                 exact
               />
               <Route
-                path="/verify/:verificationToken"
+                path="verify/:verificationToken"
                 element={<VerifyPage />}
               />
               <Route path="register" element={<RegisterPage />} />
