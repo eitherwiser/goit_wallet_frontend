@@ -5,10 +5,11 @@ import { ToastContainer } from "react-toastify";
 import useWindowSize from "./hooks/useWindowSize";
 import { fetchCurrentUser } from "redux/auth/auth-operations";
 import { getAuth, getAuthRefresh, getToken } from "redux/auth/auth-selectors";
+// import Chart from "components/Chart/Chart";
 import LoaderComponent from "./components/LoaderComponent/LoaderComponent.js";
 import DashboardPage from "pages/DashboardPage/DashboardPage";
 import Table from "components/TransactionTable/Table";
-import Statistics from "./pages/StatisticsPages/StatisticsPages";
+
 import CurrencyTable from "./components/Currency/Currency";
 import VerifyPage from "components/VerifyPage/VerifyPage.jsx";
 
@@ -69,7 +70,9 @@ export default function App() {
               >
                 <Route path="home" element={<Table />} />
 
+
                 <Route path="diagram" element={<Statistics />} />{" "}
+             {/*<Route path="diagram" element={<Chart />} />{" "}*/}
 
                 <Route
                   path="exchangeRates"
