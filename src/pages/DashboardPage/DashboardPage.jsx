@@ -9,13 +9,12 @@ import s from "./DashboardPage.module.css";
 
 export default function DashboardPage() {
   return (
-
-//     <Container>
-//       <div className={s.dashboardPage}>
-//         <Navigation />
-//         <Balance />
-//         <CurrencyTable />
-//         <Media query="(min-width: 768px)" render={() => <TransactionTable />} />
+    //     <Container>
+    //       <div className={s.dashboardPage}>
+    //         <Navigation />
+    //         <Balance />
+    //         <CurrencyTable />
+    //         <Media query="(min-width: 768px)" render={() => <TransactionTable />} />
 
     <div className={s.dashboardPage}>
       <div className={s.container}>
@@ -23,7 +22,7 @@ export default function DashboardPage() {
           <Navigation />
           <Balance />
         </div>
-    {<Media query="(min-width: 768px)" render={() => <CurrencyTable />} />}
+        {<Media query="(min-width: 768px)" render={() => <CurrencyTable />} />}
       </div>
       <Outlet />
     </div>
