@@ -15,7 +15,6 @@
 
     margin-left: auto;
     margin-right: auto;
-    min-width: 320px;
 
     padding-left: 40px;
     padding-top: 30px;
@@ -34,9 +33,13 @@
       background-image: url("../../images/bgi-transaction/tablet/transaction-tab@2.jpg");
     } */
   }
+
   .container {
     display: flex;
-    margin-bottom: 40px;
+  }
+
+  .box {
+    margin-right: 20px;
   }
 
   .nav {
@@ -46,10 +49,9 @@
 
 @media screen and (min-width: 1280px) {
   .dashboardPage {
-    
     display: flex;
     width: 1280px;
-    
+
     padding-left: 86px;
     padding-top: 40px;
     padding-right: 86px;
@@ -67,12 +69,19 @@
   }
 
   .container {
-    display: block;
+    /* display: flex; */
     width: 378px;
+    display: block;
+  }
 
+  .box {
+    margin-bottom: 30px;
+    margin-right: 0;
   }
 
   .nav {
+    display: inline-block;
     margin-bottom: 30px;
+    margin-right: 0;
   }
 }
