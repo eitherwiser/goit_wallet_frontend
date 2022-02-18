@@ -1,17 +1,17 @@
-import Media from "react-media";
-import { Outlet } from "react-router-dom";
+import Media from 'react-media';
+import { Outlet } from 'react-router-dom';
 
-import Navigation from "components/Navigation/Navigation";
-import MobileNavigation from "components/MobileNavigation/MobileNavigation";
-import Balance from "components/Balance/Balance";
-import CurrencyTable from "components/Currency/Currency";
+import Navigation from 'components/Navigation/Navigation';
+import MobileNavigation from 'components/MobileNavigation/MobileNavigation';
+import Balance from 'components/Balance/Balance';
+import CurrencyTable from 'components/Currency/Currency';
 
-import s from "./DashboardPage.module.css";
+import s from './DashboardPage.module.css';
 
-import Container from "components/Container/Container";
-import Header from "components/Header/Header";
-
-import ModalAddTransaction from "components/ModalAddTransaction/ModalAddTransaction";
+import Container from 'components/Container/Container';
+import Header from 'components/Header/Header';
+import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
+import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
 export default function DashboardPage() {
   return (
@@ -40,6 +40,7 @@ export default function DashboardPage() {
                 </div>
 
                 <Balance />
+                <ButtonAddTransactions />
               </div>
               {
                 <Media
