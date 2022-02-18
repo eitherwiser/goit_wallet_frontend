@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
-import currencyApi from '../../services/currencyApi';
+import React, { useEffect, useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import currencyApi from "../../services/currencyApi";
 
-import { currencies } from '../../assets/constants';
-import styles from './Currency.module.css';
+import { currencies } from "../../assets/constants";
+import styles from "./Currency.module.css";
 
 export default function CurrencyTable() {
   const [currency, setCurrency] = useState([]);
@@ -13,8 +13,8 @@ export default function CurrencyTable() {
     const fetchCurrency = async () => {
       const data = await currencyApi.fetchCurrency();
       const filteredCurrencies = [];
-      currencies.forEach(currency => {
-        data.forEach(element => {
+      currencies.forEach((currency) => {
+        data.forEach((element) => {
           parseInt(element.buy).toFixed(2);
           if (element.ccy === currency) {
             filteredCurrencies.push({
@@ -26,11 +26,11 @@ export default function CurrencyTable() {
         });
       });
       setCurrency(filteredCurrencies);
-      localStorage.setItem('currency', JSON.stringify(filteredCurrencies));
-      localStorage.setItem('currencyTime', Date.now());
+      localStorage.setItem("currency", JSON.stringify(filteredCurrencies));
+      localStorage.setItem("currencyTime", Date.now());
     };
-    let currencyLS = JSON.parse(localStorage.getItem('currency'));
-    let currencyTime = JSON.parse(localStorage.getItem('currencyTime'));
+    let currencyLS = JSON.parse(localStorage.getItem("currency"));
+    let currencyTime = JSON.parse(localStorage.getItem("currencyTime"));
     if (!currencyLS) {
       fetchCurrency();
     }
@@ -65,7 +65,7 @@ export default function CurrencyTable() {
               </tr>
             </thead>
             <tbody>
-              {currency.map(item => {
+              {currency.map((item) => {
                 return (
                   <tr key={item.ccy}>
                     <td>{item.ccy}</td>
