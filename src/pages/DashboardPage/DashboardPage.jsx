@@ -22,38 +22,39 @@ export default function DashboardPage() {
 
       <div className={s.dashboardPage}>
         <Container>
-          <div className={s.flex}>
-            <div className={s.box}>
-              <div className={s.nav}>
-                <Navigation />
+          <div className={s.wrapper}>
+            <div className={s.flex}>
+              <div className={s.navBox}>
+                <div className={s.nav}>
+                  <Navigation />
 
-                {/* ОКСАНА */}
-                {/* {
+                  {/* ОКСАНА */}
+                  {/* {
 
             <Media
               query="(max-width: 768px)"
               render={() => <MobileNavigation />}
             />
           } */}
-                {/* ОКСАНА */}
-              </div>
+                  {/* ОКСАНА */}
+                </div>
 
-              <Balance />
+                <Balance />
+              </div>
+              {
+                <Media
+                  query="(min-width: 768px)"
+                  render={() => <CurrencyTable />}
+                />
+              }
             </div>
-            {
-              <Media
-                query="(min-width: 768px)"
-                render={() => <CurrencyTable />}
-              />
-            }
+            {/* <Media query="(min-width: 768px)" render={() => <TransactionTable />} /> */}
+            <Outlet />
           </div>
-          {/* <Media query="(min-width: 768px)" render={() => <TransactionTable />} /> */}
         </Container>
-        <Outlet />
       </div>
 
       {/* <ModalAddTransaction /> */}
-      {/* new info */}
     </>
   );
 }
