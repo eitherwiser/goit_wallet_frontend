@@ -11,6 +11,7 @@ import s from "./DashboardPage.module.css";
 import Container from "components/Container/Container";
 import Header from "components/Header/Header";
 
+import ButtonAddTransactions from "components/ButtonAddTransactions/ButtonAddTransactions";
 import ModalAddTransaction from "components/ModalAddTransaction/ModalAddTransaction";
 
 export default function DashboardPage() {
@@ -31,15 +32,18 @@ export default function DashboardPage() {
                   {/* ОКСАНА */}
                   {/* {
 
+
             <Media
               query="(max-width: 768px)"
               render={() => <MobileNavigation />}
             />
           } */}
+
                   {/* ОКСАНА */}
                 </div>
 
                 <Balance />
+                <ButtonAddTransactions />
               </div>
               {
                 <Media

@@ -10,13 +10,8 @@
 }
 
 .switch__container {
-  padding: 20px 80px;
+  margin-bottom: 40px;
 }
-
-/* .theme-switch {
-  display: flex;
-  align-items: center;
-} */
 
 .switch__control {
   display: flex;
@@ -55,7 +50,7 @@
 .switch__marker {
   position: relative;
   background-color: #24cca7;
-  background-image: url("../../images/modal-transaction/income.svg");
+  background-image: url("../../images/modal-transaction/income.png");
   background-repeat: no-repeat;
   background-position: center;
   width: 44px;
@@ -70,17 +65,9 @@
 .switch__toggle:checked ~ .switch__marker {
   transform: translateX(50px);
   background-color: #ff6596;
-  background-image: url("../../images/modal-transaction/consumption.svg");
+  background-image: url("../../images/modal-transaction/consumption.png");
   box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
 }
-
-/* .switch__icon {
-  color: currentColor;
-  height: 24px;
-  width: 24px;
-  margin-right: 8px;
-  margin-left: 8px;
-} */
 
 .switchIncome {
   position: absolute;
