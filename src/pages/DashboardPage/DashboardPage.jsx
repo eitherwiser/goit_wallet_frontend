@@ -43,7 +43,7 @@ export default function DashboardPage() {
               </div>
               {
                 <Media
-                  query="(min-width: 768px)"
+                  query='(min-width: 768px)'
                   render={() => <CurrencyTable />}
                 />
               }
