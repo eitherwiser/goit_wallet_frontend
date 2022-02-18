@@ -1,0 +1,79 @@
+@import '../../stylesheet/var.css';
+
+.button {
+  position: fixed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 160px;
+  right: 160px;
+  width: 44px;
+  height: 44px;
+  background-color: var(--accent-btn-color);
+  border-radius: 50%;
+  border-style: none;
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  /* margin-left: 100%; */
+  /* transform: translate(-100%); */
+  opacity: 0.8;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 1;
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.75);
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    bottom: 40px;
+  }
+
+  .buttonShow {
+    animation: button-show 1s forwards;
+  }
+
+  .buttonBounce {
+    animation: button-bounce 1s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  }
+}
+
+@keyframes button-show {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes button-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-12px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-2px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
