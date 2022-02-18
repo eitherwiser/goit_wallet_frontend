@@ -9,33 +9,43 @@ import CurrencyTable from "components/Currency/Currency";
 import s from "./DashboardPage.module.css";
 
 import Header from "components/Header/Header";
-
+import Container from "components/Container/Container";
+import ModalAddTransaction from "components/ModalAddTransaction/ModalAddTransaction";
 export default function DashboardPage() {
   return (
-    
-    <div className={s.dashboardPage}>
-      <div className={s.container}>
-        <div className={s.box}>
-          <div className={s.nav}>
-            <Navigation />
+    <>
+      <Container>
+        <Header />
+      </Container>
+      <div className={s.dashboardPage}>
+        <div className={s.container}>
+          <div className={s.box}>
+            <div className={s.nav}>
+              <Navigation />
 
-            {/* ОКСАНА */}
-            {/* {
+              {/* ОКСАНА */}
+              {/* {
             <Media
               query="(max-width: 768px)"
               render={() => <MobileNavigation />}
             />
           } */}
-            {/* ОКСАНА */}
+              {/* ОКСАНА */}
+            </div>
+
+            <Balance />
           </div>
-
-          <Balance />
+          {
+            <Media
+              query="(min-width: 768px)"
+              render={() => <CurrencyTable />}
+            />
+          }
+          {/* <Media query="(min-width: 768px)" render={() => <TransactionTable />} /> */}
         </div>
-        {<Media query="(min-width: 768px)" render={() => <CurrencyTable />} />}
-        {/* <Media query="(min-width: 768px)" render={() => <TransactionTable />} /> */}
+        <Outlet />
+        <ModalAddTransaction />
       </div>
-      <Outlet />
-    </div>
-
+    </>
   );
 }

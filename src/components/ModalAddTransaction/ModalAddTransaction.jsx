@@ -1,5 +1,6 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
 import Datetime from "react-datetime";
 import classNames from "classnames";
 
@@ -17,15 +18,26 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function ModalAddTransaction() {
+  const dispatch = useDispatch();
+  const handleSubmit = ({ checkbox, category, date, sum, comment }) => {
+    console.log(checkbox, category, date, sum, comment);
+    // dispatch({ checkbox, category, date, sum, comment });
+  };
+
   return (
     <Formik
       initialValues={{
+        checkbox: false,
+        category: "",
+        date: "",
         sum: "",
         comment: "",
       }}
       validateOnBlur
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={(values, { resetForm }) => {
+        handleSubmit(values);
+        resetForm();
+        // console.log(values);
       }}
       validationSchema={validationSchema}
     >
@@ -43,34 +55,62 @@ export default function ModalAddTransaction() {
           <Form>
             <div className={s.form}>
               <b className={s.modalDescription}>Добавить транзакцию</b>
-              <div className={s.boxCheckbox}>
+
+              {/* <div className={s.boxCheckbox}>
                 <p className={s.income}>Доход</p>
-                {/* <IncomeIcon /> */}
                 <input
                   type={`checkbox`}
                   id={`check`}
                   className={classNames(s.checkbox, vh.visuallyHidden)}
+                  name={`checkbox`}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.checkbox}
                 />
                 <label htmlFor={`check`} className={s.checkLabel}></label>
-                {/* <ConsumptionIcon /> */}
                 <p className={s.consumption}>Расход</p>
+              </div> */}
+              <div className={s.switch__container}>
+                <div className={s.switch__control}>
+                  <input
+                    className={s.switch__toggle}
+                    type={`checkbox`}
+                    id={`switch-toggle`}
+                    name={`checkbox`}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.checkbox}
+                  />
+                  <label
+                    className={s.switch__track}
+                    htmlFor={`switch-toggle`}
+                  ></label>
+                  <div className={s.switch__marker}></div>
+                  <p className={s.switchIncome}>Доход</p>
+                  <p className={s.switchCosts}>Расход</p>
+                </div>
               </div>
 
-              <p className={s.categoryText}> Выберите категорию</p>
-              {/* <label className={s.span}>
-                <span className={s.categoryText}>Выберите категорию</span> */}
-              <select className={s.category}>
-                <option></option>
-                <option>Основной</option>
-                <option>Еда</option>
-                <option>Авто</option>
-                <option>Развитие</option>
-                <option>Дети</option>
-                <option>Дом</option>
-                <option>Образование</option>
-                <option>Остальное</option>
-              </select>
-              {/* </label> */}
+              <label className={s.span} htmlFor={`category`}>
+                <span className={s.categoryText}>Выберите категорию</span>
+                <select
+                  className={s.category}
+                  name={`category`}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.category}
+                >
+                  <option></option>
+                  <option>Основной</option>
+                  <option>Еда</option>
+                  <option>Авто</option>
+                  <option>Развитие</option>
+                  <option>Дети</option>
+                  <option>Дом</option>
+                  <option>Образование</option>
+                  <option>Остальное</option>
+                </select>
+              </label>
 
               <div className={s.subBox}>
                 {touched.sum && errors.sum && (
@@ -85,9 +125,14 @@ export default function ModalAddTransaction() {
                   onBlur={handleBlur}
                   value={values.sum}
                 />
-                <input className={s.date} type={`date`} />
-                {/* Date.now()*/}
-                {/* Datetime */}
+                <input
+                  className={s.date}
+                  type={`date`}
+                  name={`date`}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.date}
+                />
               </div>
 
               {touched.comment && errors.comment && (
@@ -106,14 +151,14 @@ export default function ModalAddTransaction() {
               <button
                 className={classNames(s.btn, s.btnAdd)}
                 type={`submit`}
-                onClick={handleSubmit}
+                disabled={!isValid || !dirty}
               >
                 Добавить
               </button>
               <button
                 className={classNames(s.btn, s.btnCancel)}
                 type={`submit`}
-                onClick={handleSubmit}
+                disabled={!isValid || !dirty}
               >
                 Отмена
               </button>
