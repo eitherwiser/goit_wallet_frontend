@@ -54,7 +54,7 @@ export default function DashboardPage() {
         </Container>
       </div>
 
-      <ModalAddTransaction />
+      {/* <ModalAddTransaction /> */}
     </>
   );
 }
