@@ -11,7 +11,9 @@ import s from "./DashboardPage.module.css";
 import Container from "components/Container/Container";
 import Header from "components/Header/Header";
 
+
 import ModalAddTransaction from "components/ModalAddTransaction/ModalAddTransaction";
+
 
 export default function DashboardPage() {
   return (
@@ -19,6 +21,7 @@ export default function DashboardPage() {
       <Container>
         <Header />
       </Container>
+
 
       <div className={s.dashboardPage}>
         <Container>
@@ -31,11 +34,13 @@ export default function DashboardPage() {
                   {/* ОКСАНА */}
                   {/* {
 
+
             <Media
               query="(max-width: 768px)"
               render={() => <MobileNavigation />}
             />
           } */}
+
                   {/* ОКСАНА */}
                 </div>
 
@@ -55,6 +60,7 @@ export default function DashboardPage() {
       </div>
 
       {/* <ModalAddTransaction /> */}
+
     </>
   );
 }
