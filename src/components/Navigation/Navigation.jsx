@@ -1,6 +1,5 @@
-import Currency from "components/Currency/Currency";
-import DashboardPage from "pages/DashboardPage/DashboardPage";
 import classnames from "classnames";
+import sprite from "../../images/svg_sprite.svg";
 
 import { NavLink, Outlet } from "react-router-dom";
 
@@ -19,41 +18,28 @@ import Media from "react-media";
 export default function Navigation() {
   return (
     <nav className={s.nav}>
-      {/* <ul className={s.list}>
-        <li className={s.item}>
-          <a href="DashboardPage" className={s.link}>
-            <HomeImgMob className={s.navImgMob} />
-            <HomeImgTab className={s.navImgTab} />
-            <span className={s.text}>Главная</span>
-          </a>
-        </li>
-
-        <li className={s.item}>
-          <a href="Currency" className={s.link}>
-            <StatisticsImgMob className={s.navImgMob} />
-            <StatisticsImgTab className={s.navImgTab} />
-            <span className={s.text}>Статистика</span>
-          </a>
-        </li>
-
-        <li className={s.item}>
-          <a href="#" className={s.link}>
-            <PbImgMob className={s.navImgMob} />
-          </a>
-        </li>
-      </ul> */}
-
       <NavLink
         to="/home"
-        // className={({ isActive }) => (isActive ? activeLink : link)}
+        className={s.link}
+        // activeClassName={s.activeLink}
+        // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
       >
-        Главная
+        <HomeImgMob className={s.navImgMob} />
+        <HomeImgTab className={s.navImgTab} />
+        <span className={s.text}>Главная</span>
       </NavLink>
+
       <NavLink
         to="/diagram"
-        // className={({ isActive }) => (isActive ? activeLink : link)} Exchange Rates
+        className={s.link}
+        // activeClassName={s.activeLink}
+        // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+        Exchange
+        Rates
       >
-        Статистика
+        <StatisticsImgMob className={s.navImgMob} />
+        <StatisticsImgTab className={s.navImgTab} />
+        <span className={s.text}>Статистика</span>
       </NavLink>
 
       <Media
@@ -61,12 +47,46 @@ export default function Navigation() {
         render={() => (
           <NavLink
             to="/exchangeRates"
-            // className={({ isActive }) => (isActive ? activeLink : link)}
+            className={s.link}
+            // activeClassName={s.activeLink}
+            // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
           >
-            Курс валют
+
+            <PbImgMob className={s.navImgMob} />
           </NavLink>
         )}
       />
+
+      {/* ОКСАНА */}
+      {/* <Media
+        query="(min-width: 767px)"
+        render={() => (
+          <NavLink
+            to="/home"
+            // className={({ isActive }) => (isActive ? activeLink : link)}
+          >
+            <svg height="18px" width="18px">
+              <use href={sprite + "#icon-home"}></use>
+            </svg>
+            Главная
+          </NavLink>
+        )}
+      />
+      <Media
+        query="(min-width: 767px)"
+        render={() => (
+          <NavLink
+            to="/diagram"
+            // className={({ isActive }) => (isActive ? activeLink : link)} Exchange Rates
+          >
+            <svg height="18px" width="18px">
+              <use href={sprite + "#icon-statistics"}></use>
+            </svg>
+            Статистика
+          </NavLink>
+        )}
+      /> */}
+      {/* ОКСАНА */}
 
       {/* <Outlet /> */}
     </nav>

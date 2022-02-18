@@ -1,35 +1,35 @@
-import { Formik, Form } from 'formik';
-import { Link } from 'react-router-dom';
-import * as Yup from 'yup';
-import LogoComponent from 'components/LogoComponent';
-import InputField from '../InputField/InputField';
-import ProgressSwitch from './ProgressSwitch';
-import s from './RegisterForm.module.css';
-import { ReactComponent as NameIcon } from '../../images/icon-form/name.svg';
-import { ReactComponent as Emailcon } from '../../images/icon-form/email.svg';
-import { ReactComponent as Passwordcon } from '../../images/icon-form/password.svg';
-import classNames from 'classnames';
-import { useDispatch } from 'react-redux';
-import { authUser } from 'redux/auth/auth-operations';
+import { Formik, Form } from "formik";
+import { NavLink } from "react-router-dom";
+import * as Yup from "yup";
+import LogoComponent from "components/LogoComponent";
+import InputField from "../InputField/InputField";
+import ProgressSwitch from "./ProgressSwitch";
+import s from "./RegisterForm.module.css";
+import { ReactComponent as NameIcon } from "../../images/icon-form/name.svg";
+import { ReactComponent as Emailcon } from "../../images/icon-form/email.svg";
+import { ReactComponent as Passwordcon } from "../../images/icon-form/password.svg";
+import classNames from "classnames";
+import { useDispatch } from "react-redux";
+import { authUser } from "redux/auth/auth-operations";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
-    .email('Некорректный Email')
-    .min(6, 'минимум 6 символов!')
-    .required('Обязательное поле'),
+    .email("Некорректный Email")
+    .min(6, "минимум 6 символов!")
+    .required("Обязательное поле"),
   password: Yup.string()
-    .typeError('Должно быть строкой')
-    .min(6, 'минимум 6 символов!')
-    .max(12, 'Не больше 12 символов!')
-    .required('Обязательное поле'),
+    .typeError("Должно быть строкой")
+    .min(6, "минимум 6 символов!")
+    .max(12, "Не больше 12 символов!")
+    .required("Обязательное поле"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Пароли не совпадают')
-    .required('Обязательное поле'),
+    .oneOf([Yup.ref("password")], "Пароли не совпадают")
+    .required("Обязательное поле"),
   userName: Yup.string()
     .typeError()
-    .min(2, 'минимум 2 символа!')
-    .max(32, 'Не больше 32 символов!')
-    .required('Обязательное поле'),
+    .min(2, "минимум 2 символа!")
+    .max(32, "Не больше 32 символов!")
+    .required("Обязательное поле"),
 });
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -40,10 +40,10 @@ export default function RegisterForm() {
     <>
       <Formik
         initialValues={{
-          userName: '',
-          password: '',
-          confirmPassword: '',
-          email: '',
+          userName: "",
+          password: "",
+          confirmPassword: "",
+          email: "",
         }}
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
@@ -107,7 +107,7 @@ export default function RegisterForm() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.confirmPassword}
-                style={{ marginBottom: '5px' }}
+                style={{ marginBottom: "5px" }}
               />
             </div>
             <ProgressSwitch value={values.password.length} />
@@ -124,7 +124,6 @@ export default function RegisterForm() {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.userName}
-               
               />
             </div>
             <button
@@ -134,13 +133,13 @@ export default function RegisterForm() {
             >
               Регистрация
             </button>
-            <Link
+            <NavLink
               to="/login"
               className={s.btn1}
-              style={{ textDecoration: 'none' }}
+              style={{ textDecoration: "none" }}
             >
               ВХОД
-            </Link>
+            </NavLink>
           </Form>
         )}
       </Formik>
