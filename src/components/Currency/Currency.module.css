@@ -3,10 +3,11 @@
 
   width: 280px;
   height: 174px;
+  margin-top: 30px;
   border-radius: 30px;
   color: var(--light-text-color);
   background-color: var(--accent-bcg-color);
-  background-image: url('../../images/Currency/currency_mob.png');
+  background-image: url("../../images/Currency/currency_mob.png");
   background-repeat: no-repeat;
   background-position: right bottom;
 }
@@ -58,7 +59,7 @@
 @media (min-width: 768px) {
   .currency {
     width: 334px;
-    background-image: url('../../images/Currency/currency_tab.png');
+    background-image: url("../../images/Currency/currency_tab.png");
   }
 
   .currencyShow {
@@ -70,7 +71,7 @@
   .currency {
     width: 348px;
     height: 347px;
-    background-image: url('../../images/Currency/currency_desk.png');
+    background-image: url("../../images/Currency/currency_desk.png");
   }
 
   .currency thead {

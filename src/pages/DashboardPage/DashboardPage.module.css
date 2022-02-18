@@ -1,26 +1,25 @@
-@media screen and (max-width: 767px) {
-  .dashboardPage {
-    padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+.dashboardPage {
+  background-color: var(--main-bcg-color);
+}
 
-    display: block;
-    background-color: var(--main-bcg-color);
-  }
+.navBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex {
+  margin-bottom: 40px;
 }
 
 @media screen and (min-width: 768px) {
   .dashboardPage {
-    display: block;
-
-    margin-left: auto;
-    margin-right: auto;
-
-    padding-left: 40px;
-    padding-top: 30px;
-    padding-right: 40px;
-    /* padding-bottom: 50px; */
-
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--under-wallpaper-bcg-color);
@@ -34,31 +33,29 @@
     } */
   }
 
-  .container {
+  .wrapper {
+    display: inline-block;
+  }
+
+  .flex {
     display: flex;
   }
 
-  .box {
+  .navBox {
+    display: inline-block;
     margin-right: 20px;
   }
 
   .nav {
-    margin-right: 20px;
+    margin-bottom: 20px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .dashboardPage {
     display: flex;
-    width: 1280px;
-
-    padding-left: 86px;
-    padding-top: 40px;
-    padding-right: 86px;
-    padding-bottom: 50px;
 
     background-image: url("../../images/bgi-transaction/desktop/transaction-desktop.jpg");
-
     background-size: 1280px 720px;
 
     /* @media (min-device-pixel-ratio: 2),
@@ -68,13 +65,22 @@
     } */
   }
 
-  .container {
-    /* display: flex; */
-    width: 378px;
-    display: block;
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding-bottom: 35px;
   }
 
-  .box {
+  .flex {
+    flex-direction: column;
+    margin-bottom: 0;
+    margin-right: 60px;
+  }
+
+  .navBox {
+    display: flex;
+    align-items: flex-start;
     margin-bottom: 30px;
     margin-right: 0;
   }
