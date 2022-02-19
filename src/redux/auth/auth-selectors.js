@@ -4,3 +4,5 @@ export const getUserAvatar = (state) => state.auth.user.avatar;
 export const getAuthRefresh = (state) => state.auth.isAuthRefresh;
 export const getBalance = (state) => state.auth.user.balance;
 export const getToken = (state) => state.auth.token;
+export const getTransactionCategories = (state) =>
+  state.auth.user.transactionCategories;

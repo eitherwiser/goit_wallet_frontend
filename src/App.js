@@ -2,6 +2,7 @@ import React, { Suspense, useEffect, lazy } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
+
 import useWindowSize from "./hooks/useWindowSize";
 import { fetchCurrentUser } from "redux/auth/auth-operations";
 import { getAuth, getAuthRefresh, getToken } from "redux/auth/auth-selectors";
@@ -58,6 +59,12 @@ export default function App() {
                 path="/"
                 element={
                   token !== null ? <DashboardPage /> : <Navigate to="/login" />
+                }
+              />
+              <Route
+                path="/"
+                element={
+                  isAuth ? <Navigate replace to="/home" /> : <LoginPage />
                 }
               />
 
