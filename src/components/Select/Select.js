@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
 
+import { getToken } from "redux/auth/auth-selectors";
 import { selectStyles } from "components/Select/selectStyles";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import s from "components/Select/select.module.css";
-// import { getTransactionDate } from "../../redux/transactions/transactions-operations";
+
+import fetchCurrency from "../../services/statistics";
 
 const currentMonth = new Date().getMonth() + 1;
 const months = Array.from({ length: 12 }, (item, i) => {
@@ -25,31 +27,21 @@ for (let i = currentYear; i >= 2018; i--) {
   years.push({ value: i, label: i.toString() });
 }
 
-function TableFilters() {
+function SelectDate({ fetchDate }) {
   const [date, setDate] = useState({
     month: currentMonth,
     year: currentYear,
   });
 
-  const dispatch = useDispatch();
+  const token = useSelector(getToken);
 
-  const updateDate = (name, value) => {
-    setDate((prev) => ({ ...prev, [name]: value }));
+  const updateDate = async (name, value) => {
+    const newDate = { ...date, [name]: value };
+    setDate(newDate);
+    const fetch = await fetchCurrency(token, newDate);
+    fetchDate(fetch);
+    // const obj =fetchCurrency(token, newDate);
   };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  async function updateTransactionForPeriod() {
-    try {
-      await dispatch().unwrap();
-      // getTransactionDate({ month: date.month, year: date.year })
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    updateTransactionForPeriod();
-  }, [date, updateTransactionForPeriod]);
 
   return (
     <div className={s.selectContainer}>
@@ -77,4 +69,4 @@ function TableFilters() {
   );
 }
 
-export default TableFilters;
+export default SelectDate;
