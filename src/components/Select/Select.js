@@ -11,7 +11,7 @@ import s from "components/Select/select.module.css";
 import fetchCurrency from "../../services/statistics";
 
 const currentMonth = new Date().getMonth() + 1;
-const months = Array.from({ length: 12 }, (item, i) => {
+const months = Array.from({ length: 12 }, (_, i) => {
   return format(new Date(0, i), "LLLL", {
     locale: ru,
   });
@@ -19,7 +19,7 @@ const months = Array.from({ length: 12 }, (item, i) => {
 
 const monthOptions = Array(12)
   .fill(null)
-  .map((item, index) => ({ value: index + 1, label: months[index] }));
+  .map((_, index) => ({ value: index + 1, label: months[index] }));
 
 const currentYear = new Date().getFullYear();
 const years = [];

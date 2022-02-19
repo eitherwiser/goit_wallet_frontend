@@ -69,13 +69,16 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding-bottom: 35px;
+    
   }
 
   .flex {
     flex-direction: column;
     margin-bottom: 0;
-    margin-right: 60px;
+    padding-right: 30px;
+    border-right: 1px solid #E7E5F2;
+    box-shadow:  1px 0px 6px -1px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
+    padding-bottom: 35px;
   }
 
   .navBox {

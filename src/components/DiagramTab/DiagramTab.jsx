@@ -14,15 +14,16 @@ export default function DiagramTab({fetchDate, data}) {
         <p className={s.title}>Категория</p> <p className={s.title}>Сумма</p>
       </div>
     
-     <Category  data={data}/>
+    {data.total.Expense !==0 && <Category  data={data}/>}
+    
 
       <div className={s.containerSum}>
         <p className={s.titleSum}>Расходы</p>
-        <span className={s.costs}>{data.total.Expense}</span>
+        <span className={s.costs}>{data.total.Expense.toFixed(2)}</span>
       </div>
       <div className={s.containerSum}>
         <p className={s.titleSum}>Доходы</p>
-        <span className={s.income}>{data.total.Income}</span>
+        <span className={s.income}>{data.total.Income.toFixed(2)}</span>
       </div>
     </>
   );
