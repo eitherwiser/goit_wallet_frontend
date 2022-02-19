@@ -1,28 +1,32 @@
 import Media from "react-media";
-import { useEffect, useState } from "react";
-
-import fetchTransactions from "../../services/transactionsApi";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import TransactionTableMobile from "./TransactionTableMobile";
 import TransactionTable from "./TransactionTable";
+import { getTransactions } from "../../redux/transactions/transactions-selectors";
+import { getAllTransactions } from "../../redux/transactions/transaction-operations";
 
 export default function Table() {
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGQ0MDlhZTBmMzI1MTI0ODE5ZjdiYyIsImlhdCI6MTY0NTA0MzIyMiwiZXhwIjoxNjQ1MDQ2ODIyfQ.-oEWwcuErdGoZOufbnF8jKyalxGM7CvUb4-DUxjrOSY";
-  const [transactions, setTransactions] = useState([]);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    fetchTransactions(token).then(setTransactions);
-    return () => setTransactions([]);
-  }, []);
-  // console.log(transactions);
+    dispatch(getAllTransactions());
+  }, [dispatch]);
+
+  const transactions = useSelector(getTransactions);
+
+  if (!transactions) {
+    return null;
+  }
 
   return (
     <Media query={{ minWidth: 768 }}>
       {(matches) =>
         matches ? (
-          <TransactionTable transactions={transactions.transactions} />
+          <TransactionTable transactions={transactions} />
         ) : (
-          <TransactionTableMobile transactions={transactions.transactions} />
+          <TransactionTableMobile transactions={transactions} />
         )
       }
     </Media>

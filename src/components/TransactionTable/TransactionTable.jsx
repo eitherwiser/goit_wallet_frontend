@@ -4,6 +4,12 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useSelector } from "react-redux";
+
+import { getTransactionCategories } from "../../redux/auth/auth-selectors";
+
+import dateConverter from "../../services/dateConverter";
+import createData from "../../services/createData";
 
 import s from "./TransactionTable.module.css";
 
@@ -27,37 +33,38 @@ const theme = createTheme({
   },
 });
 
-function createData(name, type, category, comment, amount, balance) {
-  return { name, type, category, comment, amount, balance };
-}
-
-const rows = [
-  createData("04.01.19", "-", "Разное", "Подарок жене", 300.0, 6900.0),
-  createData("04.01.20", "-", "Разное", "Подарок жене", 300.0, 6900.0),
-];
-
 export default function TransactionTable({ transactions }) {
-  // console.log(transactions);
+  const transactionCategories = useSelector(getTransactionCategories);
 
-  // const a = transactions.foreach((trans) => {
-  //   createData(trans.date);
-  //   createData(trans.isIncome);
-  //   createData(trans.category);
-  //   createData(trans.comment);
-  //   createData(trans.amount);
-  //   createData(trans.balance);
-  // });
+  const rows = transactions.map((trans) => {
+    const isIncome = trans.isIncome ? "+" : "-";
+    const fullDate = dateConverter(trans.date);
 
-  // console.log(a);
+    const transactionName = transactionCategories.find(
+      (el) => el.id === trans.categoryId
+    );
+
+    const arrRow = createData(
+      fullDate,
+      isIncome,
+      transactionName.name,
+      trans.comment,
+      trans.amount,
+      trans.balance
+    );
+    return arrRow;
+  });
+
+  // if (!arrRow) {
+  //   return null;
+  // }
+
   return (
     <div className={s.table}>
       <ThemeProvider theme={theme}>
         <Table aria-label="transacti table">
           <TableHead
             sx={{
-              // "& .MuiTableCell-root.MuiTable-root": {
-              //   width: "700px",
-              // },
               "& .MuiTableCell-root:first-of-type": {
                 borderTopLeftRadius: "30px",
                 borderBottomLeftRadius: "30px",
@@ -78,9 +85,9 @@ export default function TransactionTable({ transactions }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {rows.map((row, idx) => (
               <TableRow
-                key={row.name}
+                key={idx}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
