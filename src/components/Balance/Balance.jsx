@@ -8,7 +8,7 @@ export default function Balance() {
   return (
     <div className={s.balance}>
       <div className={s.label}>Ваш баланс</div>
-      <div className={s.amount}>&#x20b4; {balance}</div>
+      <div className={s.amount}>&#x20b4; {balance.toFixed(2)}</div>
     </div>
   );
 }

@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 
 import { getTransactionCategories } from "../../redux/auth/auth-selectors";
 
+import NoTransactions from "../NoTransactions/NoTransactions";
+
 import dateConverter from "../../services/dateConverter";
 import createData from "../../services/createData";
 
@@ -55,9 +57,9 @@ export default function TransactionTable({ transactions }) {
     return arrRow;
   });
 
-  // if (!arrRow) {
-  //   return null;
-  // }
+  if (rows[0] === undefined) {
+    return <NoTransactions />;
+  }
 
   return (
     <div className={s.table}>
@@ -88,7 +90,9 @@ export default function TransactionTable({ transactions }) {
             {rows.map((row, idx) => (
               <TableRow
                 key={idx}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                sx={{
+                  "&:last-child td, &:last-child th": { border: 0 },
+                }}
               >
                 <TableCell component="th" scope="row">
                   {row.name}
@@ -96,8 +100,16 @@ export default function TransactionTable({ transactions }) {
                 <TableCell align="center">{row.type}</TableCell>
                 <TableCell align="center">{row.category}</TableCell>
                 <TableCell align="center">{row.comment}</TableCell>
-                <TableCell align="center">{row.amount}</TableCell>
-                <TableCell align="center">{row.balance}</TableCell>
+                <TableCell
+                  sx={{
+                    color: row.type === "-" ? "#24CCA7" : "#FF6596",
+                    fontWeight: 700,
+                  }}
+                  align="center"
+                >
+                  {row.amount.toFixed(2)}
+                </TableCell>
+                <TableCell align="center">{row.balance.toFixed(2)}</TableCell>
               </TableRow>
             ))}
           </TableBody>

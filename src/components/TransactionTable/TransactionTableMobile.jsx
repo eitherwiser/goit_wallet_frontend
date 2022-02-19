@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 
 import { getTransactionCategories } from "../../redux/auth/auth-selectors";
 
+import NoTransactions from "../NoTransactions/NoTransactions";
+
 import dateConverter from "../../services/dateConverter";
 import createData from "../../services/createData";
 
@@ -39,18 +41,21 @@ export default function TransactionTableMobile({ transactions }) {
       (el) => el.id === trans.categoryId
     );
 
-    // console.log(transactionName.color);
-
     const arrCol = createData(
       fullDate,
       isIncome,
       transactionName.name,
       trans.comment,
-      trans.amount,
-      trans.balance
+      trans.amount.toFixed(2),
+      trans.balance.toFixed(2)
     );
+
     return arrCol;
   });
+
+  if (column[0] === undefined) {
+    return <NoTransactions />;
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -61,10 +66,10 @@ export default function TransactionTableMobile({ transactions }) {
             maxWidth: 480,
             mb: 10,
             borderCollapse: "initial",
-            borderLeft: "5px solid #FF6596",
-            // borderLeft: `5px solid ${transactionName.color}`,
+            borderLeft:
+              col.type === "-" ? "5px solid #24CCA7" : "5px solid #FF6596",
             borderRadius: "10px",
-            marginBottom: "10px",
+            margin: "0 auto 10px",
           }}
         >
           <TableBody>
@@ -92,7 +97,15 @@ export default function TransactionTableMobile({ transactions }) {
             </TableRow>
             <TableRow>
               <TableCell align="left">Сумма</TableCell>
-              <TableCell align="right">{col.amount}</TableCell>
+              <TableCell
+                sx={{
+                  color: col.type === "-" ? "#24CCA7" : "#FF6596",
+                  fontWeight: 700,
+                }}
+                align="right"
+              >
+                {col.amount}
+              </TableCell>
             </TableRow>
             <TableRow
               sx={{
