@@ -1,39 +1,79 @@
-import React, { useEffect, useState } from "react";
-import { CSSTransition } from "react-transition-group";
+import { useCallback, Fragment } from 'react';
+import Media from 'react-media';
+import { createPortal } from 'react-dom';
 
-import s from "./ButtonAddTransactions.module.css";
+import { useDispatch, useSelector } from 'react-redux';
 
-const ButtonAddTransactions = () => {
-  const [Loaded, setLoaded] = useState();
+import s from './ButtonAddTransactions.module.css';
+import { globalAction, globalSelectors } from '../../redux/global';
 
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
+import AddIcon from '@material-ui/icons/Add';
+
+import Modal from '../ModalAddTransaction/ModalAddTransaction';
+// import FormAddTransactions from '../ModalAddTransactions/FormAddTransactions';
+
+const rootModal = document.getElementById('root-modal');
+
+export default function ButtonAddTransaction() {
+  const dispatch = useDispatch();
+
+  const modal = useSelector(globalSelectors.getModalValue);
+
+  const closeModal = useCallback(
+    () => dispatch(globalAction.closeModal()),
+    [dispatch],
+  );
+
+  const openModal = useCallback(
+    () => dispatch(globalAction.openModal()),
+    [dispatch],
+  );
 
   return (
-    <CSSTransition
-      in={Loaded}
-      timeout={500}
-      classNames={{
-        enterActive: `${s.buttonShow}`,
-        enterDone: `${s.buttonBounce}`,
-      }}
-      mountOnEnter
-    >
-      <button type="button" className={s.button}>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M10 0V20" stroke="white" strokeWidth="2" />
-          <path d="M0 10L20 10" stroke="white" strokeWidth="2" />
-        </svg>
+    <>
+      <button
+        className={s.button}
+        type="button"
+        name="addOperation"
+        onClick={openModal}
+      >
+        <AddIcon className={s.buttonIcon} fontSize="large" />
       </button>
-    </CSSTransition>
-  );
-};
 
-export default ButtonAddTransactions;
+      <>
+        <Media
+          queries={{
+            small: '(max-width: 549px)',
+            medium: '(min-width: 549px)',
+          }}
+        >
+          {matches => (
+            <Fragment>
+              {matches.small &&
+                createPortal(
+                  <>
+                    {modal && (
+                      <div className={s.modalMobile}>
+                        {/* <FormAddTransactions /> */}
+                      </div>
+                    )}
+                  </>,
+                  rootModal,
+                )}
+
+              {matches.medium && (
+                <>
+                  {modal && (
+                    <Modal modalValue={modal} modalAction={closeModal}>
+                      {/* <FormAddTransactions /> */}
+                    </Modal>
+                  )}
+                </>
+              )}
+            </Fragment>
+          )}
+        </Media>
+      </>
+    </>
+  );
+}
