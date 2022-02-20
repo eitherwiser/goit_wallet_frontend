@@ -10,15 +10,38 @@ export default function CurrencyTable() {
   const [currency, setCurrency] = useState([]);
   const [Loaded, setLoaded] = useState();
 
+  // standart
+  // useEffect(() => {
+  //   const fetchCurrency = async () => {
+  //     const data = await currencyApi.fetchCurrency();
+  //     const filtredCurrencies = [];
+  //     currencies.forEach(currency => {
+  //       data.forEach(element => {
+  //         parseInt(element.buy).toFixed(2);
+  //         if (element.ccy === currency) {
+  //           filtredCurrencies.push({
+  //             ccy: element.ccy,
+  //             buy: Number(element.buy).toFixed(2),
+  //             sale: Number(element.sale).toFixed(2),
+  //           });
+  //         }
+  //       });
+  //     });
+  //     setCurrency(filtredCurrencies);
+  //   };
+  //   fetchCurrency();
+  // }, []);
+
+  // bonus
   useEffect(() => {
     const fetchCurrency = async () => {
       const data = await currencyApi.fetchCurrency();
-      const filteredCurrencies = [];
+      const filtredCurrencies = [];
       currencies.forEach(currency => {
         data.forEach(element => {
           parseInt(element.buy).toFixed(2);
           if (element.ccy === currency) {
-            filteredCurrencies.push({
+            filtredCurrencies.push({
               ccy: element.ccy,
               buy: Number(element.buy).toFixed(2),
               sale: Number(element.sale).toFixed(2),
@@ -26,8 +49,8 @@ export default function CurrencyTable() {
           }
         });
       });
-      setCurrency(filteredCurrencies);
-      localStorage.setItem('currency', JSON.stringify(filteredCurrencies));
+      setCurrency(filtredCurrencies);
+      localStorage.setItem('currency', JSON.stringify(filtredCurrencies));
       localStorage.setItem('currencyTime', Date.now());
     };
     let currencyLS = JSON.parse(localStorage.getItem('currency'));
@@ -64,9 +87,9 @@ export default function CurrencyTable() {
           <table>
             <thead>
               <tr>
-                <td>Валюта</td>
-                <td>Покупка</td>
-                <td>Продажа</td>
+                <td>Currency</td>
+                <td>Sell</td>
+                <td>Buy</td>
               </tr>
             </thead>
             <tbody>
