@@ -21,10 +21,10 @@ function ModalLogout({ onModalClose, onOwerlayClose, onUserLogOut }) {
     <div className={s.overlay} onClick={onOwerlayClose}>
       <div className={s.modal}>
         <p className={s.title}>Вы действительно хотите выйти?</p>
-        <button className={s.cansellBtn} type='button' onClick={onModalClose}>
+        <button className={s.cansellBtn} type="button" onClick={onModalClose}>
           НЕТ
         </button>
-        <button className={s.agreeBtn} type='button' onClick={onUserLogOut}>
+        <button className={s.agreeBtn} type="button" onClick={onUserLogOut}>
           ДА
         </button>
         <button className={s.closeBtn} onClick={onModalClose}>
@@ -33,7 +33,7 @@ function ModalLogout({ onModalClose, onOwerlayClose, onUserLogOut }) {
             src={closeIcon}
             width={12}
             height={12}
-            alt=''
+            alt=""
           />
         </button>
       </div>

@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { addTransaction, getAllTransactions } from "./transaction-operations";
-const transaction = createReducer([], {
+const items = createReducer([], {
   [addTransaction.fulfilled]: (state, { payload }) => [...state, payload],
   [getAllTransactions.fulfilled]: (_, { payload }) => payload,
 });
@@ -15,6 +15,6 @@ const isLoading = createReducer(false, {
   [getAllTransactions.rejected]: () => false,
 });
 export default combineReducers({
-  transaction,
+  items,
   isLoading,
 });

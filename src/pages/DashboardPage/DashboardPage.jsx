@@ -45,7 +45,6 @@ export default function DashboardPage() {
           </div>
         </Container>
       </div>
-
     </>
   );
 }

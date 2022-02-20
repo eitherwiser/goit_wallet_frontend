@@ -32,7 +32,7 @@ export const getAllTransactions = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get("/transactions");
-      return data;
+      return data.transactions;
     } catch (err) {
       if (err.response.status === 401) {
         return rejectWithValue(
