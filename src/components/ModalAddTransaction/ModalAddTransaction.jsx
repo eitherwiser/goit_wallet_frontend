@@ -1,47 +1,72 @@
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
-import Datetime from 'react-datetime';
-import classNames from 'classnames';
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
 
+import classNames from "classnames";
 
-import { ReactComponent as IncomeIcon } from '../../images/modal-transaction/income.svg';
-import { ReactComponent as ConsumptionIcon } from '../../images/modal-transaction/consumption.svg';
+import DatePicker from "@mui/lab/DatePicker";
+import * as React from "react";
 
-import s from './ModalAddTransaction.module.css';
-import vh from '../../stylesheet/visuallyHidden.module.css';
+import ruLocale from "date-fns/locale/ru";
 
-import { useState } from "react";
+import TextField from "@mui/material/TextField";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+// import { ReactComponent as IncomeIcon } from "../../images/modal-transaction/income.svg";
+// import { ReactComponent as ConsumptionIcon } from "../../images/modal-transaction/consumption.svg";
+
+import s from "./ModalAddTransaction.module.css";
+import vh from "../../stylesheet/visuallyHidden.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addTransaction } from "redux/transactions/transaction-operations";
+import { useState, useEffect } from "react";
+
+import { getTransactionCategories } from "redux/auth/auth-selectors";
 
 const validationSchema = Yup.object().shape({
-  sum: Yup.number()
-    .typeError('Должно быть числом')
-    .required('Обязательное поле'),
+  amount: Yup.number()
+    .typeError("Должно быть числом")
+    .required("Обязательное поле"),
   comment: Yup.string(),
 });
+const localeMap = {
+  ru: ruLocale,
+};
 
+const maskMap = {
+  fr: "__/__/____",
+  en: "__/__/____",
+  ru: "__.__.____",
+  de: "__.__.____",
+};
 export default function ModalAddTransaction() {
+  let locale = "ru";
+  const [value, setValue] = React.useState(Date.now());
 
-  const [checkboxChecked, setCheckboxChecked] = useState(true);
-
+  const allCategories = useSelector(getTransactionCategories);
   const dispatch = useDispatch();
-  const handleSubmit = ({ checkbox, category, date, sum, comment }) => {
-    console.log(checkbox, category, date, sum, comment);
-    // dispatch({ checkbox, category, date, sum, comment });
-  };
 
+  const handleSubmit = ({ date, isIncome, amount, comment, categoryId }) => {
+    console.log(date, isIncome, amount, comment, categoryId);
+    dispatch(addTransaction({ date, isIncome, amount, comment, categoryId }));
+  };
 
   return (
     <Formik
       initialValues={{
-        sum: '',
-        comment: '',
+        date: value,
+        isIncome: false,
+        amount: "",
+        comment: "",
+        categoryId: "",
       }}
       validateOnBlur
-      onSubmit={values => {
-        console.log(values);
+      onSubmit={(values, { resetForm }) => {
+        handleSubmit(values);
+        resetForm();
       }}
-      validationSchema={validationSchema}>
+      validationSchema={validationSchema}
+    >
       {({
         values,
         errors,
@@ -49,107 +74,94 @@ export default function ModalAddTransaction() {
         handleChange,
         handleBlur,
         isValid,
-        handleSubmit,
+
         dirty,
       }) => (
         <div className={s.formBox}>
           <Form>
             <div className={s.form}>
               <b className={s.modalDescription}>Добавить транзакцию</b>
-              <div className={s.boxCheckbox}>
-                <p className={s.income}>Доход</p>
-                {/* <IncomeIcon /> */}
-                <input
-                  type={`checkbox`}
-                  id={`check`}
-                  className={classNames(s.checkbox, vh.visuallyHidden)}
-                />
-                <label htmlFor={`check`} className={s.checkLabel}></label>
-                {/* <ConsumptionIcon /> */}
-                <p className={s.consumption}>Расход</p>
-
-              </div>
-
- {/*               <p className={s.categoryText}> Выберите категорию</p>
-              {/* <label className={s.span}>
-                <span className={s.categoryText}>Выберите категорию</span> */}
-*/}
-{/*              <select className={s.category}>
-                <option></option>
-                <option>Основной</option>
-                <option>Еда</option>
-                <option>Авто</option>
-                <option>Развитие</option>
-                <option>Дети</option>
-                <option>Дом</option>
-                <option>Образование</option>
-                <option>Остальное</option>
-              </select>
-              {/* </label> */}
-*/}
 
               <div className={s.switch__container}>
                 <div className={s.switch__control}>
                   <input
                     className={s.switch__toggle}
-                    type={`checkbox`}
+                    type="checkbox"
                     id={`switch-toggle`}
-                    name={`checkbox`}
-                    checked={checkboxChecked}
-                    onChange={(event) => {
-                      setCheckboxChecked(event.target.checked);
-                    }}
+                    name="isIncome"
                     onBlur={handleBlur}
-                    value={values.checkbox}
+                    value={values.isIncome}
+                    onChange={handleChange}
                   />
                   <label
                     className={s.switch__track}
-                    htmlFor={`switch-toggle`}></label>
+                    htmlFor={`switch-toggle`}
+                  ></label>
                   <div className={s.switch__marker}></div>
                   <p className={s.switchIncome}>Доход</p>
                   <p className={s.switchCosts}>Расход</p>
                 </div>
               </div>
 
-              {checkboxChecked && (
+              {values.isIncome === true && (
                 <label className={s.span} htmlFor={`category`}>
                   {/* <span className={s.categoryText}>Выберите категорию</span> */}
                   <select
-                    placeholder='Выберите категорию'
+                    // placeholder="Выберите категорию"
                     className={s.category}
-                    name={`category`}
+                    name="categoryId"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.category}>
-                    <option>Выберите категорию</option>
-                    <option>Основной</option>
-                    <option>Еда</option>
-                    <option>Авто</option>
-                    <option>Развитие</option>
-                    <option>Дети</option>
-                    <option>Дом</option>
-                    <option>Образование</option>
-                    <option>Остальное</option>
+                    value={values.categoryId}
+                  >
+                    <option value="0" key={"1"}>
+                      Выберите категорию
+                    </option>
+                    {allCategories.map(({ name, id }) => {
+                      return (
+                        <option key={id} value={id}>
+                          {name}
+                        </option>
+                      );
+                    })}
                   </select>
                 </label>
               )}
 
               <div className={s.subBox}>
-                {touched.sum && errors.sum && (
-                  <span className={s.error}>{errors.sum}</span>
+                {touched.amount && errors.amount && (
+                  <span className={s.error}>{errors.amount}</span>
                 )}
                 <input
                   className={s.sum}
                   type={`number`}
-                  name={`sum`}
-                  placeholder='0.00'
+                  name={`amount`}
+                  placeholder="0.00"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.sum}
+                  value={values.amount}
                 />
-                <input className={s.date} type={`date`} />
-                {/* Date.now()*/}
-                {/* Datetime */}
+                {/* <input
+                  value={values.date}
+                  type="date"
+                  name="date"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  required
+                /> */}
+                <LocalizationProvider
+                  dateAdapter={AdapterDateFns}
+                  locale={localeMap[locale]}
+                >
+                  <div>
+                    <DatePicker
+                      mask={maskMap[locale]}
+                      value={value}
+                      onChange={(newValue) => setValue(newValue)}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </div>
+                </LocalizationProvider>
               </div>
 
               {touched.comment && errors.comment && (
@@ -159,7 +171,7 @@ export default function ModalAddTransaction() {
                 className={s.comment}
                 name={`comment`}
                 type={`text`}
-                placeholder='Комментарий'
+                placeholder="Комментарий"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.comment}
@@ -168,21 +180,15 @@ export default function ModalAddTransaction() {
               <button
                 className={classNames(s.btn, s.btnAdd)}
                 type={`submit`}
-
-             {/*   onClick={handleSubmit} */}
-
-                disabled={!isValid || !dirty}>
-
+                disabled={!isValid || !dirty}
+              >
                 Добавить
               </button>
               <button
                 className={classNames(s.btn, s.btnCancel)}
                 type={`submit`}
-
-              {/* onClick={handleSubmit} */}
-
-                disabled={!isValid || !dirty}>
-
+                disabled={!isValid || !dirty}
+              >
                 Отмена
               </button>
             </div>
