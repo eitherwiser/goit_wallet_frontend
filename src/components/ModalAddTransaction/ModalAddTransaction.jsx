@@ -1,41 +1,49 @@
-import { useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import Datetime from "react-datetime";
+// import moment from "moment";
 import classNames from "classnames";
-//import Datetime from "react-datetime";
+
+import { addTransaction } from "redux/transactions/transaction-operations";
+import { getTransactionCategories } from "../../redux/auth/auth-selectors";
+
+import { ReactComponent as DateIcon } from "../../images/modal-transaction/date.svg";
 
 import s from "./ModalAddTransaction.module.css";
-//import vh from "stylesheet/visuallyHidden.module.css";
 
 const validationSchema = Yup.object().shape({
-  sum: Yup.number()
+  amount: Yup.number()
     .typeError("Должно быть числом")
     .required("Обязательное поле"),
   comment: Yup.string(),
 });
 
-export default function ModalAddTransaction() {
-  const [checkboxChecked, setCheckboxChecked] = useState(true);
+// var yesterday = moment().subtract(1, "day");
+// function valid(current) {
+//   return current.isAfter(yesterday);
+// }
 
-  const handleSubmit = ({ checkbox, category, date, sum, comment }) => {
-    console.log(checkbox, category, date, sum, comment);
-    // dispatch({ checkbox, category, date, sum, comment });
+export default function ModalAddTransaction() {
+  const allCategories = useSelector(getTransactionCategories);
+  const dispatch = useDispatch();
+  const handleSubmit = ({ isIncome, categoryId, date, amount, comment }) => {
+    dispatch(addTransaction({ isIncome, categoryId, date, amount, comment }));
   };
 
   return (
     <Formik
       initialValues={{
-        checkbox: false,
-        category: "",
-        date: "",
-        sum: "",
+        isIncome: false,
+        categoryId: "",
+        date: Date.now(),
+        amount: "",
         comment: "",
       }}
       validateOnBlur
       onSubmit={(values, { resetForm }) => {
         handleSubmit(values);
         resetForm();
-        // console.log(values);
       }}
       validationSchema={validationSchema}
     >
@@ -46,41 +54,22 @@ export default function ModalAddTransaction() {
         handleChange,
         handleBlur,
         isValid,
-        handleSubmit,
         dirty,
       }) => (
         <div className={s.formBox}>
           <Form>
             <div className={s.form}>
               <b className={s.modalDescription}>Добавить транзакцию</b>
-
-              {/* <div className={s.boxCheckbox}>
-                <p className={s.income}>Доход</p>
-                <input
-                  type={`checkbox`}
-                  id={`check`}
-                  className={classNames(s.checkbox, vh.visuallyHidden)}
-                  name={`checkbox`}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.checkbox}
-                />
-                <label htmlFor={`check`} className={s.checkLabel}></label>
-                <p className={s.consumption}>Расход</p>
-              </div> */}
               <div className={s.switch__container}>
                 <div className={s.switch__control}>
                   <input
                     className={s.switch__toggle}
                     type={`checkbox`}
                     id={`switch-toggle`}
-                    name={`checkbox`}
-                    checked={checkboxChecked}
-                    onChange={(event) => {
-                      setCheckboxChecked(event.target.checked);
-                    }}
+                    name={`isIncome`}
+                    onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.checkbox}
+                    value={values.isIncome}
                   />
                   <label
                     className={s.switch__track}
@@ -92,51 +81,65 @@ export default function ModalAddTransaction() {
                 </div>
               </div>
 
-              {checkboxChecked && (
+              {values.isIncome && (
                 <label className={s.span} htmlFor={`category`}>
-                  {/* <span className={s.categoryText}>Выберите категорию</span> */}
                   <select
                     placeholder="Выберите категорию"
                     className={s.category}
-                    name={`category`}
+                    name={`categoryId`}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.category}
+                    value={values.categoryId}
                   >
-                    <option>Выберите категорию</option>
-                    <option>Основной</option>
-                    <option>Еда</option>
-                    <option>Авто</option>
-                    <option>Развитие</option>
-                    <option>Дети</option>
-                    <option>Дом</option>
-                    <option>Образование</option>
-                    <option>Остальное</option>
+                    <option value="0" key={"1"} disabled>
+                      Выберите категорию
+                    </option>
+                    {allCategories.map(({ name, id }) => {
+                      return (
+                        <option key={id} value={id}>
+                          {name}
+                        </option>
+                      );
+                    })}
                   </select>
                 </label>
               )}
 
               <div className={s.subBox}>
-                {touched.sum && errors.sum && (
-                  <span className={s.error}>{errors.sum}</span>
+                {touched.amount && errors.amount && (
+                  <span className={s.error}>{errors.amount}</span>
                 )}
                 <input
                   className={s.sum}
                   type={`number`}
-                  name={`sum`}
+                  name={`amount`}
                   placeholder="0.00"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.sum}
+                  value={values.amount}
                 />
-                <input
-                  className={s.date}
+                {/* <input
+                  value={values.date}
                   type={`date`}
                   name={`date`}
                   onBlur={handleBlur}
                   onChange={handleChange}
+                  dateFormat={"DD.MM.YYY"}
+                /> */}
+                <Datetime
+                  className={s.date}
+                  type={`date`}
+                  name={`date`}
+                  input={true}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  dateFormat={"DD.MM.YYY"}
+                  timeFormat={false}
                   value={values.date}
+                  // isValidDate={valid}
+                  // renderInput={renderInput}
                 />
+                <DateIcon className={s.dateIcon} />
               </div>
 
               {touched.comment && errors.comment && (
