@@ -1,9 +1,21 @@
+
+
 .chart {
+  position: relative;
  width: 320px;
 height: 320px;
  margin: 0 auto;
 }
+.total{
+  position: absolute;
+   top:150px;
+   left:100px;
+   font-weight: 800;
+   font-size: 18px;
+ }
+ 
 .mainTitle {
+
   margin-top: 30px;
   font-size: 30px;
   line-height: 1.5;
@@ -27,6 +39,7 @@ padding-right: 20px;
   margin: 0 auto;
 }
  @media screen and (min-width: 769px) {
+
 .rightContainer {
    display: flex; 
   justify-content: space-between; 
@@ -35,6 +48,8 @@ padding-right: 20px;
 } 
 
 @media screen and (min-width: 769px) {
+ 
+  
   .rightContainer {
     display: flex; 
     justify-content: space-between; 

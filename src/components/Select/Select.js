@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
@@ -40,8 +40,10 @@ function SelectDate({ fetchDate }) {
     setDate(newDate);
     const fetch = await fetchCurrency(token, newDate);
     fetchDate(fetch);
-    // const obj =fetchCurrency(token, newDate);
   };
+  useEffect(() => {
+    updateDate();
+  }, []);
 
   return (
     <div className={s.selectContainer}>
