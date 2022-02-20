@@ -18,7 +18,6 @@ import { ReactComponent as DateIcon } from "../../images/modal-transaction/date.
 
 import s from "./ModalAddTransaction.module.css";
 
-
 const validationSchema = Yup.object().shape({
   amount: Yup.number()
     .typeError("Должно быть числом")
@@ -26,12 +25,11 @@ const validationSchema = Yup.object().shape({
   comment: Yup.string(),
 });
 
-
 // var yesterday = moment().subtract(1, "day");
 // function valid(current) {
 //   return current.isAfter(yesterday);
 // }
-  const localeMap = {
+const localeMap = {
   ru: ruLocale,
 };
 
@@ -43,7 +41,7 @@ const maskMap = {
 };
 
 export default function ModalAddTransaction({ modalAction }) {
-    let locale = "ru";
+  let locale = "ru";
   const [value, setValue] = React.useState(Date.now());
   const allCategories = useSelector(getTransactionCategories);
   const dispatch = useDispatch();
@@ -80,7 +78,6 @@ export default function ModalAddTransaction({ modalAction }) {
         amount: "",
         comment: "",
         categoryId: "",
-
       }}
       validateOnBlur
       onSubmit={(values, { resetForm }) => {
@@ -96,8 +93,6 @@ export default function ModalAddTransaction({ modalAction }) {
         handleChange,
         handleBlur,
         isValid,
-
-
         dirty,
       }) => (
         <div className={s.formBox}>
@@ -105,30 +100,28 @@ export default function ModalAddTransaction({ modalAction }) {
             <div className={s.form}>
               <b className={s.modalDescription}>Добавить транзакцию</b>
 
-
-                <div className={s.subBox}>
-                  {touched.amount && errors.amount && (
-                    <span className={s.error}>{errors.amount}</span>
-                  )}
-                  <input
-
-                    className={s.switch__toggle}
-                    type="checkbox"
-                    id={`switch-toggle`}
-                    name="isIncome"
-                    onBlur={handleBlur}
-                    value={values.isIncome}
-                    onChange={handleChange}
-                  />
-                  <label
-                    className={s.switch__track}
-                    htmlFor={`switch-toggle`}
-                  ></label>
-                  <div className={s.switch__marker}></div>
-                  <p className={s.switchIncome}>Доход</p>
-                  <p className={s.switchCosts}>Расход</p>
-                </div>
+              <div className={s.subBox}>
+                {touched.amount && errors.amount && (
+                  <span className={s.error}>{errors.amount}</span>
+                )}
+                <input
+                  className={s.switch__toggle}
+                  type="checkbox"
+                  id={`switch-toggle`}
+                  name="isIncome"
+                  onBlur={handleBlur}
+                  value={values.isIncome}
+                  onChange={handleChange}
+                />
+                <label
+                  className={s.switch__track}
+                  htmlFor={`switch-toggle`}
+                ></label>
+                <div className={s.switch__marker}></div>
+                <p className={s.switchIncome}>Доход</p>
+                <p className={s.switchCosts}>Расход</p>
               </div>
+              {/*</div>*/}
 
               {values.isIncome === true && (
                 <label className={s.span} htmlFor={`category`}>
@@ -204,21 +197,22 @@ export default function ModalAddTransaction({ modalAction }) {
                 value={values.comment}
               />
 
-                 <button
-                  className={classNames(s.btn, s.btnAdd)}
-                  type={`submit`}
-                  disabled={!isValid || !dirty}>
-                  Добавить
-                </button>
-                <button
-                  onClick={modalAction}
-                  className={classNames(s.btn, s.btnCancel)}
-                  type='button'>
-                  Отмена
-                </button>
+              <button
+                className={classNames(s.btn, s.btnAdd)}
+                type={`submit`}
+                disabled={!isValid || !dirty}
+              >
+                Добавить
+              </button>
+              <button
+                onClick={modalAction}
+                className={classNames(s.btn, s.btnCancel)}
+                type="button"
+              >
+                Отмена
+              </button>
             </div>
           </Form>
-
         </div>
       )}
     </Formik>
