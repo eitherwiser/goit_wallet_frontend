@@ -17,9 +17,7 @@ export default function Navigation() {
     <nav className={s.nav}>
       <NavLink
         to="/home"
-        className={s.link}
-        // activeClassName={s.activeLink}
-        // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+        className={({ isActive }) => (isActive ? s.activeLink : s.link)}
       >
         <HomeImgMob className={s.navImgMob} />
         <HomeImgTab className={s.navImgTab} />
@@ -28,11 +26,7 @@ export default function Navigation() {
 
       <NavLink
         to="/diagram"
-        className={s.link}
-        // activeClassName={s.activeLink}
-        // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
-        //Exchange
-        //Rates
+        className={({ isActive }) => (isActive ? s.activeLink : s.link)}
       >
         <StatisticsImgMob className={s.navImgMob} />
         <StatisticsImgTab className={s.navImgTab} />
@@ -44,9 +38,7 @@ export default function Navigation() {
         render={() => (
           <NavLink
             to="/exchangeRates"
-            className={s.link}
-            // activeClassName={s.activeLink}
-            // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+            className={({ isActive }) => (isActive ? s.activeLink : s.link)}
           >
             <PbImgMob className={s.navImgMob} />
           </NavLink>
