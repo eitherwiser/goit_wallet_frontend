@@ -46,37 +46,25 @@ export default function App() {
           <Suspense fallback={<LoaderComponent />}>
             <Routes>
               <Route
+                exact
                 path="login"
                 element={isAuth ? <Navigate to="/" /> : <LoginPage />}
+              />
+              <Route
                 exact
-              />
-              <Route
-                path="verify/:verificationToken"
-                element={<VerifyPage />}
-              />
-              <Route path="register" element={<RegisterPage />} />
-              <Route
-                path="/"
-                element={
-                  token !== null ? <DashboardPage /> : <Navigate to="/login" />
-                }
-              />
-              <Route
-                path="/"
-                element={
-                  isAuth ? <Navigate replace to="/home" /> : <LoginPage />
-                }
+                path="register"
+                element={isAuth ? <Navigate to="/" /> : <RegisterPage />}
               />
 
               <Route
-                exact
                 path="/"
                 element={
-                  !isAuth ? <Navigate replace to="/login" /> : <DashboardPage />
+                  isAuth ? <DashboardPage /> : <Navigate replace to="/login" />
                 }
               >
+                <Route index element={<Navigate replace to="/home" />} />
                 <Route path="home" element={<Table />} />
-                <Route path="diagram" element={<Chart />} />{" "}
+                <Route path="diagram" element={<Chart />} />
                 <Route
                   path="exchangeRates"
                   element={
@@ -88,6 +76,11 @@ export default function App() {
                   }
                 />
               </Route>
+
+              <Route
+                path="verify/:verificationToken"
+                element={<VerifyPage />}
+              />
             </Routes>
           </Suspense>
         </>

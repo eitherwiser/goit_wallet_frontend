@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import s from "./VerifyPage.module.css";
 import { useParams } from "react-router-dom";
-axios.defaults.baseURL = "https://goit-34-wallet.herokuapp.com/api";
+
+import s from "./VerifyPage.module.css";
+
+axios.defaults.baseURL = "https://goit-34-wallet.herokuapp.com/api/";
+
 export default function VerifyPage() {
   let { verificationToken } = useParams();
   const verify = async (token) => {
     try {
-      const { data } = await axios.get(`/users/verify/${token}`);
+      const { data } = await axios.get(`users/verify/${token}`);
       console.log(data);
       if (!data) {
         return;
@@ -25,6 +28,7 @@ export default function VerifyPage() {
   useEffect(() => {
     verify(verificationToken);
   }, [verificationToken]);
+
   return (
     <>
       <div className={s.backdrop}>
