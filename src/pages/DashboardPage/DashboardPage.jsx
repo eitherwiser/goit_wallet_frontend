@@ -2,16 +2,15 @@ import Media from "react-media";
 import { Outlet } from "react-router-dom";
 
 import Navigation from "components/Navigation/Navigation";
-import MobileNavigation from "components/MobileNavigation/MobileNavigation";
+
+// import MobileNavigation from "components/MobileNavigation/MobileNavigation";
 import Balance from "components/Balance/Balance";
 import CurrencyTable from "components/Currency/Currency";
-
-import s from "./DashboardPage.module.css";
-
 import Container from "components/Container/Container";
 import Header from "components/Header/Header";
 import ButtonAddTransactions from "components/ButtonAddTransactions/ButtonAddTransactions";
-import ModalAddTransaction from "components/ModalAddTransaction/ModalAddTransaction";
+
+import s from "./DashboardPage.module.css";
 
 export default function DashboardPage() {
   return (
@@ -25,22 +24,13 @@ export default function DashboardPage() {
           <div className={s.wrapper}>
             <div className={s.flex}>
               <div className={s.navBox}>
-                <div className={s.nav}>
-                  <Navigation />
-
-                  {/* ОКСАНА */}
-                  {/* {
-
-
-            <Media
-              query="(max-width: 768px)"
-              render={() => <MobileNavigation />}
-            />
-          } */}
-
-                  {/* ОКСАНА */}
-                </div>
-
+                {/* <div className={s.nav}> */}
+                <Navigation />
+                {/* <Media
+                    query="(max-width: 768px)"
+                    render={() => <MobileNavigation />}
+                  /> */}
+                {/* </div> */}
                 <Balance />
                 <ButtonAddTransactions />
               </div>
@@ -51,13 +41,11 @@ export default function DashboardPage() {
                 />
               }
             </div>
-            {/* <Media query="(min-width: 768px)" render={() => <TransactionTable />} /> */}
             <Outlet />
           </div>
         </Container>
       </div>
 
-      <ModalAddTransaction />
     </>
   );
 }

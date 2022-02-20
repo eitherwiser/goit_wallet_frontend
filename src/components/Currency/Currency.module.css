@@ -3,6 +3,7 @@
 
   width: 280px;
   height: 174px;
+  margin: 0 auto; /*Добавлено не не автором*/
   margin-top: 30px;
   border-radius: 30px;
   color: var(--light-text-color);

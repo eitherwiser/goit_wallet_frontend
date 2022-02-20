@@ -1,27 +1,23 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-
+import { useDispatch, useSelector } from "react-redux";
+import Datetime from "react-datetime";
+// import moment from "moment";
 import classNames from "classnames";
-
 import DatePicker from "@mui/lab/DatePicker";
 import * as React from "react";
-
 import ruLocale from "date-fns/locale/ru";
-
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-// import { ReactComponent as IncomeIcon } from "../../images/modal-transaction/income.svg";
-// import { ReactComponent as ConsumptionIcon } from "../../images/modal-transaction/consumption.svg";
+import { addTransaction } from "redux/transactions/transaction-operations";
+import { getTransactionCategories } from "../../redux/auth/auth-selectors";
+import { useEffect } from "react";
+
+import { ReactComponent as DateIcon } from "../../images/modal-transaction/date.svg";
 
 import s from "./ModalAddTransaction.module.css";
-import vh from "../../stylesheet/visuallyHidden.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { addTransaction } from "redux/transactions/transaction-operations";
-import { useState, useEffect } from "react";
 
-import { getTransactionCategories } from "redux/auth/auth-selectors";
 
 const validationSchema = Yup.object().shape({
   amount: Yup.number()
@@ -29,7 +25,13 @@ const validationSchema = Yup.object().shape({
     .required("Обязательное поле"),
   comment: Yup.string(),
 });
-const localeMap = {
+
+
+// var yesterday = moment().subtract(1, "day");
+// function valid(current) {
+//   return current.isAfter(yesterday);
+// }
+  const localeMap = {
   ru: ruLocale,
 };
 
@@ -39,17 +41,36 @@ const maskMap = {
   ru: "__.__.____",
   de: "__.__.____",
 };
-export default function ModalAddTransaction() {
-  let locale = "ru";
-  const [value, setValue] = React.useState(Date.now());
 
+export default function ModalAddTransaction({ modalAction }) {
+    let locale = "ru";
+  const [value, setValue] = React.useState(Date.now());
   const allCategories = useSelector(getTransactionCategories);
   const dispatch = useDispatch();
-
   const handleSubmit = ({ date, isIncome, amount, comment, categoryId }) => {
     console.log(date, isIncome, amount, comment, categoryId);
     dispatch(addTransaction({ date, isIncome, amount, comment, categoryId }));
   };
+
+  const handleKeyDown = (event) => {
+    if (event.code === "Escape") {
+      modalAction();
+    }
+  };
+
+  const onBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      modalAction();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  });
 
   return (
     <Formik
@@ -59,6 +80,7 @@ export default function ModalAddTransaction() {
         amount: "",
         comment: "",
         categoryId: "",
+
       }}
       validateOnBlur
       onSubmit={(values, { resetForm }) => {
@@ -75,6 +97,7 @@ export default function ModalAddTransaction() {
         handleBlur,
         isValid,
 
+
         dirty,
       }) => (
         <div className={s.formBox}>
@@ -82,9 +105,13 @@ export default function ModalAddTransaction() {
             <div className={s.form}>
               <b className={s.modalDescription}>Добавить транзакцию</b>
 
-              <div className={s.switch__container}>
-                <div className={s.switch__control}>
+
+                <div className={s.subBox}>
+                  {touched.amount && errors.amount && (
+                    <span className={s.error}>{errors.amount}</span>
+                  )}
                   <input
+
                     className={s.switch__toggle}
                     type="checkbox"
                     id={`switch-toggle`}
@@ -177,22 +204,21 @@ export default function ModalAddTransaction() {
                 value={values.comment}
               />
 
-              <button
-                className={classNames(s.btn, s.btnAdd)}
-                type={`submit`}
-                disabled={!isValid || !dirty}
-              >
-                Добавить
-              </button>
-              <button
-                className={classNames(s.btn, s.btnCancel)}
-                type={`submit`}
-                disabled={!isValid || !dirty}
-              >
-                Отмена
-              </button>
+                 <button
+                  className={classNames(s.btn, s.btnAdd)}
+                  type={`submit`}
+                  disabled={!isValid || !dirty}>
+                  Добавить
+                </button>
+                <button
+                  onClick={modalAction}
+                  className={classNames(s.btn, s.btnCancel)}
+                  type='button'>
+                  Отмена
+                </button>
             </div>
           </Form>
+
         </div>
       )}
     </Formik>

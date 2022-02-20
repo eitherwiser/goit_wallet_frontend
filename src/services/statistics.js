@@ -1,8 +1,18 @@
-export default async function fetchCurrency(month, year) {
+export default async function fetchCurrency(token, date) {
   const response = await fetch(
-    "https://goit-34-wallet.herokuapp.com/api/statistics/2020/02"
+    `https://goit-34-wallet.herokuapp.com/api/statistics?year=${date.year}&month=${date.month}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
   );
-  const data = await response.json();
-  //   console.log(data)
+  let data;
+  try {
+    data = await response.json();
+  } catch (error) {
+    console.log(error);
+  }
   return data;
 }

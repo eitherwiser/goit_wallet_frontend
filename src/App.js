@@ -1,10 +1,11 @@
 import React, { Suspense, useEffect, lazy } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
+
 import useWindowSize from "./hooks/useWindowSize";
 import { fetchCurrentUser } from "redux/auth/auth-operations";
-import { getAuth, getAuthRefresh, getToken } from "redux/auth/auth-selectors";
+import { getAuth, getAuthRefresh } from "redux/auth/auth-selectors";
 import Chart from "components/Chart/Chart";
 import LoaderComponent from "./components/LoaderComponent/LoaderComponent.js";
 import DashboardPage from "pages/DashboardPage/DashboardPage";
@@ -28,7 +29,6 @@ const LoginPage = lazy(() =>
 export default function App() {
   const size = useWindowSize();
   const isAuth = useSelector(getAuth);
-  const token = useSelector(getToken);
 
   const isAuthRefresh = useSelector(getAuthRefresh);
   const dispatch = useDispatch();
@@ -45,31 +45,25 @@ export default function App() {
           <Suspense fallback={<LoaderComponent />}>
             <Routes>
               <Route
+                exact
                 path="login"
                 element={isAuth ? <Navigate to="/" /> : <LoginPage />}
+              />
+              <Route
                 exact
-              />
-              <Route
-                path="verify/:verificationToken"
-                element={<VerifyPage />}
-              />
-              <Route path="register" element={<RegisterPage />} />
-              <Route
-                path="/"
-                element={
-                  token !== null ? <DashboardPage /> : <Navigate to="/login" />
-                }
+                path="register"
+                element={isAuth ? <Navigate to="/" /> : <RegisterPage />}
               />
 
               <Route
-                exact
                 path="/"
                 element={
-                  !isAuth ? <Navigate replace to="/login" /> : <DashboardPage />
+                  isAuth ? <DashboardPage /> : <Navigate replace to="/login" />
                 }
               >
+                <Route index element={<Navigate replace to="/home" />} />
                 <Route path="home" element={<Table />} />
-                <Route path="diagram" element={<Chart />} />{" "}
+                <Route path="diagram" element={<Chart />} />
                 <Route
                   path="exchangeRates"
                   element={
@@ -81,6 +75,24 @@ export default function App() {
                   }
                 />
               </Route>
+
+              <Route
+                path="verify/:verificationToken"
+                element={<VerifyPage />}
+              />
+
+              <Route
+                path="*"
+                element={
+                  <main style={{ padding: "1rem" }}>
+                    <span>There's nothing here!</span>
+                    <br />
+                    <span>
+                      <Link to={"/"}>Return</Link>
+                    </span>
+                  </main>
+                }
+              />
             </Routes>
           </Suspense>
         </>

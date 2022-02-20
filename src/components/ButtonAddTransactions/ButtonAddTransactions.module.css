@@ -1,42 +1,44 @@
-@import '../../stylesheet/var.css';
-
 .button {
-  position: fixed;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  bottom: 160px;
-  right: 160px;
+  border: none;
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0px 6px 15px #24cca7;
   width: 44px;
   height: 44px;
-  background-color: var(--accent-btn-color);
-  border-radius: 50%;
-  border-style: none;
-  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
-  /* margin-left: 100%; */
-  /* transform: translate(-100%); */
-  opacity: 0.8;
+  right: 20px;
+  bottom: 20px;
+  padding: 0;
+  display: block;
+  background-color: #24cca7;
+
+  @media screen and (min-width: 768px) {
+    right: 40px;
+    bottom: 40px;
+    animation: button-show 1s forwards;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: 85px;
+  }
+}
+
+.buttonIcon {
+  color: #fff;
 
   cursor: pointer;
 }
 
-.button:hover {
-  opacity: 1;
-  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.75);
+.button:hover,
+.button:focus {
+  transform: scale(1.2);
 }
 
-@media screen and (min-width: 768px) {
-  .button {
-    bottom: 40px;
-  }
-
-  .buttonShow {
-    animation: button-show 1s forwards;
-  }
-
-  .buttonBounce {
-    animation: button-bounce 1s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
-  }
+.modalMobile {
+  position: absolute;
+  top: 60px;
+  z-index: 1300;
+  width: 100%;
+  background-color: #fff;
 }
 
 @keyframes button-show {

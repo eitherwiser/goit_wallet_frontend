@@ -1,36 +1,35 @@
 .dashboardPage {
+  backdrop-filter: blur(50px);
   background-color: var(--main-bcg-color);
-}
-
-.navBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.flex {
-  margin-bottom: 40px;
 }
 
 @media screen and (min-width: 768px) {
   .dashboardPage {
-    background-position: center;
     background-repeat: no-repeat;
-    background-color: var(--under-wallpaper-bcg-color);
-    background-image: url("../../images/bgi-transaction/tablet/transaction-tab.jpg");
-    background-size: 768px 1024px;
+    background-image: url("../../images/Dashboard/Ellipse2_tablet.png");
+    background-position: right top;
+  }
 
-    /* @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url("../../images/bgi-transaction/tablet/transaction-tab@2.jpg");
-    } */
+  .bgLeftBtn {
+    background-repeat: no-repeat;
+    background-image: url("../../images/Dashboard/Ellipse1_tablet.png");
+    background-position: left bottom;
+  }
+
+  .navBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flex {
+    margin-bottom: 40px;
   }
 
   .wrapper {
@@ -45,37 +44,32 @@
     display: inline-block;
     margin-right: 20px;
   }
-
-  .nav {
-    margin-bottom: 20px;
-  }
 }
 
 @media screen and (min-width: 1280px) {
   .dashboardPage {
     display: flex;
+    background-image: url("../../images/Dashboard/Ellipse2.png");
+  }
 
-    background-image: url("../../images/bgi-transaction/desktop/transaction-desktop.jpg");
-    background-size: 1280px 720px;
-
-    /* @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url("../../images/bgi-transaction/tablet/transaction-desktop@2.jpg");
-    } */
+  .bgLeftBtn {
+    background-image: url("../../images/Dashboard/Ellipse1.png");
   }
 
   .wrapper {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding-bottom: 35px;
   }
 
   .flex {
     flex-direction: column;
     margin-bottom: 0;
-    margin-right: 60px;
+    padding-right: 30px;
+    border-right: 1px solid #e7e5f2;
+    box-shadow: 1px 0px 6px -1px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
+    padding-bottom: 35px;
   }
 
   .navBox {
@@ -91,3 +85,4 @@
     margin-right: 0;
   }
 }
+
