@@ -2,6 +2,7 @@ import Media from "react-media";
 import { Outlet } from "react-router-dom";
 
 import Navigation from "components/Navigation/Navigation";
+
 // import MobileNavigation from "components/MobileNavigation/MobileNavigation";
 import Balance from "components/Balance/Balance";
 import CurrencyTable from "components/Currency/Currency";
@@ -44,6 +45,7 @@ export default function DashboardPage() {
           </div>
         </Container>
       </div>
+
     </>
   );
 }

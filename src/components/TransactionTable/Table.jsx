@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import TransactionTableMobile from "./TransactionTableMobile";
 import TransactionTable from "./TransactionTable";
-import { getTransactions } from "../../redux/transactions/transactions-selectors";
-import { getAllTransactions } from "../../redux/transactions/transaction-operations";
+import { getTransactions } from "redux/transactions/transactions-selectors";
+import { getAllTransactions } from "redux/transactions/transaction-operations";
 
 export default function Table() {
   const dispatch = useDispatch();

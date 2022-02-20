@@ -16,7 +16,7 @@ export default function dateConverter(d) {
     "12",
   ];
   const fullYear = String(date.getFullYear());
-  const shortYear = String(fullYear.slice(0, 2));
+  const shortYear = String(fullYear.slice(2, 4));
 
   const month = String(months[date.getMonth()]);
   const day = date.getDate();
