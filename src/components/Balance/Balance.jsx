@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { getBalance } from "../../redux/auth/auth-selectors";
+import { getBalance } from "redux/auth/auth-selectors";
 import s from "./Balance.module.css";
 
 export default function Balance() {
