@@ -140,60 +140,8 @@
     align-items: center;
   }
 
-  .income,
-  .consumption {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 23.58px;
-    color: var(--secondary-text-color);
-  }
-  .income {
-    margin-right: 24px;
-  }
-
-  .checkLabel::before {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 40px;
-
-    top: -5px;
-
-    border: 1px solid var(--border-color);
-    border-radius: 30px;
-  }
-  .checkLabel::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-color: var(--accent-btn-color);
-    top: -2px;
-    left: -4px;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .chackbox:checked + .check-label::after {
-    transform: translateX(37px);
-    background-color: var(--amount-expenses-text-color);
-  }
-
-  .consumption {
-    margin-left: 16px;
-  }
-
-  .categoryText {
-    position: absolute;
-    top: 185px;
-    left: 40px;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 26.53px;
-    color: var(--secondary-text-color);
-  }
-
   .category {
+    padding-left: 20px;
     margin-bottom: 40px;
     width: 280px;
     height: 34px;
@@ -202,18 +150,29 @@
     border-right: none;
     border-left: none;
     border-bottom: 1px solid var(--border-color);
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26.53px;
+    color: var(--secondary-text-color);
   }
 
   .subBox {
+    position: relative;
     text-align: center;
     margin-bottom: 40px;
   }
 
   .sum {
     margin-bottom: 40px;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26.53px;
   }
   .sum,
   .date {
+    text-align: left;
     padding-left: 20px;
     width: 280px;
     height: 34px;
@@ -227,17 +186,43 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 26.53px;
+    color: var(--secondary-text-color);
+  }
+  .date input {
+    outline: none;
+    border: none;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26.53px;
+  }
+  .date div {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23.53px;
+  }
+
+  .dateIcon {
+    position: absolute;
+    top: 73px;
+    right: 20px;
   }
 
   .comment {
+    padding-left: 20px;
     margin-bottom: 40px;
-    width: 280px;
+    width: 100%;
     height: 74px;
+    resize: none;
     outline: none;
     border-top: none;
     border-right: none;
     border-left: none;
     border-bottom: 1px solid var(--border-color);
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26.53px;
   }
   .comment::placeholder {
     padding-left: 10px;
@@ -329,60 +314,8 @@
     align-items: center;
   }
 
-  .income,
-  .consumption {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 23.58px;
-    color: var(--secondary-text-color);
-  }
-  .income {
-    margin-right: 24px;
-  }
-
-  .checkLabel::before {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 40px;
-
-    top: -5px;
-
-    border: 1px solid var(--border-color);
-    border-radius: 30px;
-  }
-  .checkLabel::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-color: var(--accent-btn-color);
-    top: -2px;
-    left: -4px;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .chackbox:checked + .check-label::after {
-    transform: translateX(37px);
-    background-color: var(--amount-expenses-text-color);
-  }
-
-  .consumption {
-    margin-left: 16px;
-  }
-
-  .categoryText {
-    position: absolute;
-    top: 185px;
-    left: 80px;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 26.53px;
-    color: var(--secondary-text-color);
-  }
-
   .category {
+    padding-left: 20px;
     margin-bottom: 40px;
     width: 409.5px;
     height: 34px;
@@ -391,13 +324,28 @@
     border-right: none;
     border-left: none;
     border-bottom: 1px solid var(--border-color);
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26.53px;
+    color: var(--secondary-text-color);
+  }
+
+  .subBox {
+    position: relative;
+    display: flex;
   }
 
   .sum {
     margin-right: 30px;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26.53px;
   }
   .sum,
   .date {
+    padding-left: 20px;
     margin-bottom: 40px;
     width: 190px;
     height: 34px;
@@ -408,24 +356,51 @@
     border-bottom: 1px solid var(--border-color);
   }
   .sum::placeholder {
+    text-align: left;
     font-weight: 700;
     font-size: 18px;
     line-height: 26.53px;
     text-align: center;
+    color: var(--secondary-text-color);
   }
   .date {
     padding-left: 20px;
   }
+  .date input {
+    outline: none;
+    border: none;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26.53px;
+  }
+  .date div {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23.53px;
+  }
+
+  .dateIcon {
+    position: absolute;
+    top: 0;
+    right: 20px;
+  }
 
   .comment {
+    padding-left: 20px;
     margin-bottom: 51px;
-    width: 409.5px;
+    width: 100%;
     height: 34px;
+    resize: none;
     outline: none;
     border-top: none;
     border-right: none;
     border-left: none;
     border-bottom: 1px solid var(--border-color);
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26.53px;
   }
   .comment::placeholder {
     font-weight: 400;
