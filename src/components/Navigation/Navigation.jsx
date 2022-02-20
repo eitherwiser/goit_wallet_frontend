@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 
-
 // mobile
 import { ReactComponent as HomeImgMob } from "images/navigation/mobile/home.svg";
 import { ReactComponent as PbImgMob } from "images/navigation/mobile/pb.svg";
@@ -9,7 +8,6 @@ import { ReactComponent as StatisticsImgMob } from "images/navigation/mobile/sta
 // tablet
 import { ReactComponent as HomeImgTab } from "images/navigation/tablet/home.svg";
 import { ReactComponent as StatisticsImgTab } from "images/navigation/tablet/statistics.svg";
-
 
 import s from "./Navigation.module.css";
 import Media from "react-media";

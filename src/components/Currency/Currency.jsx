@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
-import currencyApi from '../../services/currencyApi';
-import LoaderSpinner from '../../components/LoaderComponentCurrency/LoaderComponent';
+import React, { useEffect, useState } from "react";
+//import { CSSTransition } from "react-transition-group";
+import currencyApi from "services/currencyApi";
+import LoaderSpinner from "components/LoaderComponentCurrency/LoaderComponent";
 
-import { currencies } from '../../assets/constants';
-import styles from './Currency.module.css';
+import { currencies } from "assets/constants";
+import styles from "./Currency.module.css";
 
 export default function CurrencyTable() {
   const [currency, setCurrency] = useState([]);
@@ -14,12 +14,12 @@ export default function CurrencyTable() {
   // useEffect(() => {
   //   const fetchCurrency = async () => {
   //     const data = await currencyApi.fetchCurrency();
-  //     const filtredCurrencies = [];
+  //     const filteredCurrencies = [];
   //     currencies.forEach(currency => {
   //       data.forEach(element => {
   //         parseInt(element.buy).toFixed(2);
   //         if (element.ccy === currency) {
-  //           filtredCurrencies.push({
+  //           filteredCurrencies.push({
   //             ccy: element.ccy,
   //             buy: Number(element.buy).toFixed(2),
   //             sale: Number(element.sale).toFixed(2),
@@ -27,7 +27,7 @@ export default function CurrencyTable() {
   //         }
   //       });
   //     });
-  //     setCurrency(filtredCurrencies);
+  //     setCurrency(filteredCurrencies);
   //   };
   //   fetchCurrency();
   // }, []);
@@ -36,12 +36,12 @@ export default function CurrencyTable() {
   useEffect(() => {
     const fetchCurrency = async () => {
       const data = await currencyApi.fetchCurrency();
-      const filtredCurrencies = [];
-      currencies.forEach(currency => {
-        data.forEach(element => {
+      const filteredCurrencies = [];
+      currencies.forEach((currency) => {
+        data.forEach((element) => {
           parseInt(element.buy).toFixed(2);
           if (element.ccy === currency) {
-            filtredCurrencies.push({
+            filteredCurrencies.push({
               ccy: element.ccy,
               buy: Number(element.buy).toFixed(2),
               sale: Number(element.sale).toFixed(2),
@@ -49,12 +49,12 @@ export default function CurrencyTable() {
           }
         });
       });
-      setCurrency(filtredCurrencies);
-      localStorage.setItem('currency', JSON.stringify(filtredCurrencies));
-      localStorage.setItem('currencyTime', Date.now());
+      setCurrency(filteredCurrencies);
+      localStorage.setItem("currency", JSON.stringify(filteredCurrencies));
+      localStorage.setItem("currencyTime", Date.now());
     };
-    let currencyLS = JSON.parse(localStorage.getItem('currency'));
-    let currencyTime = JSON.parse(localStorage.getItem('currencyTime'));
+    let currencyLS = JSON.parse(localStorage.getItem("currency"));
+    let currencyTime = JSON.parse(localStorage.getItem("currencyTime"));
     if (!currencyLS) {
       fetchCurrency();
     }
@@ -70,14 +70,15 @@ export default function CurrencyTable() {
   }, []);
 
   return (
-    <CSSTransition
-      in={Loaded}
-      timeout={500}
-      classNames={{
-        enterActive: `${styles.currencyShow}`,
-      }}
-      mountOnEnter
-    >
+    <>
+      {/*<CSSTransition
+        in={Loaded}
+        timeout={500}
+        classNames={{
+          enterActive: `${styles.currencyShow}`,
+        }}
+        mountOnEnter
+      >*/}
       <div className={styles.currency}>
         {currency.length === 0 ? (
           <div className={styles.loader}>
@@ -93,7 +94,7 @@ export default function CurrencyTable() {
               </tr>
             </thead>
             <tbody>
-              {currency.map(item => {
+              {currency.map((item) => {
                 return (
                   <tr key={item.ccy}>
                     <td>{item.ccy}</td>
@@ -106,6 +107,7 @@ export default function CurrencyTable() {
           </table>
         )}
       </div>
-    </CSSTransition>
+      {/*</CSSTransition>*/}
+    </>
   );
 }
