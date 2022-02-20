@@ -10,6 +10,7 @@
   --main-bcg-color: #e7eaf2;
   --light-bcg-color: #ffffff;
   --accent-bcg-color: #4a56e2;
+  --under-wallpaper-bcg-color: #f1f2f7;
 
   /* text colors */
   --main-text-color: #000000;
@@ -29,10 +30,12 @@
   --main-svg-color: #e0e0e0;
   --light-svg-color: #ffffff;
   --exit-svg-color: #bdbdbd;
+  --unselected-svg-color: #6e78e8;
   --accent-svg-color: #4a56e2;
 
   /* color line Tab */
   --line-table-color: #dcdcdf;
+  --border-color: #e0e0e0;
 
   /* size  */
   --font-size__logo: 30px;

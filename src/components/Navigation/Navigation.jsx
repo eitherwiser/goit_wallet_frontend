@@ -1,53 +1,94 @@
 import classnames from "classnames";
+import sprite from "images/svg_sprite.svg";
 
-import Currency from "components/Currency/Currency";
-import DashboardPage from "pages/DashboardPage/DashboardPage";
+import { NavLink, Outlet } from "react-router-dom";
+
+// mobile
+import { ReactComponent as HomeImgMob } from "images/navigation/mobile/home.svg";
+import { ReactComponent as PbImgMob } from "images/navigation/mobile/pb.svg";
+import { ReactComponent as StatisticsImgMob } from "images/navigation/mobile/statistics.svg";
+
+// tablet
+import { ReactComponent as HomeImgTab } from "images/navigation/tablet/home.svg";
+import { ReactComponent as StatisticsImgTab } from ".images/navigation/tablet/statistics.svg";
 
 import s from "./Navigation.module.css";
-
-import homeImg from "../../images/navigation/home.svg";
-import pbImg from "../../images/navigation/pb.svg";
-import statisticsImg from "../../images/navigation/statistics.svg";
+import Media from "react-media";
 
 export default function Navigation() {
-	return (
-		<nav className={s.nav}>
-			<ul className={s.list}>
-				<li className={s.item}>
-					<a href="DashboardPage" className={s.link}>
-						{/* в реакт jsx другие правила использ свг-почитать как */}
-						{/* <svg className={s.navImg}>
-              <use href="../../images/navigation/navigation.svg#icon-home" />
-            </svg> */}
+  return (
+    <nav className={s.nav}>
+      <NavLink
+        to="/home"
+        className={s.link}
+        // activeClassName={s.activeLink}
+        // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+      >
+        <HomeImgMob className={s.navImgMob} />
+        <HomeImgTab className={s.navImgTab} />
+        <span className={s.text}>Главная</span>
+      </NavLink>
 
-						<img className={s.navImg} src={homeImg} alt="" />
-						<span className={s.text}>Главная</span>
-					</a>
-				</li>
-				<li className={s.item}>
-					<a href="#" className={s.link}>
-						{/* <svg className={s.navImg}>
-              <use href="../../images/navigation/navigation.svg#icon-statistics" />
-            </svg> */}
+      <NavLink
+        to="/diagram"
+        className={s.link}
+        // activeClassName={s.activeLink}
+        // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+        Exchange
+        Rates
+      >
+        <StatisticsImgMob className={s.navImgMob} />
+        <StatisticsImgTab className={s.navImgTab} />
+        <span className={s.text}>Статистика</span>
+      </NavLink>
 
-						<img className={s.navImg} src={statisticsImg} alt="" />
-						<span className={s.text}>Статистика</span>
-					</a>
-				</li>
-				<li className={s.item}>
-					<a href="Currency" className={s.link}>
-						{/* <svg className={s.navImg}>
-              <use href="../../images/navigation/navigation.svg#icon-pb" />
-            </svg> */}
+      <Media
+        query="(max-width: 767px)"
+        render={() => (
+          <NavLink
+            to="/exchangeRates"
+            className={s.link}
+            // activeClassName={s.activeLink}
+            // className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+          >
 
-						<img
-							className={classnames(s.navImg, s.navImgPb)}
-							src={pbImg}
-							alt=""
-						/>
-					</a>
-				</li>
-			</ul>
-		</nav>
-	);
+            <PbImgMob className={s.navImgMob} />
+          </NavLink>
+        )}
+      />
+
+      {/* ОКСАНА */}
+      {/* <Media
+        query="(min-width: 767px)"
+        render={() => (
+          <NavLink
+            to="/home"
+            // className={({ isActive }) => (isActive ? activeLink : link)}
+          >
+            <svg height="18px" width="18px">
+              <use href={sprite + "#icon-home"}></use>
+            </svg>
+            Главная
+          </NavLink>
+        )}
+      />
+      <Media
+        query="(min-width: 767px)"
+        render={() => (
+          <NavLink
+            to="/diagram"
+            // className={({ isActive }) => (isActive ? activeLink : link)} Exchange Rates
+          >
+            <svg height="18px" width="18px">
+              <use href={sprite + "#icon-statistics"}></use>
+            </svg>
+            Статистика
+          </NavLink>
+        )}
+      /> */}
+      {/* ОКСАНА */}
+
+      {/* <Outlet /> */}
+    </nav>
+  );
 }

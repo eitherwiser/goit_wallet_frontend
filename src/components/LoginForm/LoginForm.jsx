@@ -1,12 +1,16 @@
 import { Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import InputField from "../InputField/InputField";
+//import InputField from "../InputField/";
+//import LogoComponent from "components/LogoComponent";
 import s from "./LoginForm.module.css";
-import logoMobile from "../../images/logo-form/logoMobile.jpg";
-import logo from "../../images/logo-form/logo.jpg";
+import classNames from "classnames";
+import { useDispatch } from "react-redux";
+import InputField from "../InputField/";
+import LogoComponent from "components/LogoComponent";
 import { ReactComponent as Emailcon } from "../../images/icon-form/email.svg";
 import { ReactComponent as Passwordcon } from "../../images/icon-form/password.svg";
+import { loginUser } from "redux/auth/auth-operations";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -21,6 +25,10 @@ const SignupSchema = Yup.object().shape({
     .required("Обязательное поле"),
 });
 export default function LoginForm() {
+  const dispatch = useDispatch();
+  const handleSubmit = ({ email, password }) => {
+    dispatch(loginUser({ email, password }));
+  };
   return (
     <>
       <Formik
@@ -30,7 +38,7 @@ export default function LoginForm() {
         }}
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
+          handleSubmit(values);
           resetForm();
         }}
         validationSchema={SignupSchema}
@@ -45,12 +53,9 @@ export default function LoginForm() {
           handleSubmit,
           dirty,
         }) => (
-          <div className={s.form}>
-            <Form className={s.formRegister}>
-              <picture>
-                <source media="(min-width: 768px)" srcSet={logo} />
-                <img className={s.logo} src={logoMobile} alt="logo" />
-              </picture>
+          <Form className={s.formRegister}>
+            <LogoComponent />
+            <div className={classNames(s.input_wrap, s.inputTop)}>
               {touched.email && errors.email && (
                 <span className={s.error}>{errors.email}</span>
               )}
@@ -64,7 +69,8 @@ export default function LoginForm() {
                 onBlur={handleBlur}
                 value={values.email}
               />
-
+            </div>
+            <div className={s.input_wrap}>
               {touched.password && errors.password && (
                 <span className={s.error}>{errors.password}</span>
               )}
@@ -78,24 +84,22 @@ export default function LoginForm() {
                 onBlur={handleBlur}
                 value={values.password}
               />
-
-              <button
-                className={s.btn}
-                disabled={!isValid || !dirty}
-                onClick={handleSubmit}
-                type={`submit`}
-              >
-                ВХОД
-              </button>
-              <Link
-                to="/register"
-                className={s.btn1}
-                style={{ textDecoration: "none" }}
-              >
-                Регистрация
-              </Link>
-            </Form>
-          </div>
+            </div>
+            <button
+              className={s.btn}
+              disabled={!isValid || !dirty}
+              type={`submit`}
+            >
+              ВХОД
+            </button>
+            <Link
+              to="/register"
+              className={s.btn1}
+              style={{ textDecoration: "none" }}
+            >
+              Регистрация
+            </Link>
+          </Form>
         )}
       </Formik>
     </>

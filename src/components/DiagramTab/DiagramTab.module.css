@@ -1,0 +1,58 @@
+
+.container {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  margin-top: 20px;
+  border-radius: 30px;
+
+}
+.title {
+ 
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.16;
+  padding-top: 16px;
+  padding-bottom: 21px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: #000000;
+}
+
+
+.containerSum {
+  width: 350px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  padding-right: 40px;
+}
+
+.titleSum {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 19px;
+}
+.costs {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ff6596;
+}
+.income {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 19px;
+  color: #24cca7;
+}
+
+.inputLabel {
+  position: relative;
+}
+.Select {
+  position: absolute;
+  top: 0;
+  background-color: #24cca7;
+}

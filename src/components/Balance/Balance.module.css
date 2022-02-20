@@ -1,8 +1,9 @@
 .balance {
   padding-top: 8px;
   padding-bottom: 12px;
+  margin: 0 auto 30px;
   padding-left: 30px;
-  width: 280px;
+  max-width: 480px;
   height: 80px;
 
   background-color: var(--light-bcg-color);
@@ -10,6 +11,7 @@
 }
 @media screen and (min-width: 768px) {
   .balance {
+    margin-bottom: 0;
     padding-left: 40px;
     width: 334px;
   }
@@ -17,13 +19,13 @@
 
 @media screen and (min-width: 1280px) {
   .balance {
+    margin-bottom: 0;
     width: 350px;
+    display: inline-block;
   }
 }
 
 .label {
-  /* margin-bottom: 10px; */
-
   font-family: var(--main__font-family);
   font-weight: 400;
   font-size: 12px;

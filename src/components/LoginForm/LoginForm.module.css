@@ -6,24 +6,28 @@
   align-items: center;
   margin: 0 auto;
   width: 280px;
-  height: 100%;
+
   padding-top: 110px;
   padding-bottom: 110px;
   background: var(--light-bcg-color);
 }
 @media screen and (min-width: 768px) {
   .formRegister {
+    position: absolute;
+    margin: unset;
     width: 540px;
     min-height: 468px;
     padding-top: 40px;
     padding-bottom: 60px;
     border-radius: 20px;
+    top: 360px;
+    right: 114px;
   }
 }
 @media screen and (min-width: 1280px) {
   .formRegister {
-    margin: unset;
-    margin-left: auto;
+    top: 136px;
+    right: 85px;
   }
 }
 .input {
@@ -50,12 +54,6 @@
     justify-content: center;
   }
 }
-@media screen and (min-width: 768px) {
-  .input:last-child {
-    margin: unset;
-    background-color: var(--amount-incomes-text-color);
-  }
-}
 
 input::placeholder {
   text-indent: 40px;
@@ -67,10 +65,16 @@ input::placeholder {
   padding-bottom: 10px;
   color: var(--secondary-text-color);
 }
+.inputTop {
+  margin-top: 50px;
+}
 label {
   position: relative;
   display: flex;
   align-items: center;
+}
+.input_wrap {
+  position: relative;
 }
 .icon {
   z-index: 1;
@@ -146,7 +150,17 @@ label {
 }
 
 .error {
-  font-size: 14px;
+  position: absolute;
+  font-size: 12px;
   color: var(--amount-expenses-text-color);
   font-weight: 500;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+}
+@media screen and (min-width: 768px) {
+  .error {
+    font-size: 14px;
+  }
 }

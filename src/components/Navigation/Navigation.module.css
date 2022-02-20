@@ -1,69 +1,94 @@
-.link {
-  width: 100%;
-  height: 100%;
-
-  /* fill: var(--accent-bcg-color); */
+.nav {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
 }
 
-@media screen and (max-width: 767px) {
-  .nav {
-    padding: 10px;
-  }
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  .list {
-    display: flex;
-    justify-content: center;
-  }
+  padding: 3px;
+}
 
-  .item:not(:last-child) {
-    margin-right: 30px;
-  }
+.link:not(:last-child) {
+  margin-right: 30px;
+}
 
-  .navImg {
-    width: 38px;
-    height: 38px;
-    padding: 3px;
-  }
+.navImgMob {
+  width: 38px;
+  height: 38px;
+  fill: var(--unselected-svg-color);
+  border-radius: 6px;
+}
 
-  .text {
-    display: none;
-  }
+.navImgMob:hover,
+.navImgMob:focus {
+  fill: var(--accent-svg-color);
+  box-shadow: 0px 0px 16px 0px var(--accent-svg-color);
+}
+
+.navImgTab {
+  display: none;
+}
+
+.text {
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
   .nav {
-    padding: 30px 0 20px 0;
+    padding: 30px 0 0 0;
+    display: inline-block;
+    margin-bottom: 20px;
   }
 
   .link {
     display: flex;
+    align-items: center;
+    justify-content: left;
+
+    font-family: var(--logo__font-family);
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+
+    fill: var(--unselected-svg-color);
+    color: var(--main-text-color);
+
+    transition: color 250ms linear;
   }
 
-  .item:not(:last-child) {
+  .link:first-child {
     margin-bottom: 10px;
   }
 
-  .navImg {
-    width: 18px;
-    height: 18px;
-    padding: 3px;
-    margin-right: 20px;
+  .link:hover,
+  .link:focus {
+    font-weight: 700;
+
+    fill: var(--accent-svg-color);
   }
 
-  .navImgPb {
+  .navImgMob {
     display: none;
+  }
+
+  .navImgTab {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 3px;
+  }
+
+  .navImgTab:hover,
+  .navImgTab:focus {
+    box-shadow: 0px 0px 16px 0px var(--accent-svg-color);
   }
 
   .text {
     display: block;
-    font-style: var(--logo__font-family);
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--main-text-color);
-  }
-
-  .text:hover,
-  .text:focus {
-    font-weight: 700;
+    margin-left: 20px;
   }
 }

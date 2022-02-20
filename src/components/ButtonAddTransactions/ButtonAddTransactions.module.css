@@ -1,0 +1,81 @@
+.button {
+  border: none;
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0px 6px 15px #24cca7;
+  width: 44px;
+  height: 44px;
+  right: 20px;
+  bottom: 20px;
+  padding: 0;
+  display: block;
+  background-color: #24cca7;
+
+  @media screen and (min-width: 768px) {
+    right: 40px;
+    bottom: 40px;
+    animation: button-show 1s forwards;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: 85px;
+  }
+}
+
+.buttonIcon {
+  color: #fff;
+
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+  transform: scale(1.2);
+}
+
+.modalMobile {
+  position: absolute;
+  top: 60px;
+  z-index: 1300;
+  width: 100%;
+  background-color: #fff;
+}
+
+@keyframes button-show {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes button-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-12px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-2px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
