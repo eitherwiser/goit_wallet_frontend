@@ -1,6 +1,6 @@
-import { createAction } from '@reduxjs/toolkit';
+import { createAction } from "@reduxjs/toolkit";
 
-const openModal = createAction('global/openModal');
-const closeModal = createAction('global/closeModal');
+const openModal = createAction("global/openModal");
+const closeModal = createAction("global/closeModal");
 
 export { openModal, closeModal };
