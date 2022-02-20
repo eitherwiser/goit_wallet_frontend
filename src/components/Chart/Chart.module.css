@@ -1,29 +1,24 @@
 .chart {
   max-width: 320px;
- max-height: 320px;
- 
+  max-height: 320px;
+} 
+
+@media screen and (min-width: 769px) {
+  .rightContainer {
+    display: flex; 
+    justify-content: space-between; 
+    width: 700px;
+    margin-left: 30px;
+  }
+  .chart {
+    width: 320px;
+    height: 320px;
+    margin-right: 30px;  
+  }
+  .wrapper {
+    width: 700px;
+  }
 }
-
-
- 
-
- @media screen and (min-width: 769px) {
-.rightContainer {
-   display: flex; 
-  justify-content: space-between; 
-  width: 700px;
-
-  margin-left: 30px;
-}
-.chart {
-  width: 320px;
-  height: 320px;
-  margin-right: 30px;
-  
-}
-.wrapper {
-  width: 700px;
-}}
 
 .mainTitle {
   font-size: 30px;

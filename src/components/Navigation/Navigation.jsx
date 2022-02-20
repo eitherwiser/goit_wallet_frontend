@@ -1,16 +1,16 @@
 import classnames from "classnames";
-import sprite from "../../images/svg_sprite.svg";
+import sprite from "images/svg_sprite.svg";
 
 import { NavLink, Outlet } from "react-router-dom";
 
 // mobile
-import { ReactComponent as HomeImgMob } from "../../images/navigation/mobile/home.svg";
-import { ReactComponent as PbImgMob } from "../../images/navigation/mobile/pb.svg";
-import { ReactComponent as StatisticsImgMob } from "../../images/navigation/mobile/statistics.svg";
+import { ReactComponent as HomeImgMob } from "images/navigation/mobile/home.svg";
+import { ReactComponent as PbImgMob } from "images/navigation/mobile/pb.svg";
+import { ReactComponent as StatisticsImgMob } from "images/navigation/mobile/statistics.svg";
 
 // tablet
-import { ReactComponent as HomeImgTab } from "../../images/navigation/tablet/home.svg";
-import { ReactComponent as StatisticsImgTab } from "../../images/navigation/tablet/statistics.svg";
+import { ReactComponent as HomeImgTab } from "images/navigation/tablet/home.svg";
+import { ReactComponent as StatisticsImgTab } from ".images/navigation/tablet/statistics.svg";
 
 import s from "./Navigation.module.css";
 import Media from "react-media";
