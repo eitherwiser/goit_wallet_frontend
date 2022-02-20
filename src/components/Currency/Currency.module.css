@@ -8,7 +8,7 @@
   border-radius: 30px;
   color: var(--light-text-color);
   background-color: var(--accent-bcg-color);
-  background-image: url("../../images/Currency/currency_mob.png");
+  background-image: url('../../images/Currency/currency_mob.png');
   background-repeat: no-repeat;
   background-position: right bottom;
 }
@@ -56,15 +56,26 @@
 .currency td {
   padding-top: 10px;
 }
+.loader {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
 
 @media (min-width: 768px) {
   .currency {
     width: 334px;
-    background-image: url("../../images/Currency/currency_tab.png");
+    background-image: url('../../images/Currency/currency_tab.png');
   }
 
   .currencyShow {
     animation: currency-show 0.5s forwards;
+  }
+  .loader {
+    top: 50%;
   }
 }
 
@@ -72,7 +83,7 @@
   .currency {
     width: 348px;
     height: 347px;
-    background-image: url("../../images/Currency/currency_desk.png");
+    background-image: url('../../images/Currency/currency_desk.png');
   }
 
   .currency thead {
@@ -86,14 +97,6 @@
   .currency td {
     padding-top: 23px;
   }
-}
-
-.loader {
-  position: absolute;
-  top: -5%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 100%;
 }
 
 @keyframes currency-show {

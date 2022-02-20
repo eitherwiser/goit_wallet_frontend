@@ -2,6 +2,8 @@ import Media from "react-media";
 import { Outlet } from "react-router-dom";
 
 import Navigation from "components/Navigation/Navigation";
+
+// import MobileNavigation from "components/MobileNavigation/MobileNavigation";
 import Balance from "components/Balance/Balance";
 import CurrencyTable from "components/Currency/Currency";
 import Container from "components/Container/Container";
@@ -18,27 +20,32 @@ export default function DashboardPage() {
       </Container>
 
       <div className={s.dashboardPage}>
-        <div className={s.bgLeftBtn}>
-          <Container>
-            <div className={s.wrapper}>
-              <div className={s.flex}>
-                <div className={s.navBox}>
-                  <Navigation />
-                  <Balance />
-                  <ButtonAddTransactions />
-                </div>
-                {
-                  <Media
-                    query="(min-width: 768px)"
-                    render={() => <CurrencyTable />}
-                  />
-                }
+        <Container>
+          <div className={s.wrapper}>
+            <div className={s.flex}>
+              <div className={s.navBox}>
+                {/* <div className={s.nav}> */}
+                <Navigation />
+                {/* <Media
+                    query="(max-width: 768px)"
+                    render={() => <MobileNavigation />}
+                  /> */}
+                {/* </div> */}
+                <Balance />
+                <ButtonAddTransactions />
               </div>
-              <Outlet />
+              {
+                <Media
+                  query="(min-width: 768px)"
+                  render={() => <CurrencyTable />}
+                />
+              }
             </div>
-          </Container>
-        </div>
+            <Outlet />
+          </div>
+        </Container>
       </div>
+
     </>
   );
 }

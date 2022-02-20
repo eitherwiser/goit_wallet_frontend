@@ -3,6 +3,10 @@
   background-color: var(--main-bcg-color);
 }
 
+.wrapper {
+  position: relative;
+}
+
 @media screen and (min-width: 768px) {
   .dashboardPage {
     background-repeat: no-repeat;
@@ -48,7 +52,7 @@
 
 @media screen and (min-width: 1280px) {
   .dashboardPage {
-    display: flex;
+ 
     background-image: url("../../images/Dashboard/Ellipse2.png");
   }
 
@@ -85,4 +89,3 @@
     margin-right: 0;
   }
 }
-

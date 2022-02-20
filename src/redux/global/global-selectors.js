@@ -1,3 +1,3 @@
-const getModalValue = state => state.modal;
+const getModalValue = (state) => state.modal;
 
 export { getModalValue };

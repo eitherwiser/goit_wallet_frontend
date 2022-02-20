@@ -1,6 +1,6 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { createReducer } from "@reduxjs/toolkit";
 
-import { openModal, closeModal } from './global-action';
+import { openModal, closeModal } from "./global-action";
 
 const setTrue = () => true;
 const setFalse = () => false;
