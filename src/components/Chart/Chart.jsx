@@ -24,7 +24,7 @@ const obj = {
 
 export default function Chart() {
   const [fetchDate, setFetchDate] = useState(obj);
-
+console.log(fetchDate)
   const arrName = [];
   const arrTotal = [];
   const arrColor = [];
@@ -45,7 +45,7 @@ export default function Chart() {
         backgroundColor: [...arrColor],
 
         borderWidth: 0,
-        cutout: 110,
+        cutout: 100,
       },
     ],
   };
@@ -62,9 +62,10 @@ export default function Chart() {
       <div className={s.wrapper}>
         <p className={s.mainTitle}>Статистика</p>
         <div className={s.rightContainer}>
-          <div className={s.chart}>
+         { fetchDate.total.Expense ===0 && <p className={s.text}>За выбраный период затрат нет</p>} 
+         { fetchDate.total.Expense !==0 &&  <div className={s.chart}>
             <Doughnut data={data} options={options} />
-          </div>
+          </div>}
           <div className={s.containerDiagram}>
             <DiagramTab fetchDate={setFetchDate} data={fetchDate} />
           </div>

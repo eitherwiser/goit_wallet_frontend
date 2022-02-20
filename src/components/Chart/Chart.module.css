@@ -3,8 +3,29 @@
 height: 320px;
  margin: 0 auto;
 }
+.mainTitle {
+  margin-top: 30px;
+  font-size: 30px;
+  line-height: 1.5;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.text{
+  margin: 0 auto;
+  text-align: center;
+width: 320px;
+padding-top: 50px;
+padding-bottom: 50px;
+padding-left: 20px;
+padding-right: 20px;
+  font-size: 30px;
+  color: var(--amount-expenses-text-color);
+}
 
-
+.containerDiagram{
+  max-width: 480px;
+  margin: 0 auto;
+}
  @media screen and (min-width: 769px) {
 .rightContainer {
    display: flex; 
@@ -31,13 +52,7 @@ height: 320px;
 
 }
 
-.mainTitle {
-  margin-top: 30px;
-  font-size: 30px;
-  line-height: 1.5;
-  margin-left: 30px;
-  margin-bottom: 20px;
-}
+
 
 .containerDiagram{
   width: 350px;
