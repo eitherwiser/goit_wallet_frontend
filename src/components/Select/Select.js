@@ -8,7 +8,7 @@ import { selectStyles } from "components/Select/selectStyles";
 import { useSelector } from "react-redux";
 import s from "components/Select/select.module.css";
 
-import fetchCurrency from "../../services/statistics";
+import fetchData from "../../services/statistics";
 
 const currentMonth = new Date().getMonth() + 1;
 const months = Array.from({ length: 12 }, (_, i) => {
@@ -38,7 +38,7 @@ function SelectDate({ fetchDate }) {
   const updateDate = async (name, value) => {
     const newDate = { ...date, [name]: value };
     setDate(newDate);
-    const fetch = await fetchCurrency(token, newDate);
+    const fetch = await fetchData(token, newDate);
     fetchDate(fetch);
   };
   useEffect(() => {
