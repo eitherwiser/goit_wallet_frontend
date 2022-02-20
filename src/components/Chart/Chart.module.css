@@ -1,11 +1,11 @@
 .chart {
- 
- max-height: 320px;
+ width: 320px;
+height: 320px;
  margin: 0 auto;
 }
 
 
- @media screen and (min-width: 768px) {
+ @media screen and (min-width: 769px) {
 .rightContainer {
    display: flex; 
   justify-content: space-between; 
@@ -18,7 +18,7 @@
     display: flex; 
     justify-content: space-between; 
     width: 700px;
-    margin-left: 30px;
+    /* margin-left: 30px; */
   }
   .chart {
     width: 320px;
@@ -28,9 +28,11 @@
   .wrapper {
     width: 700px;
   }
+
 }
 
 .mainTitle {
+  margin-top: 30px;
   font-size: 30px;
   line-height: 1.5;
   margin-left: 30px;
@@ -40,4 +42,10 @@
 .containerDiagram{
   width: 350px;
 }
+ }
+
+ @media screen and (min-width: 1280px) {
+  .chart {
+   margin-left: 30px;
+  }
  }

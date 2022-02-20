@@ -24,14 +24,13 @@ const obj = {
 
 export default function Chart() {
   const [fetchDate, setFetchDate] = useState(obj);
-  console.log(fetchDate);
 
   const arrName = [];
   const arrTotal = [];
   const arrColor = [];
 
-  // if(fetchDate.category.length===0) setFetchDate(obj)
-  fetchDate?.category.map((item) => {
+  
+  fetchDate?.category.forEach((item) => {
     arrName.push(item.name);
     arrTotal.push(item.total);
     arrColor.push(item.color);
