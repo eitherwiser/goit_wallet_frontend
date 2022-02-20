@@ -24,58 +24,53 @@ const obj = {
 
 export default function Chart() {
   const [fetchDate, setFetchDate] = useState(obj);
-  console.log(fetchDate)
+  console.log(fetchDate);
 
   const arrName = [];
   const arrTotal = [];
   const arrColor = [];
 
   // if(fetchDate.category.length===0) setFetchDate(obj)
-    fetchDate?.category.map((item) => {
-      arrName.push(item.name);
-      arrTotal.push(item.total);
-      arrColor.push(item.color);
-    });
-  
-    
-    const data = {
-      labels: [...arrName],
+  fetchDate?.category.map((item) => {
+    arrName.push(item.name);
+    arrTotal.push(item.total);
+    arrColor.push(item.color);
+  });
 
-      datasets: [
-        {
-          data: [...arrTotal],
-          backgroundColor: [...arrColor],
+  const data = {
+    labels: [...arrName],
 
-          borderWidth: 0,
-          cutout: 110,
-        },
-      ],
-    };
+    datasets: [
+      {
+        data: [...arrTotal],
+        backgroundColor: [...arrColor],
 
-    const options = {
- 
-      plugins: {
-        legend: {
-          display: false,
-        },
+        borderWidth: 0,
+        cutout: 110,
       },
-    };
-    return (
-      <>
-        <div className={s.wrapper}>
-        
-          <p className={s.mainTitle}>Статистика</p>
-          <div className={s.rightContainer}>
-            <div className={s.chart}>
-        
-              <Doughnut data={data} options={options} />
-            </div>
-            <div className={s.containerDiagram}>
-              <DiagramTab fetchDate={setFetchDate} data={fetchDate} />
-            </div>
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+  return (
+    <>
+      <div className={s.wrapper}>
+        <p className={s.mainTitle}>Статистика</p>
+        <div className={s.rightContainer}>
+          <div className={s.chart}>
+            <Doughnut data={data} options={options} />
+          </div>
+          <div className={s.containerDiagram}>
+            <DiagramTab fetchDate={setFetchDate} data={fetchDate} />
           </div>
         </div>
-      </>
-    );
-  
+      </div>
+    </>
+  );
 }
