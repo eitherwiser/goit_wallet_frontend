@@ -67,7 +67,7 @@ export default function TransactionTableMobile({ transactions }) {
             mb: 10,
             borderCollapse: "initial",
             borderLeft:
-              col.type === "-" ? "5px solid #24CCA7" : "5px solid #FF6596",
+              col.type === "+" ? "5px solid #24CCA7" : "5px solid #FF6596",
             borderRadius: "10px",
             margin: "0 auto 10px",
           }}
@@ -99,7 +99,7 @@ export default function TransactionTableMobile({ transactions }) {
               <TableCell align="left">Сумма</TableCell>
               <TableCell
                 sx={{
-                  color: col.type === "-" ? "#24CCA7" : "#FF6596",
+                  color: col.type === "+" ? "#24CCA7" : "#FF6596",
                   fontWeight: 700,
                 }}
                 align="right"
