@@ -5,8 +5,11 @@ import { Doughnut } from "react-chartjs-2";
 import s from "./Chart.module.css";
 import DiagramTab from "components/DiagramTab/DiagramTab";
 import { useSelector } from "react-redux";
-import { getBalance } from "redux/auth/auth-selectors";
+
+import { getBalance } from "redux/transactions/transactions-selectors";
+
 import LoaderSpinner from "components/LoaderComponentCurrency/LoaderComponent";
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -27,7 +30,7 @@ const obj = {
 
 export default function Chart() {
   const balance = useSelector(getBalance);
-  
+
   const [fetchDate, setFetchDate] = useState(obj);
   const arrName = [];
   const arrTotal = [];

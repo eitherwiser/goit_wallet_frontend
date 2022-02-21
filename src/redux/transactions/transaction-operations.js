@@ -45,3 +45,16 @@ export const getAllTransactions = createAsyncThunk(
     }
   },
 );
+export const getBalanceTransactions = createAsyncThunk(
+  "transaction/balance",
+
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get("/transactions");
+
+      return data.balance;
+    } catch (err) {
+      return rejectWithValue(toast.error("Данные отсутствуют"));
+    }
+  }
+);
