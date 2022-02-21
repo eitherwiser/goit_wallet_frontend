@@ -2,8 +2,8 @@
 
 .chart {
   position: relative;
- width: 320px;
-height: 320px;
+ width: 280px;
+height: 280px;
  margin: 0 auto;
 }
 .total{
@@ -25,7 +25,8 @@ height: 320px;
 .text{
   margin: 0 auto;
   text-align: center;
-width: 320px;
+width: 280px;
+height: 280px;
 padding-top: 50px;
 padding-bottom: 50px;
 padding-left: 20px;
@@ -39,7 +40,10 @@ padding-right: 20px;
   margin: 0 auto;
 }
  @media screen and (min-width: 769px) {
-
+  .text{
+    width: 320px;
+height: 320px;
+  }
 .rightContainer {
    display: flex; 
   justify-content: space-between; 

@@ -6,6 +6,7 @@ import s from "./Chart.module.css";
 import DiagramTab from "components/DiagramTab/DiagramTab";
 import { useSelector } from "react-redux";
 import { getBalance } from "redux/auth/auth-selectors";
+import LoaderSpinner from "components/LoaderComponentCurrency/LoaderComponent";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -65,9 +66,10 @@ export default function Chart() {
         <p className={s.mainTitle}>Статистика</p>
         <div className={s.rightContainer}>
           {fetchDate.total.Expense === 0 && (
-            <p className={s.text}>За выбраный период затрат нет</p>
+            <p className={s.text}>За выбранный период затрат нет</p>
           )}
-          {fetchDate.total.Expense !== 0 && (
+          {fetchDate.total.Expense !== 0 &&  
+          (
             <div className={s.chart}>
               <Doughnut data={data} options={options} />
               <p className={s.total}>&#x20b4; {balance}</p>

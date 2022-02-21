@@ -1,6 +1,5 @@
 .currency {
   position: relative;
-
   width: 280px;
   height: 174px;
   margin: 0 auto; /*Добавлено не не автором*/
@@ -8,7 +7,7 @@
   border-radius: 30px;
   color: var(--light-text-color);
   background-color: var(--accent-bcg-color);
-  background-image: url('../../images/Currency/currency_mob.png');
+  background-image: url("../../images/Currency/currency_mob.png");
   background-repeat: no-repeat;
   background-position: right bottom;
 }
@@ -22,7 +21,6 @@
   font-weight: normal;
   font-size: var(--font-size__main);
   line-height: 24px;
-
   border-spacing: 0;
   margin: 0;
   padding: 0;
@@ -68,7 +66,7 @@
 @media (min-width: 768px) {
   .currency {
     width: 334px;
-    background-image: url('../../images/Currency/currency_tab.png');
+    background-image: url("../../images/Currency/currency_tab.png");
   }
 
   .currencyShow {
@@ -83,7 +81,7 @@
   .currency {
     width: 348px;
     height: 347px;
-    background-image: url('../../images/Currency/currency_desk.png');
+    background-image: url("../../images/Currency/currency_desk.png");
   }
 
   .currency thead {
