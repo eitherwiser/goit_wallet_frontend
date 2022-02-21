@@ -71,7 +71,7 @@
 .switchIncome {
   position: absolute;
   right: 85px;
-  font-family: Circe;
+  font-family: "Circe", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -87,7 +87,7 @@
   left: 110px;
   margin: 0;
 
-  font-family: Circe;
+  font-family: "Circe", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -96,6 +96,19 @@
 }
 .switch__toggle:checked ~ .switchCosts {
   color: #ff6596;
+}
+
+.error {
+  position: absolute;
+  top: 37px;
+  color: red;
+}
+
+@media screen and (max-width: 767px) {
+  .error {
+    top: 40px;
+    right: 130px;
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -223,6 +236,7 @@
     font-size: 18px;
     line-height: 26.53px;
   }
+
   .comment::placeholder {
     padding-left: 10px;
     font-weight: 400;
@@ -387,7 +401,7 @@
 
   .comment {
     padding-left: 20px;
-    margin-bottom: 51px;
+    margin: 30px 0px 51px 0px;
     width: 100%;
     height: 34px;
     resize: none;
@@ -401,6 +415,7 @@
     font-size: 18px;
     line-height: 26.53px;
   }
+
   .comment::placeholder {
     font-weight: 400;
     font-size: 18px;
