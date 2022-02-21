@@ -6,7 +6,6 @@ axios.defaults.baseURL = "https://goit-34-wallet.herokuapp.com/api";
 export const addTransaction = createAsyncThunk(
   "transaction/addTransaction",
   async (credentials, { rejectWithValue }) => {
-    console.log(credentials);
     try {
       const { data } = await axios.post("/transactions", credentials);
       return data;
@@ -16,7 +15,7 @@ export const addTransaction = createAsyncThunk(
       }
       if (err.response.status === 401) {
         return rejectWithValue(
-          toast.error("Пожалуйста, перезайдите и повторите попытку позже")
+          toast.error("Пожалуйста, перезайдите и повторите попытку позже"),
         );
       }
       if (err.response.status === 500) {
@@ -24,7 +23,7 @@ export const addTransaction = createAsyncThunk(
       }
       return rejectWithValue(toast.error("Повторите попытку позже"));
     }
-  }
+  },
 );
 export const getAllTransactions = createAsyncThunk(
   "transaction/all",
@@ -36,7 +35,7 @@ export const getAllTransactions = createAsyncThunk(
     } catch (err) {
       if (err.response.status === 401) {
         return rejectWithValue(
-          toast.error("Пожалуйста, перезайдите и повторите попытку")
+          toast.error("Пожалуйста, перезайдите и повторите попытку"),
         );
       }
       if (err.response.status === 500) {
@@ -44,5 +43,5 @@ export const getAllTransactions = createAsyncThunk(
       }
       return rejectWithValue(toast.error("Повторите попытку позже"));
     }
-  }
+  },
 );
