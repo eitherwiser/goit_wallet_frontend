@@ -12,7 +12,9 @@ import AddIcon from "@material-ui/icons/Add";
 import Modal from "../ModalAddTransaction/ModalAddTransaction";
 // import FormAddTransactions from '../ModalAddTransactions/FormAddTransactions';
 
+
 const button = document.getElementById("button");
+
 
 export default function ButtonAddTransaction() {
   const dispatch = useDispatch();
@@ -43,7 +45,9 @@ export default function ButtonAddTransaction() {
       <>
         <Media
           queries={{
+
             small: "(max-width: 550px)",
+
             medium: "(min-width: 549px)",
           }}
         >
@@ -58,7 +62,9 @@ export default function ButtonAddTransaction() {
                       </div>
                     )}
                   </>,
+
                   button
+
                 )}
 
               {matches.medium && (
