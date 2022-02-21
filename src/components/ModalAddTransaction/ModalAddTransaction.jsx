@@ -80,9 +80,13 @@ export default function ModalAddTransaction({ modalAction }) {
         categoryId: "",
       }}
       validateOnBlur
-      onSubmit={(values, { resetForm }) => {
-        handleSubmit(values);
+      onSubmit={({ date, isIncome, ...all }, { resetForm }) => {
+        date = Date.parse(date).toString();
+        isIncome = !isIncome;
+        console.log(date);
+        handleSubmit({ date, isIncome, ...all });
         resetForm();
+        modalAction();
       }}
       validationSchema={validationSchema}>
       {({
@@ -156,15 +160,16 @@ export default function ModalAddTransaction({ modalAction }) {
                   {touched.amount && errors.amount && (
                     <span className={s.error}>{errors.amount}</span>
                   )}
-                  {/* <input
-                  value={values.date}
-                  type="date"
-                  name="date"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  required
-                /> */}
-                  <LocalizationProvider
+                  <input
+                    className={s.date}
+                    value={values.date}
+                    type='date'
+                    name='date'
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    required
+                  />
+                  {/* <LocalizationProvider
                     dateAdapter={AdapterDateFns}
                     locale={localeMap[locale]}>
                     <div>
@@ -175,7 +180,7 @@ export default function ModalAddTransaction({ modalAction }) {
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </div>
-                  </LocalizationProvider>
+                  </LocalizationProvider> */}
                 </div>
 
                 {touched.comment && errors.comment && (
