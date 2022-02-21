@@ -71,7 +71,7 @@
 .switchIncome {
   position: absolute;
   right: 85px;
-  font-family: Circe;
+  font-family: "Circe", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -87,7 +87,7 @@
   left: 110px;
   margin: 0;
 
-  font-family: Circe;
+  font-family: "Circe", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -96,6 +96,19 @@
 }
 .switch__toggle:checked ~ .switchCosts {
   color: #ff6596;
+}
+
+.error {
+  position: absolute;
+  top: 37px;
+  color: red;
+}
+
+@media screen and (max-width: 767px) {
+  .error {
+    top: 40px;
+    right: 130px;
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -164,12 +177,11 @@
 
   .sum {
     margin-bottom: 40px;
-
     font-weight: 700;
     font-size: 18px;
     line-height: 26.53px;
   }
-  .sum,
+
   .date {
     text-align: left;
     padding-left: 20px;
@@ -223,6 +235,7 @@
     font-size: 18px;
     line-height: 26.53px;
   }
+
   .comment::placeholder {
     padding-left: 10px;
     font-weight: 400;
@@ -333,27 +346,27 @@
   .subBox {
     position: relative;
     display: flex;
+    margin-bottom: 40px;
   }
 
   .sum {
     margin-right: 30px;
-
     font-weight: 700;
     font-size: 18px;
     line-height: 26.53px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
   }
-  .sum,
+
   .date {
-    padding-left: 20px;
-    margin-bottom: 40px;
     width: 190px;
     height: 34px;
     outline: none;
-    border-top: none;
-    border-right: none;
-    border-left: none;
+    border: none;
     border-bottom: 1px solid var(--border-color);
   }
+
   .sum::placeholder {
     text-align: left;
     font-weight: 700;
@@ -387,7 +400,7 @@
 
   .comment {
     padding-left: 20px;
-    margin-bottom: 51px;
+    margin: 30px 0px 51px 0px;
     width: 100%;
     height: 34px;
     resize: none;
@@ -401,6 +414,7 @@
     font-size: 18px;
     line-height: 26.53px;
   }
+
   .comment::placeholder {
     font-weight: 400;
     font-size: 18px;
