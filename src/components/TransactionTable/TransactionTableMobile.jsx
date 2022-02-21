@@ -106,7 +106,7 @@ export default function TransactionTableMobile({ transactions }) {
                 <TableCell align="left">Сумма</TableCell>
                 <TableCell
                   sx={{
-                    color: col.type === '-' ? '#24CCA7' : '#FF6596',
+                    color: col.type === '+' ? '#24CCA7' : '#FF6596',
                     fontWeight: 700,
                   }}
                   align="right"
