@@ -102,7 +102,7 @@ export default function TransactionTable({ transactions }) {
                 <TableCell align="center">{row.comment}</TableCell>
                 <TableCell
                   sx={{
-                    color: row.type === "-" ? "#24CCA7" : "#FF6596",
+                    color: row.type === "+" ? "#24CCA7" : "#FF6596",
                     fontWeight: 700,
                   }}
                   align="center"
