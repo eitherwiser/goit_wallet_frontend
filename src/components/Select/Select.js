@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
@@ -8,7 +8,7 @@ import { selectStyles } from "components/Select/selectStyles";
 import { useSelector } from "react-redux";
 import s from "components/Select/select.module.css";
 
-import fetchCurrency from "../../services/statistics";
+import fetchData from "../../services/statistics";
 
 const currentMonth = new Date().getMonth() + 1;
 const months = Array.from({ length: 12 }, (_, i) => {
@@ -38,10 +38,12 @@ function SelectDate({ fetchDate }) {
   const updateDate = async (name, value) => {
     const newDate = { ...date, [name]: value };
     setDate(newDate);
-    const fetch = await fetchCurrency(token, newDate);
+    const fetch = await fetchData(token, newDate);
     fetchDate(fetch);
-    // const obj =fetchCurrency(token, newDate);
   };
+  useEffect(() => {
+    updateDate();
+  }, []);
 
   return (
     <div className={s.selectContainer}>

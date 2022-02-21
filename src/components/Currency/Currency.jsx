@@ -1,14 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { CSSTransition } from "react-transition-group";
-import currencyApi from "../../services/currencyApi";
+//import { CSSTransition } from "react-transition-group";
+import currencyApi from "services/currencyApi";
+import LoaderSpinner from "components/LoaderComponentCurrency/LoaderComponent";
 
-import { currencies } from "../../assets/constants";
+import { currencies } from "assets/constants";
 import styles from "./Currency.module.css";
 
 export default function CurrencyTable() {
   const [currency, setCurrency] = useState([]);
   const [Loaded, setLoaded] = useState();
 
+  // standart
+  // useEffect(() => {
+  //   const fetchCurrency = async () => {
+  //     const data = await currencyApi.fetchCurrency();
+  //     const filteredCurrencies = [];
+  //     currencies.forEach(currency => {
+  //       data.forEach(element => {
+  //         parseInt(element.buy).toFixed(2);
+  //         if (element.ccy === currency) {
+  //           filteredCurrencies.push({
+  //             ccy: element.ccy,
+  //             buy: Number(element.buy).toFixed(2),
+  //             sale: Number(element.sale).toFixed(2),
+  //           });
+  //         }
+  //       });
+  //     });
+  //     setCurrency(filteredCurrencies);
+  //   };
+  //   fetchCurrency();
+  // }, []);
+
+  // bonus
   useEffect(() => {
     const fetchCurrency = async () => {
       const data = await currencyApi.fetchCurrency();
@@ -46,22 +70,27 @@ export default function CurrencyTable() {
   }, []);
 
   return (
-    <CSSTransition
-      in={Loaded}
-      timeout={500}
-      classNames={{
-        enterActive: `${styles.currencyShow}`,
-      }}
-      mountOnEnter
-    >
+    <>
+      {/*<CSSTransition
+        in={Loaded}
+        timeout={500}
+        classNames={{
+          enterActive: `${styles.currencyShow}`,
+        }}
+        mountOnEnter
+      >*/}
       <div className={styles.currency}>
-        {
+        {currency.length === 0 ? (
+          <div className={styles.loader}>
+            <LoaderSpinner />
+          </div>
+        ) : (
           <table>
             <thead>
               <tr>
-                <td>Валюта</td>
-                <td>Покупка</td>
-                <td>Продажа</td>
+                <td>Currency</td>
+                <td>Sell</td>
+                <td>Buy</td>
               </tr>
             </thead>
             <tbody>
@@ -76,8 +105,9 @@ export default function CurrencyTable() {
               })}
             </tbody>
           </table>
-        }
+        )}
       </div>
-    </CSSTransition>
+      {/*</CSSTransition>*/}
+    </>
   );
 }
