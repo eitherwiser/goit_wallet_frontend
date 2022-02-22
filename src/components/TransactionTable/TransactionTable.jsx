@@ -70,9 +70,11 @@ export default function TransactionTable({ transactions }) {
     <>
       <div className={s.table}>
         <ThemeProvider theme={theme}>
-          <Table aria-label="transacti table">
+          <Table aria-label="transacti table" sx={{ position: "relative" }}>
             <TableHead
               sx={{
+                position: "sticky",
+                top: "0",
                 "& .MuiTableCell-root:first-of-type": {
                   borderTopLeftRadius: "30px",
                   borderBottomLeftRadius: "30px",
