@@ -15,7 +15,6 @@ const token = {
 export const authUser = createAsyncThunk(
   "auth/addUser",
   async (credentials, { rejectWithValue }) => {
-    console.log(credentials);
     try {
       const { data } = await axios.post("/users/signup", credentials);
       console.log(data);
@@ -27,7 +26,7 @@ export const authUser = createAsyncThunk(
     } catch (err) {
       if (err.response.status === 409) {
         return rejectWithValue(
-          toast.error("Такой пользователь уже существует")
+          toast.error("Такой пользователь уже существует"),
         );
       }
       if (err.response.status === 400) {
@@ -38,7 +37,7 @@ export const authUser = createAsyncThunk(
       }
       return rejectWithValue(toast.error("Повторите попытку позже"));
     }
-  }
+  },
 );
 
 export const loginUser = createAsyncThunk(
@@ -52,12 +51,12 @@ export const loginUser = createAsyncThunk(
     } catch (err) {
       if (err.response.status === 401) {
         return rejectWithValue(
-          toast.error("E-mail или пароль указаны неверно")
+          toast.error("E-mail или пароль указаны неверно"),
         );
       }
       return rejectWithValue(err.response.message);
     }
-  }
+  },
 );
 export const logOut = createAsyncThunk(
   "auth/logout",
@@ -68,7 +67,7 @@ export const logOut = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.message);
     }
-  }
+  },
 );
 
 export const fetchCurrentUser = createAsyncThunk(
@@ -86,5 +85,5 @@ export const fetchCurrentUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.message);
     }
-  }
+  },
 );
