@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import s from "./Chart.module.css";
@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 import { getBalance } from "redux/transactions/transactions-selectors";
 
 import LoaderSpinner from "components/LoaderComponentCurrency/LoaderComponent";
-
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -30,8 +29,10 @@ const obj = {
 
 export default function Chart() {
   const balance = useSelector(getBalance);
-  const [loader, setLoader]= useState(true)
+  const [loader, setLoader] = useState(false);
   const [fetchDate, setFetchDate] = useState(obj);
+  console.log(fetchDate);
+  console.log(loader);
   const arrName = [];
   const arrTotal = [];
   const arrColor = [];
@@ -41,12 +42,6 @@ export default function Chart() {
     arrTotal.push(item.total);
     arrColor.push(item.color);
   });
-
-
-  useEffect(() => {
-    setTimeout(()=>{setLoader(false)}, 1000)
-  },[fetchDate]);
- 
 
   const data = {
     labels: [...arrName],
@@ -73,31 +68,34 @@ export default function Chart() {
     <>
       <div className={s.wrapper}>
         <p className={s.mainTitle}>Статистика</p>
-        
+
         <div className={s.rightContainer}>
-          {fetchDate.total.Expense === 0  && !loader &&(
+          {fetchDate.total.Expense === 0 && !loader && (
             <p className={s.text}>За выбранный период затрат нет</p>
           )}
 
+          {loader && (
+            <>
+              <div className={s.chart}> </div>
+              <div className={s.loader}>
+                <LoaderSpinner />
+              </div>
+            </>
+          )}
 
-           {fetchDate.total.Expense === 0 &&  loader &&   <div className={s.chart}>
-           <div className={s.loader}>
-            <LoaderSpinner />
-          </div>
-            </div>}
-          
-
-
-
-          {fetchDate.total.Expense !== 0 &&     <div className={s.chart}>
+          {fetchDate.total.Expense !== 0 && (
+            <div className={s.chart}>
               <Doughnut data={data} options={options} />
               <p className={s.total}>&#x20b4; {balance}</p>
-            </div>}
-       
-          
+            </div>
+          )}
 
           <div className={s.containerDiagram}>
-            <DiagramTab fetchDate={setFetchDate} data={fetchDate} />
+            <DiagramTab
+              fetchDate={setFetchDate}
+              data={fetchDate}
+              loader={setLoader}
+            />
           </div>
         </div>
       </div>

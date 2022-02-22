@@ -6,10 +6,10 @@ import Category from "components/Сategory/Category";
 
 
 
-export default function DiagramTab({fetchDate, data}) {
+export default function DiagramTab({fetchDate, data, loader}) {
   return (
     <>
-     <SelectDate fetchDate={fetchDate}/>
+     <SelectDate fetchDate={fetchDate} loader={loader}/>
       <div className={s.container}>
         <p className={s.title}>Категория</p> <p className={s.title}>Сумма</p>
       </div>
