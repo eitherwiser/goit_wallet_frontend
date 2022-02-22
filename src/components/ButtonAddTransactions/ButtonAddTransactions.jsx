@@ -1,20 +1,17 @@
-import { useCallback, Fragment } from "react";
-import Media from "react-media";
-import { createPortal } from "react-dom";
+import { useCallback, Fragment } from 'react';
+import Media from 'react-media';
+import { createPortal } from 'react-dom';
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 
-import s from "./ButtonAddTransactions.module.css";
-import { globalAction, globalSelectors } from "../../redux/global";
+import s from './ButtonAddTransactions.module.css';
+import { globalAction, globalSelectors } from '../../redux/global';
 
-import AddIcon from "@material-ui/icons/Add";
+import AddIcon from '@material-ui/icons/Add';
 
-import Modal from "../ModalAddTransaction/ModalAddTransaction";
-// import FormAddTransactions from '../ModalAddTransactions/FormAddTransactions';
+import Modal from '../ModalAddTransaction/ModalAddTransaction';
 
-
-const button = document.getElementById("button");
-
+const button = document.getElementById('button');
 
 export default function ButtonAddTransaction() {
   const dispatch = useDispatch();
@@ -23,12 +20,12 @@ export default function ButtonAddTransaction() {
 
   const closeModal = useCallback(
     () => dispatch(globalAction.closeModal()),
-    [dispatch]
+    [dispatch],
   );
 
   const openModal = useCallback(
     () => dispatch(globalAction.openModal()),
-    [dispatch]
+    [dispatch],
   );
 
   return (
@@ -45,34 +42,24 @@ export default function ButtonAddTransaction() {
       <>
         <Media
           queries={{
+            small: '(max-width: 550px)',
 
-            small: "(max-width: 550px)",
-
-            medium: "(min-width: 549px)",
+            medium: '(min-width: 549px)',
           }}
         >
-          {(matches) => (
+          {matches => (
             <Fragment>
               {matches.small &&
                 createPortal(
-                  <>
-                    {modal && (
-                      <div className={s.modalMobile}>
-                        {/* <FormAddTransactions /> */}
-                      </div>
-                    )}
-                  </>,
+                  <>{modal && <div className={s.modalMobile}></div>}</>,
 
-                  button
-
+                  button,
                 )}
 
               {matches.medium && (
                 <>
                   {modal && (
-                    <Modal modalValue={modal} modalAction={closeModal}>
-                      {/* <FormAddTransactions /> */}
-                    </Modal>
+                    <Modal modalValue={modal} modalAction={closeModal}></Modal>
                   )}
                 </>
               )}
