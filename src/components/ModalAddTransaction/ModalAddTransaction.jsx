@@ -49,6 +49,18 @@ export default function ModalAddTransaction({ modalAction }) {
     };
   });
 
+  function makeTime(data) {
+    const date = Date.now();
+    const interDate = data.slice(0, data.length - 5);
+    const newDate = date
+      .toString()
+      .split("")
+      .slice(8, date.toString().length)
+      .join("");
+
+    return Number(interDate + newDate);
+  }
+
   return (
     <Formik
       initialValues={{
@@ -60,7 +72,9 @@ export default function ModalAddTransaction({ modalAction }) {
       }}
       validateOnBlur
       onSubmit={({ date, isIncome, ...all }, { resetForm }) => {
-        date = Date.parse(date).toString();
+        date = makeTime(Date.parse(date).toString());
+        console.log(date);
+        console.log(typeof date);
         isIncome = !isIncome;
         handleSubmit({ date, isIncome, ...all });
         resetForm();
@@ -146,18 +160,6 @@ export default function ModalAddTransaction({ modalAction }) {
                     onChange={handleChange}
                     required
                   />
-                  {/* <LocalizationProvider
-                    dateAdapter={AdapterDateFns}
-                    locale={localeMap[locale]}>
-                    <div>
-                      <DatePicker
-                        mask={maskMap[locale]}
-                        value={value}
-                        onChange={(newValue) => setValue(newValue)}
-                        renderInput={(params) => <TextField {...params} />}
-                      />
-                    </div>
-                  </LocalizationProvider> */}
                 </div>
 
                 {touched.comment && errors.comment && (
