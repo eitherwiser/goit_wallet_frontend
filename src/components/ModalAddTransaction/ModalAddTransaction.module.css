@@ -98,6 +98,10 @@
   color: #ff6596;
 }
 
+.closeBtn {
+  display: none;
+}
+
 .error {
   position: absolute;
   top: 37px;
@@ -320,6 +324,17 @@
     margin-bottom: 40px;
     display: flex;
     align-items: center;
+  }
+
+  .closeBtn {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    top: 20px;
+    right: 20px;
   }
 
   .category {

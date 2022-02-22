@@ -7,6 +7,7 @@ import * as React from "react";
 import { addTransaction } from "redux/transactions/transaction-operations";
 import { getTransactionCategories } from "../../redux/auth/auth-selectors";
 import { useEffect } from "react";
+import closeIcon from "../../images/modal-transaction/close.svg";
 
 import s from "./ModalAddTransaction.module.css";
 
@@ -73,8 +74,6 @@ export default function ModalAddTransaction({ modalAction }) {
       validateOnBlur
       onSubmit={({ date, isIncome, ...all }, { resetForm }) => {
         date = makeTime(Date.parse(date).toString());
-        console.log(date);
-        console.log(typeof date);
         isIncome = !isIncome;
         handleSubmit({ date, isIncome, ...all });
         resetForm();
@@ -92,6 +91,9 @@ export default function ModalAddTransaction({ modalAction }) {
       }) => (
         <div className={s.overlay} onClick={onBackdropClick}>
           <div className={s.formBox}>
+            <button type='button' className={s.closeBtn} onClick={modalAction}>
+              <img src={closeIcon} alt='' />
+            </button>
             <Form>
               <div className={s.form}>
                 <b className={s.modalDescription}>Добавить транзакцию</b>
