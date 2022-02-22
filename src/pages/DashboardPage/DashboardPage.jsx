@@ -12,33 +12,31 @@ import s from "./DashboardPage.module.css";
 export default function DashboardPage() {
   return (
     <>
+      <Header />
       <Container>
-        <Header />
-      </Container>
-
-      <div className={s.dashboardPage}>
+        {/*<div className={s.dashboardPage}>*/}
         <div className={s.bgLeftBtn}>
-          <div className={s.blur}>
-            <Container>
-              <div className={s.wrapper}>
-                <div className={s.flex}>
-                  <div className={s.navBox}>
-                    <Navigation />
-                    <Balance />
-                  </div>
-                  {
-                    <Media
-                      query="(min-width: 768px)"
-                      render={() => <CurrencyTable />}
-                    />
-                  }
-                </div>
-                <Outlet />
+          {/*<div className={s.blur}>*/}
+
+          <div className={s.wrapper}>
+            <div className={s.flex}>
+              <div className={s.navBox}>
+                <Navigation />
+                <Balance />
               </div>
-            </Container>
+              {
+                <Media
+                  query="(min-width: 768px)"
+                  render={() => <CurrencyTable />}
+                />
+              }
+            </div>
+            <Outlet />
           </div>
         </div>
-      </div>
+      </Container>
+      {/*</div>*/}
+      {/*</div>*/}
     </>
   );
 }

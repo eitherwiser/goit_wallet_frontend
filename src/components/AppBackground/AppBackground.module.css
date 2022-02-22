@@ -1,0 +1,31 @@
+.AppBackground {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0 auto;
+  min-width: 0;
+  padding-bottom: 0;
+  background-color: var(--main-bcg-color);
+  min-height: 100vh;
+  z-index: 1;
+  backdrop-filter: blur(0px);
+  overflow: hidden;
+  pointer-events: all;
+  white-space: nowrap;
+}
+
+.Ellipse1 {
+  position: absolute;
+  top: 62%;
+  left: 5%;
+  z-index: -101;
+  filter: blur(35px);
+}
+
+.Ellipse2 {
+  position: absolute;
+  top: -5%;
+  left: 58%;
+  z-index: -101;
+  filter: blur(30px);
+}

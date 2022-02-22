@@ -27,7 +27,7 @@ for (let i = currentYear; i >= 2018; i--) {
   years.push({ value: i, label: i.toString() });
 }
 
-function SelectDate({ fetchDate }) {
+function SelectDate({ fetchDate, loader }) {
   const [date, setDate] = useState({
     month: currentMonth,
     year: currentYear,
@@ -38,7 +38,9 @@ function SelectDate({ fetchDate }) {
   const updateDate = async (name, value) => {
     const newDate = { ...date, [name]: value };
     setDate(newDate);
+    loader(true);
     const fetch = await fetchData(token, newDate);
+    loader(false);
     fetchDate(fetch);
   };
   useEffect(() => {

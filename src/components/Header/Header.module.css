@@ -1,5 +1,13 @@
-@import '../../stylesheet/var.css';
+
+@import "stylesheet/var.css";
+
 .header {
+  z-index: 10;
+  background-color: #fff;
+  height: 60px;
+}
+
+.headerContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,7 +17,8 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    height: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }

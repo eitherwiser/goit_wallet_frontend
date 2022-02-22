@@ -11,7 +11,6 @@ export default function Balance() {
   const transactions = useSelector(getTransactions);
   const dispatch = useDispatch();
   useEffect(() => dispatch(getBalanceTransactions()), [dispatch, transactions]);
-  console.log(balance);
   return (
     <div className={s.balance}>
       <div className={s.label}>Ваш баланс</div>

@@ -1,20 +1,13 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import Datetime from "react-datetime";
 // import moment from "moment";
 import classNames from "classnames";
-import DatePicker from "@mui/lab/DatePicker";
 import * as React from "react";
-import ruLocale from "date-fns/locale/ru";
-import TextField from "@mui/material/TextField";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { addTransaction } from "redux/transactions/transaction-operations";
 import { getTransactionCategories } from "../../redux/auth/auth-selectors";
 import { useEffect } from "react";
-
-import { ReactComponent as DateIcon } from "../../images/modal-transaction/date.svg";
+import closeIcon from "../../images/modal-transaction/close.svg";
 
 import s from "./ModalAddTransaction.module.css";
 
@@ -29,24 +22,11 @@ const validationSchema = Yup.object().shape({
 // function valid(current) {
 //   return current.isAfter(yesterday);
 // }
-const localeMap = {
-  ru: ruLocale,
-};
-
-const maskMap = {
-  fr: "__/__/____",
-  en: "__/__/____",
-  ru: "__.__.____",
-  de: "__.__.____",
-};
 
 export default function ModalAddTransaction({ modalAction }) {
-  let locale = "ru";
-  const [value, setValue] = React.useState(Date.now());
   const allCategories = useSelector(getTransactionCategories);
   const dispatch = useDispatch();
   const handleSubmit = ({ date, isIncome, amount, comment, categoryId }) => {
-    console.log(date, isIncome, amount, comment, categoryId);
     dispatch(addTransaction({ date, isIncome, amount, comment, categoryId }));
   };
 
@@ -70,10 +50,22 @@ export default function ModalAddTransaction({ modalAction }) {
     };
   });
 
+  function makeTime(data) {
+    const date = Date.now();
+    const interDate = data.slice(0, data.length - 5);
+    const newDate = date
+      .toString()
+      .split("")
+      .slice(8, date.toString().length)
+      .join("");
+
+    return Number(interDate + newDate);
+  }
+
   return (
     <Formik
       initialValues={{
-        date: value,
+        date: new Date().toISOString().substr(0, 10),
         isIncome: false,
         amount: "",
         comment: "",
@@ -81,9 +73,8 @@ export default function ModalAddTransaction({ modalAction }) {
       }}
       validateOnBlur
       onSubmit={({ date, isIncome, ...all }, { resetForm }) => {
-        date = Date.parse(date).toString();
+        date = makeTime(Date.parse(date).toString());
         isIncome = !isIncome;
-        console.log(date);
         handleSubmit({ date, isIncome, ...all });
         resetForm();
         modalAction();
@@ -100,6 +91,9 @@ export default function ModalAddTransaction({ modalAction }) {
       }) => (
         <div className={s.overlay} onClick={onBackdropClick}>
           <div className={s.formBox}>
+            <button type='button' className={s.closeBtn} onClick={modalAction}>
+              <img src={closeIcon} alt='' />
+            </button>
             <Form>
               <div className={s.form}>
                 <b className={s.modalDescription}>Добавить транзакцию</b>
@@ -126,7 +120,6 @@ export default function ModalAddTransaction({ modalAction }) {
 
                 {values.isIncome === true && (
                   <label className={s.span} htmlFor={`category`}>
-                    {/* <span className={s.categoryText}>Выберите категорию</span> */}
                     <select
                       className={s.category}
                       name='categoryId'
@@ -169,18 +162,6 @@ export default function ModalAddTransaction({ modalAction }) {
                     onChange={handleChange}
                     required
                   />
-                  {/* <LocalizationProvider
-                    dateAdapter={AdapterDateFns}
-                    locale={localeMap[locale]}>
-                    <div>
-                      <DatePicker
-                        mask={maskMap[locale]}
-                        value={value}
-                        onChange={(newValue) => setValue(newValue)}
-                        renderInput={(params) => <TextField {...params} />}
-                      />
-                    </div>
-                  </LocalizationProvider> */}
                 </div>
 
                 {touched.comment && errors.comment && (

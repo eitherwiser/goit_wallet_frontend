@@ -19,9 +19,6 @@ const isLoading = createReducer(false, {
   [getAllTransactions.pending]: () => true,
   [getAllTransactions.fulfilled]: () => false,
   [getAllTransactions.rejected]: () => false,
-  [getBalanceTransactions.pending]: () => true,
-  [getBalanceTransactions.fulfilled]: () => false,
-  [getBalanceTransactions.rejected]: () => false,
 });
 export default combineReducers({
   balance,

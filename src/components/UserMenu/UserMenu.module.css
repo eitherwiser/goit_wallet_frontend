@@ -1,4 +1,4 @@
-@import "../../stylesheet/var.css";
+@import "stylesheet/var.css";
 
 .header__user {
   display: inline-flex;
@@ -26,6 +26,7 @@
     margin-right: 15px;
   }
 }
+
 .logout {
   background-color: var(--btn-color);
   border: none;
