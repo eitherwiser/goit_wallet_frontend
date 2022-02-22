@@ -31,7 +31,7 @@ export default function ButtonAddTransaction() {
   return (
     <>
       <button
-        className={s.button}
+        className={s.buttonAdd}
         type="button"
         name="addOperation"
         onClick={openModal}
