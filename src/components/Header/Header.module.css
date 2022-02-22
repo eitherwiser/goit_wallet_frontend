@@ -1,3 +1,4 @@
+
 @import "stylesheet/var.css";
 
 .header {
@@ -17,5 +18,7 @@
 @media screen and (min-width: 768px) {
   .header {
     height: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
