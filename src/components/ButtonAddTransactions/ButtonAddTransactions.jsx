@@ -12,9 +12,7 @@ import AddIcon from "@material-ui/icons/Add";
 import Modal from "../ModalAddTransaction/ModalAddTransaction";
 // import FormAddTransactions from '../ModalAddTransactions/FormAddTransactions';
 
-
 const button = document.getElementById("button");
-
 
 export default function ButtonAddTransaction() {
   const dispatch = useDispatch();
@@ -23,34 +21,31 @@ export default function ButtonAddTransaction() {
 
   const closeModal = useCallback(
     () => dispatch(globalAction.closeModal()),
-    [dispatch]
+    [dispatch],
   );
 
   const openModal = useCallback(
     () => dispatch(globalAction.openModal()),
-    [dispatch]
+    [dispatch],
   );
 
   return (
     <>
       <button
         className={s.button}
-        type="button"
-        name="addOperation"
-        onClick={openModal}
-      >
-        <AddIcon className={s.buttonIcon} fontSize="large" />
+        type='button'
+        name='addOperation'
+        onClick={openModal}>
+        <AddIcon className={s.buttonIcon} fontSize='large' />
       </button>
 
       <>
         <Media
           queries={{
-
             small: "(max-width: 550px)",
 
-            medium: "(min-width: 549px)",
-          }}
-        >
+            medium: "(min-width: 50px)",
+          }}>
           {(matches) => (
             <Fragment>
               {matches.small &&
@@ -63,8 +58,7 @@ export default function ButtonAddTransaction() {
                     )}
                   </>,
 
-                  button
-
+                  button,
                 )}
 
               {matches.medium && (
