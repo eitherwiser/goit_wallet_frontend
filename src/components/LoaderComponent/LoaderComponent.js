@@ -1,16 +1,13 @@
-import { Audio } from 'react-loader-spinner';
-
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-// import s from "./LoaderComponent.module.css";
+import { CirclesWithBar } from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import s from "./LoaderComponent.module.css";
 
 export default function LoaderComponent() {
   return (
-    <Audio
-      type="BallTriangle"
-      color="#24CCA7"
-      className="Loader"
-      height={100}
-      width={100}
-    />
+    <div className={s.backdrop}>
+      <div className={s.modal}>
+        <CirclesWithBar color="#24CCA7" ariaLabel="circles-with-indicator" />
+      </div>
+    </div>
   );
 }

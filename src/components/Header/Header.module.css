@@ -1,4 +1,4 @@
-@import '../../stylesheet/var.css';
+@import "../../stylesheet/var.css";
 .header {
   display: flex;
   align-items: center;
@@ -9,7 +9,7 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
