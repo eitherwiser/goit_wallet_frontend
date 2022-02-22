@@ -1,6 +1,6 @@
 .dashboardPage {
   height: 100%;
-  background-color: var(--main-bcg-color);
+  /*background-color: var(--main-bcg-color);*/
 }
 
 .blur {
@@ -12,7 +12,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .dashboardPage {
+  /*.dashboardPage {
     height: 100vh;
     background-repeat: no-repeat;
     background-image: url("../../images/Dashboard/Ellipse2_tablet.png");
@@ -21,11 +21,10 @@
 
   .bgLeftBtn {
     height: 100vh;
-    /* backdrop-filter: blur(50px); */
     background-repeat: no-repeat;
     background-image: url("../../images/Dashboard/Ellipse1_tablet.png");
     background-position: left bottom;
-  }
+  }*/
 
   .navBox {
     display: flex;
@@ -43,10 +42,6 @@
     margin-bottom: 40px;
   }
 
-  .wrapper {
-    display: inline-block;
-  }
-
   .flex {
     display: flex;
   }
@@ -58,17 +53,18 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .dashboardPage {
+  /*.dashboardPage {
     background-image: url("../../images/Dashboard/Ellipse2.png");
   }
 
   .bgLeftBtn {
     background-image: url("../../images/Dashboard/Ellipse1.png");
-  }
+  }*/
 
   .wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
   }
 
