@@ -54,7 +54,7 @@ export const selectStyles = {
 
   menu: (provided) => ({
     ...provided,
-    background: "rgba(255, 255, 255, 0.7)",
+    background: "rgba(255, 255, 255, 0.9)",
     boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.1)",
     backdropFilter: "blur(5px)",
     borderRadius: 20,

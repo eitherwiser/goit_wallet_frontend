@@ -46,7 +46,6 @@ export default function Chart() {
       {
         data: [...arrTotal],
         backgroundColor: [...arrColor],
-
         borderWidth: 0,
         cutout: 100,
       },
