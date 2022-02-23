@@ -13,6 +13,12 @@
   position: relative;
 }
 
+@media screen and (min-width: 768px) {
+  .table {
+    width: 688px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .table {
     width: 700px;
@@ -20,9 +26,3 @@
     margin-left: 30px;
   }
 }
-
-/* @media screen and (max-width: 768px) {
-  .tMobile {
-    margin: 0 auto;
-  }
-} */
