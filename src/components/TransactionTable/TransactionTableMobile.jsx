@@ -6,14 +6,14 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 import ButtonAddTransaction from "../ButtonAddTransactions/ButtonAddTransactions";
 
-import { getTransactionCategories } from "../../redux/auth/auth-selectors";
+import { getTransactionCategories } from "redux/auth/auth-selectors";
 
 import NoTransactions from "../NoTransactions/NoTransactions";
 
-import dateConverter from "../../services/dateConverter";
-import createData from "../../services/createData";
+import dateConverter from "services/dateConverter";
+import createData from "services/createData";
 
-// import s from "./TransactionTable.module.css";
+import s from "./TransactionTable.module.css";
 
 const theme = createTheme({
   components: {
@@ -56,15 +56,15 @@ export default function TransactionTableMobile({ transactions }) {
 
   if (column[0] === undefined) {
     return (
-      <>
+      <div className={s.tableWrapper}>
         <NoTransactions />,
         <ButtonAddTransaction />
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className={s.tableWrapper}>
       <ThemeProvider theme={theme}>
         {column.map((col, idx) => (
           <Table
@@ -74,7 +74,6 @@ export default function TransactionTableMobile({ transactions }) {
               mb: 10,
               borderCollapse: "initial",
               borderLeft:
-
                 col.type === "+" ? "5px solid #24CCA7" : "5px solid #FF6596",
               borderRadius: "10px",
               margin: "0 auto 10px",
@@ -130,6 +129,6 @@ export default function TransactionTableMobile({ transactions }) {
         ))}
       </ThemeProvider>
       <ButtonAddTransaction />
-    </>
+    </div>
   );
 }

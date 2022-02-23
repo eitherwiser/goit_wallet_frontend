@@ -19,7 +19,7 @@ export default function UserMenu() {
     setShowModal((prev) => !prev);
   };
 
-  const onOwerlayClose = (event) => {
+  const onOverlayClose = (event) => {
     if (event.target === event.currentTarget) {
       onModalToggle();
     }
@@ -51,7 +51,7 @@ export default function UserMenu() {
       {showModal && (
         <ModalLogout
           onModalClose={onModalToggle}
-          onOwerlayClose={onOwerlayClose}
+          onOverlayClose={onOverlayClose}
           onUserLogOut={onUserLogOut}
         />
       )}

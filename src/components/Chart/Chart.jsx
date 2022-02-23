@@ -1,13 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import s from "./Chart.module.css";
 import DiagramTab from "components/DiagramTab/DiagramTab";
 import { useSelector } from "react-redux";
-
 import { getBalance } from "redux/transactions/transactions-selectors";
-
 import LoaderSpinner from "components/LoaderComponentCurrency/LoaderComponent";
 
 ChartJS.register(ArcElement, Tooltip, Legend);

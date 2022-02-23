@@ -8,7 +8,7 @@ import styles from "./Currency.module.css";
 
 export default function CurrencyTable() {
   const [currency, setCurrency] = useState([]);
-  const [Loaded, setLoaded] = useState();
+  //const [Loaded, setLoaded] = useState();
 
   // standart
   // useEffect(() => {
@@ -65,9 +65,9 @@ export default function CurrencyTable() {
     }
   }, []);
 
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
+  //useEffect(() => {
+  //  setLoaded(true);
+  //}, []);
 
   return (
     <>
