@@ -1,4 +1,4 @@
-@import '../../stylesheet/var.css';
+@import "../../stylesheet/var.css";
 
 .formRegister {
   display: flex;
@@ -90,7 +90,7 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--accent-btn-color);
+  background-color: var(--accent-btn-color);
   border-radius: 20px;
   margin-bottom: 20px;
   border: none;
@@ -105,6 +105,14 @@ label {
   text-transform: uppercase;
   color: var(--btn-color);
   cursor: pointer;
+}
+.btn:hover,
+.btn:focus {
+  border: 1px solid var(--accent-btn-color);
+  color: var(--accent-btn-color);
+  background-color: var(--btn-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
   .btn {
@@ -121,7 +129,7 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--btn-color);
+  background-color: var(--btn-color);
   border: 1px solid var(--accent-svg-color);
   box-sizing: border-box;
   border-radius: 20px;
@@ -135,6 +143,15 @@ label {
   text-transform: uppercase;
   cursor: pointer;
   color: var(--accent-svg-color);
+}
+
+.btn1:hover,
+.btn1:focus {
+  color: var(--light-text-color);
+  background-color: var(--accent-bcg-color);
+  border: 1px solid var(--accent-svg-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
   .btn1 {
