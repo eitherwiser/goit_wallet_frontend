@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import currencyApi from "services/currencyApi";
 import LoaderSpinner from "components/LoaderComponentCurrency/LoaderComponent";
 
-import { currencies } from "assets/constants";
+import { currencies } from "constants/constants";
 import styles from "./Currency.module.css";
 
 export default function CurrencyTable() {
