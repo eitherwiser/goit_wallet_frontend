@@ -4,10 +4,21 @@
   height: 280px;
   margin: 0 auto;
 }
-.total {
+
+.containerTotal{
+
+ height: 20px;
+  width: 180px;
   position: absolute;
-  top: 125px;
-  left: 70px;
+  top: 135px;
+  left: 60px;
+  font-weight: 800;
+  font-size: 18px;
+}
+.total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 800;
   font-size: 18px;
 }
@@ -47,7 +58,10 @@
   margin: 0 auto;
 }
 @media screen and (min-width: 768px) {
-
+  .containerDiagram {
+    width: 350px;
+  }
+  
   .chart {
     margin-left: 6px;
     width:297px;
@@ -89,9 +103,6 @@
   }
 }
 
-.containerDiagram {
-  width: 350px;
-}
 
 @media screen and (min-width: 1280px) {
   .loader {
