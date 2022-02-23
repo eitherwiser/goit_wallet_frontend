@@ -57,7 +57,7 @@ export default function TransactionTableMobile({ transactions }) {
   if (column[0] === undefined) {
     return (
       <div className={s.tableWrapper}>
-        <NoTransactions />,
+        <NoTransactions />
         <ButtonAddTransaction />
       </div>
     );
