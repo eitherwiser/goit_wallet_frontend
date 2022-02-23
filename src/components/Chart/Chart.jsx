@@ -31,8 +31,6 @@ export default function Chart() {
   const balance = useSelector(getBalance);
   const [loader, setLoader] = useState(false);
   const [fetchDate, setFetchDate] = useState(obj);
-  console.log(fetchDate);
-  console.log(loader);
   const arrName = [];
   const arrTotal = [];
   const arrColor = [];
@@ -50,7 +48,6 @@ export default function Chart() {
       {
         data: [...arrTotal],
         backgroundColor: [...arrColor],
-
         borderWidth: 0,
         cutout: 100,
       },
