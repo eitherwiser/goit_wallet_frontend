@@ -9,7 +9,6 @@ import { globalAction, globalSelectors } from '../../redux/global';
 
 import AddIcon from '@material-ui/icons/Add';
 
-
 import Modal from '../ModalAddTransaction/ModalAddTransaction';
 const button = document.getElementById('button');
 
@@ -37,23 +36,29 @@ export default function ButtonAddTransaction() {
         type="button"
         name="addOperation"
         onClick={openModal}
-     >
+      >
         <AddIcon className={s.buttonIcon} fontSize="large" />
-
       </button>
 
       <>
         <Media
           queries={{
-            small: '(max-width: 550px)',
-            medium: '(min-width: 549px)',
+            small: '(max-width: 549px)',
+            medium: '(min-width: 550px)',
           }}
         >
           {matches => (
             <Fragment>
               {matches.small &&
                 createPortal(
-                  <>{modal && <div className={s.modalMobile}></div>}</>,
+                  <>
+                    {modal && (
+                      <Modal
+                        modalValue={modal}
+                        modalAction={closeModal}
+                      ></Modal>
+                    )}
+                  </>,
                   button,
                 )}
 
