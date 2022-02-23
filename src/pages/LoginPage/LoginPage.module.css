@@ -45,18 +45,18 @@
     width: 768px;
     margin: 0 auto;
   }
+}
 
+@media screen and (min-width: 1280px) {
   .content_filter {
     position: absolute;
-    left: 0%;
-    width: 100vw;
+    right: 0;
+    width: 55vw;
     height: 100vh;
     background-color: #fff;
     opacity: 0.4;
   }
-}
 
-@media screen and (min-width: 1280px) {
   .wrapper {
     position: relative;
     width: 560px;
