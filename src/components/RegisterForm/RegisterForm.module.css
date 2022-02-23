@@ -1,4 +1,4 @@
-@import "../../stylesheet/var.css";
+@import "stylesheet/var.css";
 
 .formRegister {
   display: flex;
@@ -6,17 +6,18 @@
   align-items: center;
   margin: 0 auto;
   width: 280px;
-  /* height: 100%; */
+
   padding-top: 36px;
   padding-bottom: 36px;
   background: var(--light-bcg-color);
 }
+
 @media screen and (min-width: 768px) {
   .formRegister {
     position: absolute;
     margin: unset;
     width: 540px;
-    min-height: 616px;
+    max-height: 616px;
     padding-top: 40px;
     padding-bottom: 60px;
     border-radius: 20px;
@@ -114,6 +115,7 @@ label {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 @media screen and (min-width: 768px) {
   .btn {
     width: 300px;
