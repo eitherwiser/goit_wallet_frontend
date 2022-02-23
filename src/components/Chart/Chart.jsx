@@ -5,7 +5,8 @@ import { Doughnut } from "react-chartjs-2";
 import s from "./Chart.module.css";
 import DiagramTab from "components/DiagramTab/DiagramTab";
 import { useSelector } from "react-redux";
-import { getBalance } from "redux/auth/auth-selectors";
+import { getBalance } from "redux/transactions/transactions-selectors";
+import LoaderSpinner from "components/LoaderComponentCurrency/LoaderComponent";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -26,7 +27,7 @@ const obj = {
 
 export default function Chart() {
   const balance = useSelector(getBalance);
-  
+  const [loader, setLoader] = useState(false);
   const [fetchDate, setFetchDate] = useState(obj);
   const arrName = [];
   const arrTotal = [];
@@ -63,11 +64,22 @@ export default function Chart() {
     <>
       <div className={s.wrapper}>
         <p className={s.mainTitle}>Статистика</p>
+
         <div className={s.rightContainer}>
-          {fetchDate.total.Expense === 0 && (
-            <p className={s.text}>За выбраный период затрат нет</p>
+          {fetchDate.total.Expense === 0 && !loader && (
+            <p className={s.text}>За выбранный период затрат нет</p>
           )}
-          {fetchDate.total.Expense !== 0 && (
+
+          {loader && (
+            <>
+              <div className={s.chart}> </div>
+              <div className={s.loader}>
+                <LoaderSpinner />
+              </div>
+            </>
+          )}
+
+          {fetchDate.total.Expense !== 0 && !loader && (
             <div className={s.chart}>
               <Doughnut data={data} options={options} />
               <p className={s.total}>&#x20b4; {balance}</p>
@@ -75,7 +87,11 @@ export default function Chart() {
           )}
 
           <div className={s.containerDiagram}>
-            <DiagramTab fetchDate={setFetchDate} data={fetchDate} />
+            <DiagramTab
+              fetchDate={setFetchDate}
+              data={fetchDate}
+              loader={setLoader}
+            />
           </div>
         </div>
       </div>

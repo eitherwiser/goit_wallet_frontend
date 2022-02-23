@@ -1,5 +1,3 @@
-export const getTransactions = (state) =>
-  state.transactions.transaction.transactions;
-// export const getTransactions = (state) => state.transactions.transactions;
+export const getTransactions = (state) => state.transactions.items;
 export const getLoading = (state) => state.transactions.isLoading;
-export const balanceTransaction = (state) => state.transactions.balance;
+export const getBalance = (state) => state.transactions.balance;

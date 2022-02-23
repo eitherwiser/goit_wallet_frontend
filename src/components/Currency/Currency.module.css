@@ -1,7 +1,6 @@
 .currency {
   position: relative;
-
-  width: 280px;
+  max-width: 480px;
   height: 174px;
   margin: 0 auto; /*Добавлено не не автором*/
   margin-top: 30px;
@@ -22,7 +21,6 @@
   font-weight: normal;
   font-size: var(--font-size__main);
   line-height: 24px;
-
   border-spacing: 0;
   margin: 0;
   padding: 0;

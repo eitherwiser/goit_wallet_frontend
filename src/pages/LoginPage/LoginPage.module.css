@@ -1,4 +1,4 @@
-@import "../../stylesheet/var.css";
+@import "stylesheet/var.css";
 
 .title {
   position: absolute;
@@ -13,20 +13,24 @@
   .title {
     display: none;
   }
+
+  .container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .wrapper {
     position: relative;
-    padding: 360px 114px 48px 114px;
+    padding-top: 360px;
+    padding-bottom: 48px;
     width: 768px;
     height: 1024px;
-    background-color: var(--main-bcg-color);
-    background-image: url(../../images/login/tablet/ellipse_purple.png),
-      url(../../images/login/tablet/ellipse_pink.png),
-      url(../../images/login/tablet/frame.png);
+    background-image: url(images/login/tablet/frame.png);
     background-repeat: no-repeat;
-    background-position: bottom 0 left 0, right 0 top 0, left 114px top 60px;
+    background-position: left 114px top 60px;
   }
 
   .title {
@@ -41,6 +45,15 @@
     width: 768px;
     margin: 0 auto;
   }
+
+  .content_filter {
+    position: absolute;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    opacity: 0.4;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -48,28 +61,18 @@
     position: relative;
     width: 560px;
     height: 720px;
-
-    background-image: url(../../images/login/desktop/frame.png),
-      url(../../images/login/desktop/ellipse_purple.png);
-
+    padding-left: 114px;
+    padding-right: 114px;
+    background-image: url(images/login/desktop/frame.png);
     background-repeat: no-repeat;
-    background-position: left 76px top 150px, bottom 0 left 0;
+    background-position: left 76px top 150px;
   }
 
   .content_container {
+    position: relative;
     width: 720px;
     height: 720px;
-    background-color: var(--main-bcg-color);
-    background-image: url(../../images/login/desktop/ellipse_pink.png);
-    background-repeat: no-repeat;
     background-position: right 0;
-  }
-
-  .content_filter {
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(50px);
   }
 
   .container {
@@ -77,7 +80,7 @@
     justify-content: center;
     align-items: center;
     width: 1280px;
-    margin: 0 auto;
+    margin: auto;
   }
 
   .title {

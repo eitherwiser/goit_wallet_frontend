@@ -1,4 +1,4 @@
-@import "../../stylesheet/var.css";
+@import "stylesheet/var.css";
 
 .formRegister {
   display: flex;
@@ -23,7 +23,32 @@
     top: 360px;
     right: 114px;
   }
+
+  .input {
+    width: 409.5px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn {
+    width: 300px;
+    height: 50px;
+  }
+  .btn1 {
+    margin: 0;
+    width: 300px;
+    height: 50px;
+  }
+
+  .logo {
+    margin-bottom: 50px;
+  }
+  .error {
+    font-size: 14px;
+  }
 }
+
 @media screen and (min-width: 1280px) {
   .formRegister {
     top: 136px;
@@ -45,14 +70,6 @@
   border-bottom: 1px solid var(--main-svg-color);
   text-indent: 40px;
   padding: 0;
-}
-@media screen and (min-width: 768px) {
-  .input {
-    width: 409.5px;
-    height: 34px;
-    display: flex;
-    justify-content: center;
-  }
 }
 
 input::placeholder {
@@ -108,12 +125,6 @@ label {
   color: var(--btn-color);
   cursor: pointer;
 }
-@media screen and (min-width: 768px) {
-  .btn {
-    width: 300px;
-    height: 50px;
-  }
-}
 
 .btn1 {
   margin: 0;
@@ -138,16 +149,6 @@ label {
   cursor: pointer;
   color: var(--accent-svg-color);
 }
-@media screen and (min-width: 768px) {
-  .btn1 {
-    margin: 0;
-    width: 300px;
-    height: 50px;
-  }
-}
-.logo {
-  margin-bottom: 50px;
-}
 
 .error {
   position: absolute;
@@ -158,9 +159,4 @@ label {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 50;
-}
-@media screen and (min-width: 768px) {
-  .error {
-    font-size: 14px;
-  }
 }

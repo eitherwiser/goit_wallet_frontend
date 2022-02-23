@@ -1,23 +1,13 @@
-.dashboardPage {
-  backdrop-filter: blur(50px);
-  background-color: var(--main-bcg-color);
-}
-
 .wrapper {
+  height: 100%;
   position: relative;
 }
 
 @media screen and (min-width: 768px) {
-  .dashboardPage {
-    background-repeat: no-repeat;
-    background-image: url("../../images/Dashboard/Ellipse2_tablet.png");
-    background-position: right top;
-  }
-
-  .bgLeftBtn {
-    background-repeat: no-repeat;
-    background-image: url("../../images/Dashboard/Ellipse1_tablet.png");
-    background-position: left bottom;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .navBox {
@@ -26,22 +16,9 @@
     align-items: center;
   }
 
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .flex {
+    display: flex;
     margin-bottom: 40px;
-  }
-
-  .wrapper {
-    display: inline-block;
-  }
-
-  .flex {
-    display: flex;
   }
 
   .navBox {
@@ -51,18 +28,10 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .dashboardPage {
- 
-    background-image: url("../../images/Dashboard/Ellipse2.png");
-  }
-
-  .bgLeftBtn {
-    background-image: url("../../images/Dashboard/Ellipse1.png");
-  }
-
   .wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
   }
 

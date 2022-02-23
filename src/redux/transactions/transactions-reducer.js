@@ -1,11 +1,17 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { addTransaction, getAllTransactions } from "./transaction-operations";
-const transaction = createReducer([], {
-  [addTransaction.fulfilled]: (state, { payload }) => [...state, payload],
+import {
+  addTransaction,
+  getAllTransactions,
+  getBalanceTransactions,
+} from "./transaction-operations";
+const items = createReducer([], {
+  [addTransaction.fulfilled]: (state, { payload }) => [payload, ...state],
   [getAllTransactions.fulfilled]: (_, { payload }) => payload,
 });
-
+const balance = createReducer(0, {
+  [getBalanceTransactions.fulfilled]: (_, { payload }) => payload,
+});
 const isLoading = createReducer(false, {
   [addTransaction.pending]: () => true,
   [addTransaction.fulfilled]: () => false,
@@ -15,6 +21,7 @@ const isLoading = createReducer(false, {
   [getAllTransactions.rejected]: () => false,
 });
 export default combineReducers({
-  transaction,
+  balance,
+  items,
   isLoading,
 });

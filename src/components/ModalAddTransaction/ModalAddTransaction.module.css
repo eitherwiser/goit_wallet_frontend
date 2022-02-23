@@ -3,8 +3,8 @@
   z-index: 100;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.25);
 }
 
@@ -32,6 +32,7 @@
   height: 0;
   width: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .switch__track {
@@ -71,7 +72,7 @@
 .switchIncome {
   position: absolute;
   right: 85px;
-  font-family: Circe;
+  font-family: "Circe", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -87,7 +88,7 @@
   left: 110px;
   margin: 0;
 
-  font-family: Circe;
+  font-family: "Circe", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -98,31 +99,48 @@
   color: #ff6596;
 }
 
-@media screen and (max-width: 479px) {
-  .formBox {
-    min-width: 320px;
-  }
+.closeBtn {
+  display: none;
 }
-@media screen and (max-width: 767px) {
-  .formBox {
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 500ms linear;
 
-    width: 320px;
+.error {
+  position: absolute;
+  top: 37px;
+  color: red;
+}
+
+.sum {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+@media screen and (max-width: 767px) {
+  .overlay {
+    height: 100%;
+  }
+
+  .error {
+    top: 35px;
+  }
+
+  .formBox {
+    position: sticky;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
     padding-top: 40px;
     padding-bottom: 60px;
     background-color: var(--light-bcg-color);
-    border-radius: 20px;
+    overflow: hidden;
   }
 
   .form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
   }
 
   .modalDescription {
@@ -158,21 +176,20 @@
 
   .subBox {
     position: relative;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 40px;
   }
 
   .sum {
     margin-bottom: 40px;
-
     font-weight: 700;
     font-size: 18px;
     line-height: 26.53px;
   }
-  .sum,
+
   .date {
     text-align: left;
-    padding-left: 20px;
     width: 280px;
     height: 34px;
     outline: none;
@@ -181,12 +198,14 @@
     border-left: none;
     border-bottom: 1px solid var(--border-color);
   }
+
   .sum::placeholder {
     font-weight: 700;
     font-size: 18px;
     line-height: 26.53px;
     color: var(--secondary-text-color);
   }
+
   .date input {
     outline: none;
     border: none;
@@ -208,21 +227,18 @@
   }
 
   .comment {
-    padding-left: 20px;
     margin-bottom: 40px;
-    width: 100%;
-    height: 74px;
+    width: 290px;
     resize: none;
     outline: none;
-    border-top: none;
-    border-right: none;
-    border-left: none;
+    border: none;
     border-bottom: 1px solid var(--border-color);
 
     font-weight: 400;
     font-size: 18px;
     line-height: 26.53px;
   }
+
   .comment::placeholder {
     padding-left: 10px;
     font-weight: 400;
@@ -262,7 +278,7 @@
   }
 
   .btnCancel {
-    border-color: var(--accent-text-color);
+    border: 1px solid var(--accent-text-color);
     color: var(--accent-text-color);
     background-color: var(--btn-color);
   }
@@ -313,15 +329,24 @@
     align-items: center;
   }
 
+  .closeBtn {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    top: 20px;
+    right: 20px;
+  }
+
   .category {
     padding-left: 20px;
     margin-bottom: 40px;
     width: 409.5px;
     height: 34px;
     outline: none;
-    border-top: none;
-    border-right: none;
-    border-left: none;
+    border: none;
     border-bottom: 1px solid var(--border-color);
 
     font-weight: 400;
@@ -333,27 +358,24 @@
   .subBox {
     position: relative;
     display: flex;
+    margin-bottom: 40px;
   }
 
   .sum {
     margin-right: 30px;
-
     font-weight: 700;
     font-size: 18px;
     line-height: 26.53px;
   }
-  .sum,
+
   .date {
-    padding-left: 20px;
-    margin-bottom: 40px;
     width: 190px;
     height: 34px;
     outline: none;
-    border-top: none;
-    border-right: none;
-    border-left: none;
+    border: none;
     border-bottom: 1px solid var(--border-color);
   }
+
   .sum::placeholder {
     text-align: left;
     font-weight: 700;
@@ -387,7 +409,7 @@
 
   .comment {
     padding-left: 20px;
-    margin-bottom: 51px;
+    margin: 30px 0px 51px 0px;
     width: 100%;
     height: 34px;
     resize: none;
@@ -401,6 +423,7 @@
     font-size: 18px;
     line-height: 26.53px;
   }
+
   .comment::placeholder {
     font-weight: 400;
     font-size: 18px;
@@ -439,7 +462,7 @@
   }
 
   .btnCancel {
-    border-color: var(--accent-text-color);
+    border: 1px solid var(--accent-text-color);
     color: var(--accent-text-color);
     background-color: var(--btn-color);
   }

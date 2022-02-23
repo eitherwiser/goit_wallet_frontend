@@ -1,9 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import path from '../../routes_path';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import path from "../../routes_path";
 
-import styles from './MobileNavigation.module.css';
-import sprite from '../../images/svg_sprite.svg';
+import styles from "./MobileNavigation.module.css";
+import sprite from "../../images/svg_sprite.svg";
 
 export default function MobileNavigation() {
   return (
@@ -16,7 +16,7 @@ export default function MobileNavigation() {
           to={path.dashboardPage}
         >
           <svg height="38px" width="38px">
-            <use href={sprite + '#icon-home'}></use>
+            <use href={sprite + "#icon-home"}></use>
           </svg>
         </NavLink>
         <NavLink
@@ -26,7 +26,7 @@ export default function MobileNavigation() {
           to={path.statistic}
         >
           <svg height="38px" width="38px">
-            <use href={sprite + '#icon-statistics'}></use>
+            <use href={sprite + "#icon-statistics"}></use>
           </svg>
         </NavLink>
         <NavLink
@@ -36,7 +36,7 @@ export default function MobileNavigation() {
           to="/exchangeRates"
         >
           <svg height="38px" width="38px">
-            <use href={sprite + '#icon-currency'}></use>
+            <use href={sprite + "#icon-currency"}></use>
           </svg>
         </NavLink>
       </nav>
