@@ -36,13 +36,13 @@ export default function UserMenu() {
         <img
           style={{ borderRadius: "50%" }}
           src={avatar}
-          width="25px"
-          height="25px"
-          alt="avatar"
+          width='25px'
+          height='25px'
+          alt='avatar'
         />
         <span className={s.header__text}>{name}</span>
         <span className={s.line}>{isMobileOrTablet ? "|" : ""}</span>
-        <button onClick={onModalToggle} type="button" className={s.logout}>
+        <button onClick={onModalToggle} type='button' className={s.logout}>
           {<Logout />}
           <span className={s.exit}>{isMobileOrTablet ? "Выйти" : ""}</span>
         </button>
