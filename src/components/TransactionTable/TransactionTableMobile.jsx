@@ -118,8 +118,9 @@ export default function TransactionTableMobile({ transactions }) {
                 sx={{
                   "& .MuiTableCell-root:last-of-type": {
                     borderBottomRightRadius: "10px",
-                  }
-                 >
+                  },
+                }}
+              >
                 <TableCell align="left">Баланс</TableCell>
                 <TableCell align="right">{col.balance}</TableCell>
               </TableRow>
