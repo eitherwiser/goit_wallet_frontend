@@ -1,31 +1,45 @@
 .AppBackground {
   position: relative;
-  padding-left: 0;
-  padding-right: 0;
-  margin: 0 auto;
-  min-width: 0;
-  padding-bottom: 0;
-  background-color: var(--main-bcg-color);
-  min-height: 100vh;
-  z-index: 1;
-  backdrop-filter: blur(0px);
-  overflow: hidden;
+  width: 100vw;
+  max-height: 100vh;
+  z-index: 0;
   pointer-events: all;
-  white-space: nowrap;
 }
 
-.Ellipse1 {
+.ellipseWrapper {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  z-index: -100;
+  background-color: var(--main-bcg-color);
+}
+
+.ellipse1 {
   position: absolute;
   top: 62%;
   left: 5%;
   z-index: -101;
   filter: blur(35px);
+  animation: 22s ease-in-out 0s normal none infinite running rot;
 }
 
-.Ellipse2 {
+.ellipse2 {
   position: absolute;
   top: -5%;
   left: 58%;
   z-index: -101;
   filter: blur(30px);
+  animation: 16s ease-in-out 0s normal none infinite running rot;
+}
+
+@keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

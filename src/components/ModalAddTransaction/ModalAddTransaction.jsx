@@ -1,7 +1,6 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-// import moment from "moment";
 import classNames from "classnames";
 import * as React from "react";
 import { addTransaction } from "redux/transactions/transaction-operations";
@@ -17,11 +16,6 @@ const validationSchema = Yup.object().shape({
     .required("Обязательное поле"),
   comment: Yup.string(),
 });
-
-// var yesterday = moment().subtract(1, "day");
-// function valid(current) {
-//   return current.isAfter(yesterday);
-// }
 
 export default function ModalAddTransaction({ modalAction }) {
   const allCategories = useSelector(getTransactionCategories);
@@ -79,7 +73,8 @@ export default function ModalAddTransaction({ modalAction }) {
         resetForm();
         modalAction();
       }}
-      validationSchema={validationSchema}>
+      validationSchema={validationSchema}
+    >
       {({
         values,
         errors,
@@ -91,8 +86,8 @@ export default function ModalAddTransaction({ modalAction }) {
       }) => (
         <div className={s.overlay} onClick={onBackdropClick}>
           <div className={s.formBox}>
-            <button type='button' className={s.closeBtn} onClick={modalAction}>
-              <img src={closeIcon} alt='' />
+            <button type="button" className={s.closeBtn} onClick={modalAction}>
+              <img src={closeIcon} alt="" />
             </button>
             <Form>
               <div className={s.form}>
@@ -102,16 +97,17 @@ export default function ModalAddTransaction({ modalAction }) {
                   <div className={s.switch__control}>
                     <input
                       className={s.switch__toggle}
-                      type='checkbox'
+                      type="checkbox"
                       id={`switch-toggle`}
-                      name='isIncome'
+                      name="isIncome"
                       onBlur={handleBlur}
                       value={values.isIncome}
                       onChange={handleChange}
                     />
                     <label
                       className={s.switch__track}
-                      htmlFor={`switch-toggle`}></label>
+                      htmlFor={`switch-toggle`}
+                    ></label>
                     <div className={s.switch__marker}></div>
                     <p className={s.switchIncome}>Доход</p>
                     <p className={s.switchCosts}>Расход</p>
@@ -122,11 +118,12 @@ export default function ModalAddTransaction({ modalAction }) {
                   <label className={s.span} htmlFor={`category`}>
                     <select
                       className={s.category}
-                      name='categoryId'
+                      name="categoryId"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.categoryId}>
-                      <option value='0' key={"1"}>
+                      value={values.categoryId}
+                    >
+                      <option value="0" key={"1"}>
                         Выберите категорию
                       </option>
                       {allCategories.map(({ name, id }) => {
@@ -145,7 +142,7 @@ export default function ModalAddTransaction({ modalAction }) {
                     className={s.sum}
                     type={`number`}
                     name={`amount`}
-                    placeholder='0.00'
+                    placeholder="0.00"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.amount}
@@ -156,8 +153,8 @@ export default function ModalAddTransaction({ modalAction }) {
                   <input
                     className={s.date}
                     value={values.date}
-                    type='date'
-                    name='date'
+                    type="date"
+                    name="date"
                     onBlur={handleBlur}
                     onChange={handleChange}
                     required
@@ -171,7 +168,7 @@ export default function ModalAddTransaction({ modalAction }) {
                   className={s.comment}
                   name={`comment`}
                   type={`text`}
-                  placeholder='Комментарий'
+                  placeholder="Комментарий"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.comment}
@@ -180,13 +177,15 @@ export default function ModalAddTransaction({ modalAction }) {
                 <button
                   className={classNames(s.btn, s.btnAdd)}
                   type={`submit`}
-                  disabled={!isValid || !dirty}>
+                  disabled={!isValid || !dirty}
+                >
                   Добавить
                 </button>
                 <button
                   onClick={modalAction}
                   className={classNames(s.btn, s.btnCancel)}
-                  type='button'>
+                  type="button"
+                >
                   Отмена
                 </button>
               </div>

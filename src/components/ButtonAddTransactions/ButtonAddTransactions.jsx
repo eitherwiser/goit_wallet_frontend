@@ -1,19 +1,10 @@
-import { useCallback, Fragment } from 'react';
-import Media from 'react-media';
-import { createPortal } from 'react-dom';
+import { useCallback, Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import AddIcon from "@material-ui/icons/Add";
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import s from './ButtonAddTransactions.module.css';
-import { globalAction, globalSelectors } from '../../redux/global';
-
-import AddIcon from '@material-ui/icons/Add';
-
-
-import Modal from '../ModalAddTransaction/ModalAddTransaction';
-const button = document.getElementById('button');
-
-// import FormAddTransactions from '../ModalAddTransactions/FormAddTransactions';
+import Modal from "../ModalAddTransaction/ModalAddTransaction";
+import { globalAction, globalSelectors } from "redux/global";
+import s from "./ButtonAddTransactions.module.css";
 
 export default function ButtonAddTransaction() {
   const dispatch = useDispatch();
@@ -22,12 +13,12 @@ export default function ButtonAddTransaction() {
 
   const closeModal = useCallback(
     () => dispatch(globalAction.closeModal()),
-    [dispatch],
+    [dispatch]
   );
 
   const openModal = useCallback(
     () => dispatch(globalAction.openModal()),
-    [dispatch],
+    [dispatch]
   );
 
   return (
@@ -37,37 +28,13 @@ export default function ButtonAddTransaction() {
         type="button"
         name="addOperation"
         onClick={openModal}
-     >
+      >
         <AddIcon className={s.buttonIcon} fontSize="large" />
-
       </button>
 
-      <>
-        <Media
-          queries={{
-            small: '(max-width: 550px)',
-            medium: '(min-width: 549px)',
-          }}
-        >
-          {matches => (
-            <Fragment>
-              {matches.small &&
-                createPortal(
-                  <>{modal && <div className={s.modalMobile}></div>}</>,
-                  button,
-                )}
-
-              {matches.medium && (
-                <>
-                  {modal && (
-                    <Modal modalValue={modal} modalAction={closeModal}></Modal>
-                  )}
-                </>
-              )}
-            </Fragment>
-          )}
-        </Media>
-      </>
+      <Fragment>
+        {modal && <Modal modalValue={modal} modalAction={closeModal}></Modal>}
+      </Fragment>
     </>
   );
 }

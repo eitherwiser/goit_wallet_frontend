@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import LoginForm from "components/LoginForm/LoginForm";
 
 function LoginPage() {
-  const isMobileOrTablet = useMediaQuery({ query: "(min-width: 768px)" });
+  const isLarge = useMediaQuery({ query: "(min-width: 1240px)" });
   return (
     <>
       <div className={s.container}>
@@ -11,7 +11,7 @@ function LoginPage() {
           <h1 className={s.title}>Finance App</h1>
         </div>
         <div className={s.content_container}>
-          {isMobileOrTablet ? <div className={s.content_filter}></div> : <></>}
+          {isLarge && <div className={s.content_filter}></div>}
           <LoginForm />
         </div>
       </div>
