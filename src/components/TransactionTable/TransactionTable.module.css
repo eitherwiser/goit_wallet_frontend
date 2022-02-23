@@ -8,6 +8,11 @@
   width: 0;
   height: 0;
 }
+
+.tableWrapper {
+  position: relative;
+}
+
 @media screen and (min-width: 1280px) {
   .table {
     width: 700px;

@@ -1,21 +1,21 @@
 import PropTypes from "prop-types";
 import { useMediaQuery } from "react-responsive";
-import { ReactComponent as Ellipse1 } from "images/AppBackground/Ellipse_1.svg";
-import { ReactComponent as Ellipse2 } from "images/AppBackground/Ellipse_2.svg";
+import { ReactComponent as Ellipse1 } from "images/AppBackground/ellipse1.svg";
+import { ReactComponent as Ellipse2 } from "images/AppBackground/ellipse2.svg";
 import s from "./AppBackground.module.css";
 
 export default function AppBackground({ children }) {
-  const isMobileOrTablet = useMediaQuery({ query: "(min-width: 768px)" });
+  const isMobileOrTablet = useMediaQuery({ query: "(max-width: 767px)" });
   return (
     <div className={s.AppBackground}>
-      {isMobileOrTablet ? (
-        <>
-          <Ellipse1 className={s.Ellipse1} />
-          <Ellipse2 className={s.Ellipse2} />
-        </>
-      ) : (
-        <></>
-      )}
+      <div className={s.ellipseWrapper}>
+        {!isMobileOrTablet && (
+          <>
+            <Ellipse1 className={s.ellipse1} />
+            <Ellipse2 className={s.ellipse2} />
+          </>
+        )}
+      </div>
       {children}
     </div>
   );

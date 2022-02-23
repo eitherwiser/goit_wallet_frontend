@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-//import { CSSTransition } from "react-transition-group";
 import currencyApi from "services/currencyApi";
 import LoaderSpinner from "components/LoaderComponentCurrency/LoaderComponent";
 
@@ -8,31 +7,7 @@ import styles from "./Currency.module.css";
 
 export default function CurrencyTable() {
   const [currency, setCurrency] = useState([]);
-  const [Loaded, setLoaded] = useState();
 
-  // standart
-  // useEffect(() => {
-  //   const fetchCurrency = async () => {
-  //     const data = await currencyApi.fetchCurrency();
-  //     const filteredCurrencies = [];
-  //     currencies.forEach(currency => {
-  //       data.forEach(element => {
-  //         parseInt(element.buy).toFixed(2);
-  //         if (element.ccy === currency) {
-  //           filteredCurrencies.push({
-  //             ccy: element.ccy,
-  //             buy: Number(element.buy).toFixed(2),
-  //             sale: Number(element.sale).toFixed(2),
-  //           });
-  //         }
-  //       });
-  //     });
-  //     setCurrency(filteredCurrencies);
-  //   };
-  //   fetchCurrency();
-  // }, []);
-
-  // bonus
   useEffect(() => {
     const fetchCurrency = async () => {
       const data = await currencyApi.fetchCurrency();
@@ -65,49 +40,34 @@ export default function CurrencyTable() {
     }
   }, []);
 
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
-
   return (
-    <>
-      {/*<CSSTransition
-        in={Loaded}
-        timeout={500}
-        classNames={{
-          enterActive: `${styles.currencyShow}`,
-        }}
-        mountOnEnter
-      >*/}
-      <div className={styles.currency}>
-        {currency.length === 0 ? (
-          <div className={styles.loader}>
-            <LoaderSpinner />
-          </div>
-        ) : (
-          <table>
-            <thead>
-              <tr>
-                <td>Currency</td>
-                <td>Sell</td>
-                <td>Buy</td>
-              </tr>
-            </thead>
-            <tbody>
-              {currency.map((item) => {
-                return (
-                  <tr key={item.ccy}>
-                    <td>{item.ccy}</td>
-                    <td>{item.buy}</td>
-                    <td>{item.sale}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
-      </div>
-      {/*</CSSTransition>*/}
-    </>
+    <div className={styles.currency}>
+      {currency.length === 0 ? (
+        <div className={styles.loader}>
+          <LoaderSpinner />
+        </div>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <td>Валюта</td>
+              <td>Покупка</td>
+              <td>Продажа</td>
+            </tr>
+          </thead>
+          <tbody>
+            {currency.map((item) => {
+              return (
+                <tr key={item.ccy}>
+                  <td>{item.ccy}</td>
+                  <td>{item.buy}</td>
+                  <td>{item.sale}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
+    </div>
   );
 }
