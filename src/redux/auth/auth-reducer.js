@@ -25,7 +25,7 @@ const token = createReducer(null, {
 });
 
 const isAuth = createReducer(false, {
-  [authUser.fulfilled]: () => true,
+  [authUser.fulfilled]: () => false,
   [loginUser.fulfilled]: () => true,
   [logOut.fulfilled]: () => false,
   [fetchCurrentUser.fulfilled]: () => true,
