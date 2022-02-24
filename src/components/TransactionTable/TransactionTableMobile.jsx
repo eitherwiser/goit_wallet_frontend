@@ -58,7 +58,6 @@ export default function TransactionTableMobile({ transactions }) {
     return (
       <div className={s.tableWrapper}>
         <NoTransactions />
-        <ButtonAddTransaction />
       </div>
     );
   }
@@ -128,7 +127,6 @@ export default function TransactionTableMobile({ transactions }) {
           </Table>
         ))}
       </ThemeProvider>
-      <ButtonAddTransaction />
     </div>
   );
 }
