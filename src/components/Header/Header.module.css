@@ -1,7 +1,7 @@
 @import "stylesheet/var.css";
 
 .header {
-  z-index: 10;
+  z-index: 1;
   background-color: #fff;
   height: 60px;
 }

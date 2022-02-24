@@ -1,8 +1,6 @@
 import { Formik, Form } from "formik";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
-//import InputField from "../InputField/";
-//import LogoComponent from "components/LogoComponent";
 import s from "./LoginForm.module.css";
 import classNames from "classnames";
 import { useDispatch } from "react-redux";
@@ -92,13 +90,13 @@ export default function LoginForm() {
             >
               ВХОД
             </button>
-            <Link
+            <NavLink
               to="/register"
               className={s.btn1}
               style={{ textDecoration: "none" }}
             >
               Регистрация
-            </Link>
+            </NavLink>
           </Form>
         )}
       </Formik>

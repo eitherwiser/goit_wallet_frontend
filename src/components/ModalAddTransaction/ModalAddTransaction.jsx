@@ -44,37 +44,43 @@ export default function ModalAddTransaction({ modalAction }) {
     };
   });
 
-  function makeTime(data) {
-    const date = Date.now();
-    const interDate = data.slice(0, data.length - 5);
-    const newDate = date
-      .toString()
-      .split("")
-      .slice(8, date.toString().length)
-      .join("");
-
-    return Number(interDate + newDate);
-  }
+  // function makeTime(data) {
+  //   console.log("из календаря", data);
+  //   const date = Date.now();
+  //   console.log("текущее unix время", date);
+  //   const interDate = data.slice(0, data.length - 6);
+  //   console.log("обрезанное время из календаря", interDate);
+  //   const newDate = date
+  //     .toString()
+  //     .split("")
+  //     .slice(7, date.toString().length)
+  //     .join("");
+  //   console.log("обрезаное текущее unix время", newDate);
+  //   const result = Number(interDate + newDate);
+  //   console.log("результат", result);
+  //   return result;
+  // }
 
   return (
     <Formik
       initialValues={{
         date: new Date().toISOString().substr(0, 10),
-        isIncome: false,
+        isIncome: true,
         amount: "",
         comment: "",
         categoryId: "",
       }}
       validateOnBlur
       onSubmit={({ date, isIncome, ...all }, { resetForm }) => {
-        date = makeTime(Date.parse(date).toString());
+        date = Date.parse(date);
+        console.log(date);
+        console.log(typeof date);
         isIncome = !isIncome;
         handleSubmit({ date, isIncome, ...all });
         resetForm();
         modalAction();
       }}
-      validationSchema={validationSchema}
-    >
+      validationSchema={validationSchema}>
       {({
         values,
         errors,
@@ -86,8 +92,8 @@ export default function ModalAddTransaction({ modalAction }) {
       }) => (
         <div className={s.overlay} onClick={onBackdropClick}>
           <div className={s.formBox}>
-            <button type="button" className={s.closeBtn} onClick={modalAction}>
-              <img src={closeIcon} alt="" />
+            <button type='button' className={s.closeBtn} onClick={modalAction}>
+              <img src={closeIcon} alt='' />
             </button>
             <Form>
               <div className={s.form}>
@@ -97,17 +103,17 @@ export default function ModalAddTransaction({ modalAction }) {
                   <div className={s.switch__control}>
                     <input
                       className={s.switch__toggle}
-                      type="checkbox"
+                      type='checkbox'
                       id={`switch-toggle`}
-                      name="isIncome"
+                      name='isIncome'
                       onBlur={handleBlur}
+                      checked={values.isIncome}
                       value={values.isIncome}
                       onChange={handleChange}
                     />
                     <label
                       className={s.switch__track}
-                      htmlFor={`switch-toggle`}
-                    ></label>
+                      htmlFor={`switch-toggle`}></label>
                     <div className={s.switch__marker}></div>
                     <p className={s.switchIncome}>Доход</p>
                     <p className={s.switchCosts}>Расход</p>
@@ -118,12 +124,11 @@ export default function ModalAddTransaction({ modalAction }) {
                   <label className={s.span} htmlFor={`category`}>
                     <select
                       className={s.category}
-                      name="categoryId"
+                      name='categoryId'
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.categoryId}
-                    >
-                      <option value="0" key={"1"}>
+                      value={values.categoryId}>
+                      <option value='0' key={"1"}>
                         Выберите категорию
                       </option>
                       {allCategories.map(({ name, id }) => {
@@ -142,7 +147,7 @@ export default function ModalAddTransaction({ modalAction }) {
                     className={s.sum}
                     type={`number`}
                     name={`amount`}
-                    placeholder="0.00"
+                    placeholder='0.00'
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.amount}
@@ -153,8 +158,8 @@ export default function ModalAddTransaction({ modalAction }) {
                   <input
                     className={s.date}
                     value={values.date}
-                    type="date"
-                    name="date"
+                    type='date'
+                    name='date'
                     onBlur={handleBlur}
                     onChange={handleChange}
                     required
@@ -168,7 +173,7 @@ export default function ModalAddTransaction({ modalAction }) {
                   className={s.comment}
                   name={`comment`}
                   type={`text`}
-                  placeholder="Комментарий"
+                  placeholder='Комментарий'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.comment}
@@ -177,15 +182,13 @@ export default function ModalAddTransaction({ modalAction }) {
                 <button
                   className={classNames(s.btn, s.btnAdd)}
                   type={`submit`}
-                  disabled={!isValid || !dirty}
-                >
+                  disabled={!isValid || !dirty}>
                   Добавить
                 </button>
                 <button
                   onClick={modalAction}
                   className={classNames(s.btn, s.btnCancel)}
-                  type="button"
-                >
+                  type='button'>
                   Отмена
                 </button>
               </div>

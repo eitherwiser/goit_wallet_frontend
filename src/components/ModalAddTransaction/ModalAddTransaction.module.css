@@ -59,11 +59,10 @@
   z-index: 2;
   pointer-events: none;
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
-  transform: translateX(-7px);
   transition: transform 250ms linear;
 }
 .switch__toggle:checked ~ .switch__marker {
-  transform: translateX(50px);
+  transform: translateX(40px);
   background-color: #ff6596;
   background-image: url("../../images/modal-transaction/consumption.png");
   box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
@@ -85,7 +84,7 @@
 
 .switchCosts {
   position: absolute;
-  left: 110px;
+  left: 100px;
   margin: 0;
 
   font-family: "Circe", sans-serif;
@@ -105,8 +104,15 @@
 
 .error {
   position: absolute;
+  left: 20px;
   top: 37px;
   color: red;
+}
+
+.date {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26.53px;
 }
 
 .sum {
@@ -121,6 +127,7 @@
   }
 
   .error {
+    left: 20px;
     top: 35px;
   }
 
@@ -158,7 +165,7 @@
   }
 
   .category {
-    padding-left: 20px;
+    padding: 0 20px;
     margin-bottom: 40px;
     width: 280px;
     height: 34px;
@@ -183,13 +190,16 @@
 
   .sum {
     margin-bottom: 40px;
-    font-weight: 700;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 400;
     font-size: 18px;
     line-height: 26.53px;
   }
 
   .date {
     text-align: left;
+    padding: 0 20px;
     width: 280px;
     height: 34px;
     outline: none;
@@ -214,20 +224,10 @@
     font-size: 18px;
     line-height: 26.53px;
   }
-  .date div {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23.53px;
-  }
-
-  .dateIcon {
-    position: absolute;
-    top: 73px;
-    right: 20px;
-  }
 
   .comment {
     margin-bottom: 40px;
+    padding: 0 20px;
     width: 290px;
     resize: none;
     outline: none;
@@ -240,7 +240,6 @@
   }
 
   .comment::placeholder {
-    padding-left: 10px;
     font-weight: 400;
     font-size: 18px;
     line-height: 26.53px;
@@ -266,7 +265,7 @@
 
   .btnAdd {
     margin-bottom: 20px;
-    border-color: transparent;
+    border: 1px solid var(--accent-btn-color);
     color: var(--light-text-color);
     background-color: var(--accent-btn-color);
   }
@@ -363,7 +362,9 @@
 
   .sum {
     margin-right: 30px;
-    font-weight: 700;
+    width: 190px;
+    padding-left: 20px;
+    font-weight: 400;
     font-size: 18px;
     line-height: 26.53px;
   }
@@ -377,16 +378,16 @@
   }
 
   .sum::placeholder {
-    text-align: left;
     font-weight: 700;
     font-size: 18px;
     line-height: 26.53px;
-    text-align: center;
     color: var(--secondary-text-color);
   }
+
   .date {
     padding-left: 20px;
   }
+
   .date input {
     outline: none;
     border: none;
@@ -450,7 +451,7 @@
 
   .btnAdd {
     margin-bottom: 20px;
-    border-color: transparent;
+    border: 1px solid var(--accent-btn-color);
     color: var(--light-text-color);
     background-color: var(--accent-btn-color);
   }

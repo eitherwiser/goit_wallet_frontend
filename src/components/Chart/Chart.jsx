@@ -81,7 +81,9 @@ export default function Chart() {
           {fetchDate.total.Expense !== 0 && !loader && (
             <div className={s.chart}>
               <Doughnut data={data} options={options} />
+              <div className={s.containerTotal}>
               <p className={s.total}>&#x20b4; {balance}</p>
+              </div>
             </div>
           )}
 

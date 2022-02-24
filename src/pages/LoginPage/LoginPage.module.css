@@ -2,7 +2,6 @@
 
 .title {
   position: absolute;
-
   font-family: var(--logo__font-family);
   font-weight: 400;
   font-size: 30px;
@@ -13,11 +12,15 @@
   .title {
     display: none;
   }
-
   .container {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: #fff;
+  }
+
+  .content_container {
+    width: 100%;
+    height: 960px;
   }
 }
 
@@ -45,18 +48,18 @@
     width: 768px;
     margin: 0 auto;
   }
+}
 
+@media screen and (min-width: 1280px) {
   .content_filter {
     position: absolute;
-    left: 0%;
-    width: 100vw;
+    right: 0;
+    width: 55vw;
     height: 100vh;
     background-color: #fff;
     opacity: 0.4;
   }
-}
 
-@media screen and (min-width: 1280px) {
   .wrapper {
     position: relative;
     width: 560px;
