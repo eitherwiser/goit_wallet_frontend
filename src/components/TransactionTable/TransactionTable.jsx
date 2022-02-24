@@ -5,7 +5,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useSelector } from "react-redux";
-import ButtonAddTransaction from "../ButtonAddTransactions/ButtonAddTransactions";
 import { getTransactionCategories } from "../../redux/auth/auth-selectors";
 
 import NoTransactions from "../NoTransactions/NoTransactions";
@@ -61,7 +60,6 @@ export default function TransactionTable({ transactions }) {
     return (
       <div className={s.tableWrapper}>
         <NoTransactions />
-        <ButtonAddTransaction />
       </div>
     );
   }
@@ -124,7 +122,6 @@ export default function TransactionTable({ transactions }) {
           </Table>
         </ThemeProvider>
       </div>
-      <ButtonAddTransaction />
     </div>
   );
 }
